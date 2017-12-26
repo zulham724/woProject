@@ -579,7 +579,9 @@ function print(id){
 	$("#printPembayaran").html("");
 
 	$.each(pembayaran,function(key,i){
-		totalAngsuran += this.angsuran;
+		totalAngsuran += Number(this.angsuran);
+		console.log(this.angsuran);
+		console.log(totalAngsuran);
 		key+=1;
 		var date = new Date(this.created_at);
 		$("#printPembayaran").append("<h4> Angsuran "+key+": "+date.getDate() + '-' + (date.getMonth() + 1) + '-' +  date.getFullYear()+"</h4><h4 class='angsuran form-control'>"+this.angsuran+"</h4>");
@@ -587,7 +589,7 @@ function print(id){
 
 	var sisaPembayaran = harga - (Number(order[0].dp) + Number(totalAngsuran));
 
-	$("#printSisaPembayaran").html("<h4>Sisa Pembayaran</h4><h4 class='sisaPembayaran form-control'>"+sisaPembayaran+"</h4> ");
+	$("#printSisaPembayaran").html("<h4>Sisa Pembayaran</h4><h4 class='sisaPembayaran form-control'>"+Number(sisaPembayaran)+"</h4> ");
 
 	console.log(harga,Number(order[0].dp),"total angsuran nya adalah : "+Number(totalAngsuran),sisaPembayaran);
 
