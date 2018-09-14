@@ -69,9 +69,50 @@
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="{{url('admin/schedule')}}" @yield('schedule-active') ><i class="fa fa-calendar-o"></i> Schedule</a></li>
-                            <li><a href="{{url('admin/order')}}" @yield('order-active') ><i class="fa fa-book"></i> Order</a></li>
+                             <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-calendar"></i> Kursus <span class="badge" </span> <i class="fa fa-caret-down"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-messages" >
+                                    <li>
+                                        <a class='text-center' href="{{url('admin/list_kursus')}}" data-toggle='modal' >
+                                            <strong>Input List Kursus</strong>
+                                            <i class='fa fa-angle-right'></i>
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a class='text-center' href="{{url('admin/kursus')}}" data-toggle='modal' >
+                                            <strong>Data Peserta Kursus</strong>
+                                            <i class='fa fa-angle-right'></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- /.dropdown-messages -->
+                            </li>
+                            <li class="dropdown" >
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-book"></i> Order <span class="badge" </span> <i class="fa fa-caret-down"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-messages" >
+                                    <li>
+                                        <a class='text-center' href="{{url('admin/list')}}" data-toggle='modal' >
+                                            <strong>Input List Pesanan</strong>
+                                            <i class='fa fa-angle-right'></i>
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a class='text-center' href="{{url('admin/order')}}" data-toggle='modal' >
+                                            <strong>Data List Order</strong>
+                                            <i class='fa fa-angle-right'></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- /.dropdown-messages -->
+                            </li>
+
                             <li><a href="{{url('admin/staff')}}" @yield('staff-active') ><i class="fa fa-group"></i> Staff</a></li>
                             <li><a href="{{url('admin/pembayaran')}}" @yield('pembayaran-active') ><i class="fa fa-dollar"></i> Pembayaran</a></li>
+                            <li><a href="{{url('admin/memo')}}" @yield('memo-active') ><i class="fa fa-pencil-square-o"></i> Request & Memo</a></li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="fa fa-envelope fa-fw"></i> Notification <span class="badge" id="countNotif">{{$countNotif}}</span> <i class="fa fa-caret-down"></i>

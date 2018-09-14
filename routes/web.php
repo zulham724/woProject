@@ -69,6 +69,17 @@ Route::group(['middleware'=>'web'],function(){
         Route::post('update','AdminController@update');
   		});
 
+      Route::get('list_kursus','ListCoursesController@index');
+
+      Route::get('kursus','CoursesController@index');
+
+      Route::group(['prefix'=>'kursus'],function(){
+        Route::get('create','CoursesController@create');
+      });
+
+
+      Route::get('list','ListController@index');
+
       Route::get('order','OrderController@index');
 
       Route::group(['prefix'=>'order'],function(){
@@ -86,6 +97,8 @@ Route::group(['middleware'=>'web'],function(){
         Route::post('update','PembayaranController@update');
         Route::get('delete/{id}','PembayaranController@delete');
       });
+
+      Route::get('memo','MemoController@index');
 
     });
     // end admin group

@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-        	<a href="{{url('staff')}}"><button type="button" class="btn btn-success">Back to Staff</button></a><hr>
+        	<a href="{{url('admin/staff')}}"><button type="button" class="btn btn-success">Back to Staff</button></a><hr>
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">

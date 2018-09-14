@@ -232,17 +232,45 @@
 								</div>
 								<div class="panel-body">
                   @foreach ($item as $index => $ini)
-                    <div class="form-group" id="item{{$index}}">
-  										<div class="row">
-  											<div class="col-md-8">
-  												<input type="text" name="item{{$index}}" id="" value="{{$ini->item}}" class="form-control" placeholder="Nama Barang">
-  											</div>
-  											<div class="col-md-4">
-  												<input type="number" name="cost{{$index}}" value="{{$ini->cost}}" class="form-control" placeholder="harga">
-  											</div>
-                        <input type="hidden" name="idItem{{$index}}" id="idItem{{$index}}" value="{{$ini->id}}">
-  										</div>
-  									</div>
+                    									<div class="form-group">
+										<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+											<select class="form-control" name="item" id="item">
+                							<option value="">Nama Barang</option>
+               								<option value="Ada" >Ada</option>  
+             								</select>
+											</div>
+
+											
+
+											<div class="form-group">
+											<input type="number" name="harga" class="form-control" placeholder="Harga" readonly="true">
+											</div>
+
+											<div class="form-group">
+											<input type="text" name="penanggung_jawab" class="form-control" placeholder="Penanggung Jawab">
+											</div>
+										</div>
+											
+											<div class="form-group">
+												<div class="row">
+												<div class="col-md-5">
+													<div class="form-group">
+														<h4><span class="label label-default">Gambar: </span></h4>
+														<input type="file" name="upload_gambar" id="upload">
+													</div>
+
+													<div class="form-group">
+														<textarea type="text" name="keterangan" class="form-control" placeholder="Keterangan"></textarea>
+													</div>
+
+												</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
                   @endforeach
 									<div id="contentItem"></div>
 									<div id="hapusItem"></div>

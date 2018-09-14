@@ -1,4 +1,5 @@
 @extends(Auth::user()->role_id==1 ? 'layouts.admin-horizontal' : 'layouts.operator-horizontal')
+@section('order-active','class=menu-top-active')
 @section('css')
 
 @endsection
@@ -227,12 +228,41 @@
 								<div class="panel-body">
 									<div class="form-group">
 										<div class="row">
-											<div class="col-md-8">
-												<input type="text" name="item0" class="form-control" placeholder="Nama Barang">
+											<div class="col-md-6">
+												<div class="form-group">
+													<select class="form-control" name="item0">
+			                							<option value="">Nama Barang</option>
+			               								<option value="Ada" >Ada</option>  
+		             								</select>
+												</div>
+
+												
+
+												<div class="form-group">
+													<input type="number" name="cost0" class="form-control" placeholder="Harga">
+												</div>
+
+												<div class="form-group">
+													<input type="text" name="penanggung_jawab" class="form-control" placeholder="Penanggung Jawab">
+												</div>
 											</div>
-											<div class="col-md-4">
-												<input type="number" name="cost0" class="form-control" placeholder="harga">
+											
+											<div class="form-group">
+												<div class="row">
+												<div class="col-md-5">
+													<div class="form-group">
+														<h4><span class="label label-default">Gambar: </span></h4>
+														<input type="file" name="upload_gambar" id="upload">
+													</div>
+
+													<div class="form-group">
+														<textarea type="text" name="keterangan" class="form-control" placeholder="Keterangan"></textarea>
+													</div>
+
+												</div>
+												</div>
 											</div>
+											
 										</div>
 									</div>
 									<div id="contentItem"></div>
