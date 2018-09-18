@@ -47,7 +47,7 @@
 							<td>{{$item_list->name}}</td>
 							<td>{{$item_list->price}}</td>
 							<td>
-								<a href="{{ route('itemlist.edit',$item_list->id) }}" type="button" class="btn btn-warning">Edit</a>
+								<a type="button" href="{{ route('itemlist.edit',$item_list->id) }}" class="btn btn-warning" >Edit</a>
 								<button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete{{$item_list->id}}').submit();">Delete</button>
 								<form id="delete{{$item_list->id}}" action="{{ route('itemlist.destroy',$item_list->id) }}" method="post">
 									<input type="hidden" name="_method" value="delete">

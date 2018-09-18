@@ -62,7 +62,8 @@ class ItemListController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data["item_lists"] = ItemList::find($id);
+        return view('itemlist.edit',$data);
     }
 
     /**
@@ -74,7 +75,14 @@ class ItemListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data["item_lists"]=ItemList::where('id',$request['id'])
+        ->update([
+            'name' => $request['name'],
+            'price' => $request['price'],
+            
+        ]);
+        // dd($data['user']);
+       return redirect()->route('itemlist.index');
     }
 
     /**
