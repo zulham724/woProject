@@ -16,14 +16,17 @@
 		<div class="panel-body">
 
 		<div class="form-group">
+			<form class="form-horizontal" method="POST" action="{{ route('itemlist.store') }}" >
+                        {{ csrf_field() }}
                 <span class="label label-default">Nama Order List </span>
-                <input type="text" name="order_list" id="order_list" class="form-control" >
+                <input type="text" name="name" id="name" class="form-control" >
         </div>
         <div class="form-group">
                 <span class="label label-default">Harga </span>
-                <input type="number" name="order_list" id="order_list" class="form-control" >
+                <input type="number" name="price" id="price" class="form-control" >
         </div>
         <button type="submit" class="btn btn-success center-block btn-block">Submit</button>
+    </form>
         <hr>
         
 
@@ -37,6 +40,23 @@
 							<th>Action</th>
 						</tr>
 					</thead>
+					<tbody>
+						@foreach($item_lists as $cl => $item_list)
+						<tr>
+							<td>{{$cl+1}}</td>
+							<td>{{$item_list->name}}</td>
+							<td>{{$item_list->price}}</td>
+							<td>
+								<a href="{{ route('itemlist.edit',$item_list->id) }}" type="button" class="btn btn-warning">Edit</a>
+								<button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete{{$item_list->id}}').submit();">Delete</button>
+								<form id="delete{{$item_list->id}}" action="{{ route('itemlist.destroy',$item_list->id) }}" method="post">
+									<input type="hidden" name="_method" value="delete">
+									<input type="hidden" name="id" value="{{$item_list->id}}">
+									<input type="hidden" name="_token" value="{{csrf_token()}}">
+								</form>
+						</tr>
+						@endforeach
+					</tbody>
 					
 				</table>		
 			</div>

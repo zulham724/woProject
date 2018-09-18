@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItemLists extends Migration
+class CreateItemListsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateItemLists extends Migration
      */
     public function up()
     {
-        Schema::create('item_lsts',function(Blueprint $table){
+        Schema::create('item_lists',function(Blueprint $table){
             $table->increments('id');
             $table->string('name')->nullable();
             $table->integer('price')->nullable();
@@ -30,6 +30,6 @@ class CreateItemLists extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('item_lists');
     }
 }

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\CoursesList;
 
-class MemoController extends Controller
+class CoursesListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,9 @@ class MemoController extends Controller
      */
     public function index()
     {
-        return view('memo.index');    }
+        $data["courses_lists"] = CoursesList::get();
+        return view('courseslist.index',$data);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -33,7 +36,11 @@ class MemoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data['courses_lists']= CoursesList::create([
+            "type"=>$request['type'],
+            "price"=>$request['price'],
+        ]);
+        return redirect('admin/courseslists')-> with('alert-success', 'Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -55,7 +62,8 @@ class MemoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data["courses_list"] = CoursesList::find($id);
+        return view('courseslist.edit',$data);
     }
 
     /**
@@ -67,7 +75,15 @@ class MemoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request);
+        $data["courses_lists"]=CoursesList::where('id',$request['id'])
+        ->update([
+            'type' => $request['type'],
+            'price' => $request['price'],
+            
+        ]);
+        // dd($data['user']);
+       return redirect()->route('courseslists.index');
     }
 
     /**
@@ -78,6 +94,7 @@ class MemoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        CoursesList::where('id',$id)->delete();
+        return redirect('admin/courseslists');
     }
 }

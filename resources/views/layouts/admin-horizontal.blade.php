@@ -10,19 +10,19 @@
         <![endif]-->
     <title>Admin</title>
     <!-- BOOTSTRAP CORE STYLE  -->
-    <link href="{{url('public/css/bootstrap.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
-    <link href="{{url('public/css/font-awesome.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/font-awesome.css')}}" rel="stylesheet" />
     <!-- CUSTOM STYLE  -->
-    <link href="{{url('public/css/horizontal-admin.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/horizontal-admin.css')}}" rel="stylesheet" />
     <!-- DATATABLE STYLE  -->
-    <link href="{{url('public/js/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet" />
+    <link href="{{asset('js/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
     {{-- full calendar --}}
-    <link rel='stylesheet' href='{{url('public/fullcalendar/fullcalendar.css')}}' />
+    <link rel='stylesheet' href='{{asset('fullcalendar/fullcalendar.css')}}' />
     {{-- datepicker css --}}
-    <link rel="stylesheet" href="{{url('public/css/bootstrap-datepicker.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.min.css')}}">
     <!-- Bootstrap datepicker -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
 
@@ -48,7 +48,7 @@
                 </button>
                 <a class="navbar-brand" href="index.html">
 
-                    <img src="{{url('public/img/logo/logo.png')}}" />
+                    <img src="{{asset('img/logo/logo.png')}}" />
                 </a>
 
             </div>
@@ -75,7 +75,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-messages" >
                                     <li>
-                                        <a class='text-center' href="{{url('admin/list_kursus')}}" data-toggle='modal' >
+                                        <a class='text-center' href="{{ route('courseslists.index') }}" data-toggle='modal' >
                                             <strong>Input List Kursus</strong>
                                             <i class='fa fa-angle-right'></i>
                                         </a>
@@ -95,7 +95,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-messages" >
                                     <li>
-                                        <a class='text-center' href="{{url('admin/list')}}" data-toggle='modal' >
+                                        <a class='text-center' href="{{ route('itemlist.index') }}" data-toggle='modal' >
                                             <strong>Input List Pesanan</strong>
                                             <i class='fa fa-angle-right'></i>
                                         </a>
@@ -112,7 +112,7 @@
 
                             <li><a href="{{url('admin/staff')}}" @yield('staff-active') ><i class="fa fa-group"></i> Staff</a></li>
                             <li><a href="{{url('admin/pembayaran')}}" @yield('pembayaran-active') ><i class="fa fa-dollar"></i> Pembayaran</a></li>
-                            <li><a href="{{url('admin/memo')}}" @yield('memo-active') ><i class="fa fa-pencil-square-o"></i> Request & Memo</a></li>
+                            <li><a href="{{ route('memo.index') }}" @yield('memo-active') ><i class="fa fa-pencil-square-o"></i> Request & Memo</a></li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="fa fa-envelope fa-fw"></i> Notification <span class="badge" id="countNotif">{{$countNotif}}</span> <i class="fa fa-caret-down"></i>
@@ -196,30 +196,30 @@
       <!-- FOOTER SECTION END-->
     <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
     <!-- CORE JQUERY  -->
-    <script src="{{url('public/js/jquery-1.10.2.js')}}"></script>
+    <script src="{{asset('js/jquery-1.10.2.js')}}"></script>
     {{-- angular --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     {{-- jquery currency --}}
-    <script src="{{url('public/js/jquery.formatCurrency-1.4.0.min.js')}}" charset="utf-8"></script>
-    <script src="{{url('public/js/jquery.formatCurrency.id-ID.js')}}" charset="utf-8"></script>
+    <script src="{{asset('js/jquery.formatCurrency-1.4.0.min.js')}}" charset="utf-8"></script>
+    <script src="{{asset('js/jquery.formatCurrency.id-ID.js')}}" charset="utf-8"></script>
     {{-- bootstrap and angular tags input --}}
-    <script src="{{url('public/js/bootstrap-tagsinput.js')}}"></script>
-    <script src="{{url('public/js/bootstrap-tagsinput-angular.js')}}"></script>
+    <script src="{{asset('js/bootstrap-tagsinput.js')}}"></script>
+    <script src="{{asset('js/bootstrap-tagsinput-angular.js')}}"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
-    <script src="{{url('public/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <!-- DATATABLE SCRIPTS  -->
-    <script src="{{url('public/js/dataTables/jquery.dataTables.js')}}"></script>
-    <script src="{{url('public/js/dataTables/dataTables.bootstrap.js')}}"></script>
+    <script src="{{asset('js/dataTables/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('js/dataTables/dataTables.bootstrap.js')}}"></script>
       <!-- CUSTOM SCRIPTS  -->
-    <script src="{{url('public/js/horizontal-admin.js')}}"></script>
-    <script src="{{url('public/fullcalendar/lib/moment.min.js')}}"></script>
-    <script src="{{url('public/fullcalendar/fullcalendar.min.js')}}"></script>
-    <script src="{{url('public/fullcalendar/locale/id.js')}}"></script>
-    <script src="{{url('public/js/bootstrap-datepicker.js')}}" charset="utf-8"></script>
-    <script src="{{url('public/locales/bootstrap-datepicker.id.min.js')}}" charset="utf-8"></script>
+    <script src="{{asset('js/horizontal-admin.js')}}"></script>
+    <script src="{{asset('fullcalendar/lib/moment.min.js')}}"></script>
+    <script src="{{asset('fullcalendar/fullcalendar.min.js')}}"></script>
+    <script src="{{asset('fullcalendar/locale/id.js')}}"></script>
+    <script src="{{asset('js/bootstrap-datepicker.js')}}" charset="utf-8"></script>
+    <script src="{{asset('locales/bootstrap-datepicker.id.min.js')}}" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-    <script src="{{url('public/js/printThis.js')}}" charset="utf-8"></script>
+    <script src="{{asset('js/printThis.js')}}" charset="utf-8"></script>
     <script type="text/javascript">
         $(document).ready(function(){
 

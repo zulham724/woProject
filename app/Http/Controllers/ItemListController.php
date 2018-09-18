@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ItemList;
 
-class MemoController extends Controller
+class ItemListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,9 @@ class MemoController extends Controller
      */
     public function index()
     {
-        return view('memo.index');    }
+        $data["item_lists"] = ItemList::get();
+        return view('itemlist.index',$data);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -33,7 +36,11 @@ class MemoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $data['item_lists']= ItemList::create([
+            "name"=>$request['name'],
+            "price"=>$request['price'],
+        ]);
+        return redirect('admin/itemlist')-> with('alert-success', 'Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -78,6 +85,7 @@ class MemoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ItemList::where('id',$id)->delete();
+        return redirect('admin/itemlist');
     }
 }

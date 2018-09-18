@@ -69,7 +69,10 @@ Route::group(['middleware'=>'web'],function(){
         Route::post('update','AdminController@update');
   		});
 
-      Route::get('list_kursus','ListCoursesController@index');
+      Route::resources([
+        "courseslists"=>"CoursesListController"
+      ]); 
+
 
       Route::get('kursus','CoursesController@index');
 
@@ -78,8 +81,9 @@ Route::group(['middleware'=>'web'],function(){
       });
 
 
-      Route::get('list','ListController@index');
-
+      Route::resources([
+        "itemlist"=>"ItemListController"
+      ]);
       Route::get('order','OrderController@index');
 
       Route::group(['prefix'=>'order'],function(){
@@ -98,7 +102,9 @@ Route::group(['middleware'=>'web'],function(){
         Route::get('delete/{id}','PembayaranController@delete');
       });
 
-      Route::get('memo','MemoController@index');
+       Route::resources([
+        "memo"=>"MemoController"
+      ]); 
 
     });
     // end admin group
