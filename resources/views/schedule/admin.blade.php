@@ -44,6 +44,11 @@
 @endsection
 @section('script')
 <script type="text/javascript">
+    $(()=>{
+        if({!!$login!!}){
+            swal("Hello :)","Anda telah Login","success");
+        }
+    });
 	$(document).ready(function() {
 
     // page is now ready, initialize the calendar...

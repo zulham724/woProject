@@ -54,7 +54,7 @@
             </div>
 
             <div class="right-div">
-                <a href="#" class="btn btn-info pull-right" onclick="event.preventDefault();document.getElementById('logout-form').submit();">LOG ME OUT</a>
+                <a href="#" class="btn btn-info pull-right" onclick="logout()">LOG ME OUT</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
@@ -220,6 +220,7 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <script src="{{asset('js/printThis.js')}}" charset="utf-8"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.29/sweetalert2.all.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
 
@@ -282,6 +283,21 @@
                 // end each
             });
         }
+
+        const logout = ()=>{
+        swal({
+            type:"info",
+            title: "Logout from here?",
+            confirmButtonText: "<i class='fa fa-thumbs-up'></i> Yes, Log me out",
+            showCancelButton:true,
+            cancelButtonColor: '#d33',
+            cancelButtonText: "<i class='fa fa-close'></i> Cancel"
+        }).then(res=>{
+          if(res.value){
+              $("#logout-form").submit();
+          }
+        });
+      }
     </script>
     @yield('script')
 </body>

@@ -49,24 +49,24 @@
 						<input class="input100" id="email" type="email" name="email" value="" required autofocus>
 						<span class="focus-input100"></span>
 						<span class="label-input100">Email</span>
-						 <!-- @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif -->
 					</div>
+					@if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
 					
 					
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<input class="input100" id="password" type="password" name="password" required>
 						<span class="focus-input100"></span>
 						<span class="label-input100">Password</span>
-						<!-- @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif -->
 					</div>
+					@if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
 
 					<div class="flex-sb-m w-full p-t-3 p-b-32">
 						<div class="contact100-form-checkbox">
