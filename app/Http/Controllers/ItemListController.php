@@ -36,9 +36,8 @@ class ItemListController extends Controller
      */
     public function store(Request $request)
     {
-         $data['item_lists']= ItemList::create([
+        $data['item_lists']= ItemList::create([
             "name"=>$request['name'],
-            "price"=>$request['price'],
         ]);
         return redirect('admin/itemlist')-> with('alert-success', 'Data Berhasil Ditambahkan!');
     }
@@ -78,8 +77,7 @@ class ItemListController extends Controller
         $data["item_lists"]=ItemList::where('id',$request['id'])
         ->update([
             'name' => $request['name'],
-            'price' => $request['price'],
-            
+                        
         ]);
         // dd($data['user']);
        return redirect()->route('itemlist.index');

@@ -17,10 +17,13 @@
 					<thead>
 						<tr>
 							<th>
-								<select class="form-control" ng-model="anggaranBaru.lembaga_id" ng-required="true">
-                					<option value="">Keseluruhan</option>
-               						<option ng-repeat="#" ng-value="#">#</option>  
-             					</select>
+								<select class="form-control" name="courses_list_id">
+										<option value="">-Keseluruhan-</option>
+										@foreach($courses_lists as $courses_list)
+										<option value="{{ $courses_list->id }}">{{ $courses_list->type }}</option>
+										@endforeach 
+									</select>
+		
              				</th>
 							<th>No.</th>
 							<th>Nama Pemesan</th>
@@ -29,6 +32,27 @@
 							<th>Action</th>
 						</tr>
 					</thead>
+
+					<tbody>
+						@foreach($courses as $c => $courses)
+						<tr>
+							<td>{{$courses->courses_list->type}}</td>
+							<td>{{$c+1}}</td>
+							<td>{{$courses->name}}</td>
+							<td>{{$courses->certificate_name}}</td>
+							<td>{{$courses->date}}</td>
+							<td>
+								<a type="button" href="{{ route('courses.edit',$courses->id) }}" class="btn btn-warning" >Edit</a>
+								<button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete{{$courses->id}}').submit();">Delete</button>
+
+								<form id="delete{{$courses->id}}" action="{{ route('courses.destroy',$courses->id) }}" method="post">
+									<input type="hidden" name="_method" value="delete">
+									<input type="hidden" name="id" value="{{$courses->id}}">
+									<input type="hidden" name="_token" value="{{csrf_token()}}">
+								</form>
+						</tr>
+						@endforeach
+					</tbody>
 					
 				</table>		
 			</div>

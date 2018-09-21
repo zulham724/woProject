@@ -16,17 +16,16 @@ class CreateItemsTable extends Migration
         Schema::create('items',function(Blueprint $table){
             $table->increments('id');
             $table->integer('order_id')->unsigned();
-            $table->integer('items_list_id')->unsigned();
-            $table->string('item')->nullable();
-            $table->string('cost')->nullable();
-            $table->string('penanggungjawab')->nullable();
-            $table->string('picture')->nullable();
-            $table->string('information')->nullable();
+            $table->integer('item_list_id')->unsigned();
+            $table->integer('price')->nullable();
+            $table->string('person')->nullable();
+            $table->string('image')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
-             $table->foreign('items_list_id')->references('id')->on('item_lists')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('item_list_id')->references('id')->on('item_lists')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

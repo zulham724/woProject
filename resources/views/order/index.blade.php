@@ -4,6 +4,9 @@
 
 @endsection
 @section('content')
+<example></example>
+
+
 <div class="container">
 	<div class="container">
 	<a href="{{(Auth::user()->role_id == 1) ? url('admin/order/create') : url('operator/order/create')}}"><button type="button" class="btn btn-success">Insert new Order</button></a><hr>

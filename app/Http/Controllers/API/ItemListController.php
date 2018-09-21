@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
-use App\Item;
+use App\Http\Controllers\Controller;
 use App\ItemList;
-use App\Order;
 
-class MemoController extends Controller
+class ItemListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,19 +15,8 @@ class MemoController extends Controller
      */
     public function index()
     {
-        $data["item_lists"] = ItemList::get();
-        $data["items"] = Item::with('item_list','order')->get();
-        return view('memo.index',$data);    
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $itemlists = ItemList::get();
+        return response()->json($itemlists);
     }
 
     /**
@@ -49,17 +37,6 @@ class MemoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }

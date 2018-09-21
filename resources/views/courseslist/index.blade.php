@@ -14,19 +14,19 @@
 		{{-- end heading --}}
 	
 		<div class="panel-body">
+			<form method="POST" action="{{ route('courseslists.store') }}" >
+	                        {{ csrf_field() }}
 
-		<div class="form-group">
-		<form class="form-horizontal" method="POST" action="{{ route('courseslists.store') }}" >
-                        {{ csrf_field() }}
-                <span class="label label-default">Nama Jenis Kursus </span>
-                <input type="text" name="type" id="order_list" class="form-control" >
-        </div>
-        <div class="form-group">
-                <span class="label label-default">Harga </span>
-                <input type="text" name="price" id="order_list" class="form-control" >
-        </div>
-        <button type="submit" class="btn btn-success center-block btn-block">Submit</button>
-        </form>
+				<div class="form-group">
+					            <span class="label label-default">Nama Jenis Kursus </span>
+		            <input type="text" name="type" id="order_list" class="form-control" >
+		        </div>
+		        <div class="form-group">
+		            <span class="label label-default">Harga </span>
+		            <input type="text" name="price" id="order_list" class="form-control" >
+		        </div>
+		        <button type="submit" class="btn btn-success center-block btn-block">Submit</button>
+	        </form>
         <hr>
         
 

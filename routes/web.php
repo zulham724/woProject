@@ -74,7 +74,9 @@ Route::group(['middleware'=>'web'],function(){
       ]); 
 
 
-      Route::get('kursus','CoursesController@index');
+      Route::resources([
+        "courses"=>"CoursesController"
+      ]);
 
       Route::group(['prefix'=>'kursus'],function(){
         Route::get('create','CoursesController@create');

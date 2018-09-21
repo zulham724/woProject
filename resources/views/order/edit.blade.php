@@ -222,104 +222,16 @@
 
 			<div class="row">
 				<div class="col-md-6">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									Pesanan
-									<button type="button" class="btn btn-info pull-right" onclick="addItem();">Add Item</button>
-									<div id="removeItem" class="pull-right"></div>
-								</div>
-								<div class="panel-body">
-                  @foreach ($item as $index => $ini)
-                    									<div class="form-group">
-										<div class="row">
-										<div class="col-md-6">
-											<div class="form-group">
-											<select class="form-control" name="item" id="item">
-                							<option value="">Nama Barang</option>
-               								<option value="Ada" >Ada</option>  
-             								</select>
-											</div>
-
-											
-
-											<div class="form-group">
-											<input type="number" name="harga" class="form-control" placeholder="Harga" readonly="true">
-											</div>
-
-											<div class="form-group">
-											<input type="text" name="penanggung_jawab" class="form-control" placeholder="Penanggung Jawab">
-											</div>
-										</div>
-											
-											<div class="form-group">
-												<div class="row">
-												<div class="col-md-5">
-													<div class="form-group">
-														<h4><span class="label label-default">Gambar: </span></h4>
-														<input type="file" name="upload_gambar" id="upload">
-													</div>
-
-													<div class="form-group">
-														<textarea type="text" name="keterangan" class="form-control" placeholder="Keterangan"></textarea>
-													</div>
-
-												</div>
-												</div>
-											</div>
-											
-										</div>
-									</div>
-                  @endforeach
-									<div id="contentItem"></div>
-									<div id="hapusItem"></div>
-									<input type="hidden" name="totalHapusItem" id="totalHapusItem" value="0">
-								</div>
-							</div>
-						</div>
-					</div>
-					{{-- end row --}}
+					
+					<item></item>
+							
 				</div>
 				<div class="col-md-6">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									Acara
-									<button type="button" class="btn btn-info pull-right" onclick="addAcara();">Add Acara</button>
-									<div id="removeAcara" class="pull-right"></div>
-								</div>
-								<div class="panel-body">
-                  @foreach ($acara as $index => $ini)
-                    <div class="form-group" id="acara{{$index}}">
-  										<div class="row">
-  											<div class="col-md-4">
-  												<input type="text" name="acara{{$index}}" value="{{$ini->acara}}" class="form-control" placeholder="Acara Pelaksanaan">
-  											</div>
-  											<div class="col-md-3">
-  												<input type="text" name="tanggal{{$index}}" value="{{$ini->tanggal}}" class="datepicker form-control" placeholder="Tanggal" readonly>
-  											</div>
-												<div class="col-md-2">
-													<input type="text" name="jam{{$index}}" value="{{$ini->jam}}" class="form-control" placeholder="Jam">
-												</div>
-  											<div class="col-md-3">
-  												<input type="text" name="tempat{{$index}}" value="{{$ini->tempat}}" class="form-control" placeholder="Tempat">
-  											</div>
-                        <input type="hidden" name="idAcara{{$index}}" id="idAcara{{$index}}" value="{{$ini->id}}">
-  										</div>
-  									</div>
-                  @endforeach
-									<div id="contentAcara"></div>
-									<div id="hapusAcara"></div>
-									<input type="hidden" name="totalHapusAcara" id="totalHapusAcara" value="0">
-								</div>
-							</div>
-						</div>
-					</div>
-					{{-- end row --}}
+					
+					<acara></acara>
+							
 				</div>
-			</div>
+			</div>v>
 			{{-- end row --}}
 
       <input type="hidden" name="id" value="{{$order->id}}">

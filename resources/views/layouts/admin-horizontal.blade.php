@@ -9,6 +9,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
     <title>Admin</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -25,7 +27,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.min.css')}}">
     <!-- Bootstrap datepicker -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
-
+    
     <style type="text/css">
         html, body{
             width:100%;
@@ -81,7 +83,7 @@
                                         </a>
                                     </li>
                                      <li>
-                                        <a class='text-center' href="{{url('admin/kursus')}}" data-toggle='modal' >
+                                        <a class='text-center' href="{{url('admin/courses')}}" data-toggle='modal' >
                                             <strong>Data Peserta Kursus</strong>
                                             <i class='fa fa-angle-right'></i>
                                         </a>
@@ -136,7 +138,7 @@
         </div>
     </section>
      <!-- MENU SECTION END-->
-    <div class="content-wrapper">
+    <div class="content-wrapper" id="app">
     @yield('content')
     </div>
 
@@ -187,7 +189,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                   &copy; 2017 Ardata Indonesia |<a href="http://ardata.co.id" target="_blank"  > Ardata Indonesia</a>
+                   &copy; 2018 Ardata Indonesia |<a href="http://ardata.co.id" target="_blank"  > Ardata Indonesia</a>
                 </div>
 
             </div>
@@ -195,6 +197,8 @@
     </section>
       <!-- FOOTER SECTION END-->
     <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
     <!-- CORE JQUERY  -->
     <script src="{{asset('js/jquery-1.10.2.js')}}"></script>
     {{-- angular --}}
@@ -206,7 +210,7 @@
     <script src="{{asset('js/bootstrap-tagsinput.js')}}"></script>
     <script src="{{asset('js/bootstrap-tagsinput-angular.js')}}"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    {{-- <script src="{{asset('js/bootstrap.min.js')}}"></script> --}}
     <!-- DATATABLE SCRIPTS  -->
     <script src="{{asset('js/dataTables/jquery.dataTables.js')}}"></script>
     <script src="{{asset('js/dataTables/dataTables.bootstrap.js')}}"></script>
@@ -220,6 +224,7 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <script src="{{asset('js/printThis.js')}}" charset="utf-8"></script>
+
     <script type="text/javascript">
         $(document).ready(function(){
 

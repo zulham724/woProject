@@ -24,13 +24,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="price" class="col-md-4 control-label">Harga</label>
 
                             <div class="col-md-6">
                                 <input id="price" type="number" class="form-control" name="price" value="{{ $item_lists->price }}" required>
                             </div>
-                        </div>
+                        </div> --}}
 
 						<input type="hidden" name="id" value="{{$item_lists->id}}">
 

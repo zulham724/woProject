@@ -13,65 +13,67 @@
 		{{-- end heading --}}
 		<div class="panel-body">
 			<div class="form-group">
-			<div class="row">
-				<div class="form-group">
-                     <label for="dari" class="col-md-1 control-label">Dari</label>
+  			<div class="row">
+  				<div class="form-group">
+                       <label for="dari" class="col-md-1 control-label">Dari</label>
 
-                        <div class="col-md-2">
-                            <select class="form-control" ng-model="#" ng-required="true" >
-                			<option value="">-Semua Bulan-</option>
-               				<option value="">Januari</option>
-               				<option value="">Febuari</option>
-               				<option value="">Maret</option>
-               				<option value="">April</option>
-               				<option value="">Mei</option> 
-               				<option value="">Juni</option> 
-               				<option value="">Juli</option> 
-               				<option value="">Agustus</option> 
-               				<option value="">September</option> 
-               				<option value="">Oktober</option> 
-               				<option value="">November</option> 
-               				<option value="">Desember</option>      
-             				</select>
+                          <div class="col-md-2">
+                              <select class="form-control" ng-model="#" ng-required="true" >
+                          			<option value="">-Semua Bulan-</option>
+                         				<option value="">Januari</option>
+                         				<option value="">Febuari</option>
+                         				<option value="">Maret</option>
+                         				<option value="">April</option>
+                         				<option value="">Mei</option> 
+                         				<option value="">Juni</option> 
+                         				<option value="">Juli</option> 
+                         				<option value="">Agustus</option> 
+                         				<option value="">September</option> 
+                         				<option value="">Oktober</option> 
+                         				<option value="">November</option> 
+                         				<option value="">Desember</option>      
+                       				</select>
 
-                        </div>
-                    
+                          </div>
+                      
 
-                   
-                     <label for="sampai" class="col-md-1 control-label">Sampai</label>
+                     
+                       <label for="sampai" class="col-md-1 control-label">Sampai</label>
 
-                        <div class="col-md-2">
-                            <select class="form-control" ng-model="#" ng-required="true" >
-                			<option value="">-Semua Bulan-</option>
-               				<option value="">Januari</option>
-               				<option value="">Febuari</option>
-               				<option value="">Maret</option>
-               				<option value="">April</option>
-               				<option value="">Mei</option> 
-               				<option value="">Juni</option> 
-               				<option value="">Juli</option> 
-               				<option value="">Agustus</option> 
-               				<option value="">September</option> 
-               				<option value="">Oktober</option> 
-               				<option value="">November</option> 
-               				<option value="">Desember</option>      
-             				</select>
+                          <div class="col-md-2">
+                              <select class="form-control" ng-model="#" ng-required="true" >
+                          			<option value="">-Semua Bulan-</option>
+                         				<option value="">Januari</option>
+                         				<option value="">Febuari</option>
+                         				<option value="">Maret</option>
+                         				<option value="">April</option>
+                         				<option value="">Mei</option> 
+                         				<option value="">Juni</option> 
+                         				<option value="">Juli</option> 
+                         				<option value="">Agustus</option> 
+                         				<option value="">September</option> 
+                         				<option value="">Oktober</option> 
+                         				<option value="">November</option> 
+                         				<option value="">Desember</option>      
+                       				</select>
 
-                        </div>
+                          </div>
 
-                    <label for="item" class="col-md-1 control-label">Item</label>
+                      <label for="item" class="col-md-1 control-label">Item</label>
 
-                        <div class="col-md-2">
-                            <select class="form-control" ng-model="#" ng-required="true" >
-                			<option value="">-Semua-</option>
-               				<<option ng-repeat="#" ng-value="#">#</option>       
-             				</select>
+                          <div class="col-md-2">
+                              <select class="form-control" name="courses_list_id">
+                                  <option value="">-Semua Item-</option>
+                                  @foreach($item_lists as $item_list)
+                                  <option value="{{ $item_list->id }}">{{ $item_list->name }}</option>
+                                  @endforeach 
+                              </select>
 
-                        </div>
+                          </div>
                     
 			
-			</div>
-			</div>
+            </div>
+        </div>
 			</div>
 
 			<div class="table-responsive">
@@ -79,10 +81,19 @@
 					<thead>
 						<tr>
 							<th>No.</th>
-							<th>Tanggal Acara</th>
-							<th>Nama Pesanan</th>
+							<th>Nama Pemesan</th>
 							<th>Item Pesanan</th>
 						</tr>
+
+            <tbody>
+                @foreach($items as $i => $item)
+                <tr>
+                  <td>{{$i+1}}</td>
+                  <td>{{$item->order->nama_pemesan}}</td>
+                  <td>{{$item->item_list->name}}</td>
+                </tr>
+                @endforeach
+            </tbody>
 					</thead>
 					
 				</table>		

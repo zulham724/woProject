@@ -16,7 +16,6 @@ class CreateItemListsTable extends Migration
         Schema::create('item_lists',function(Blueprint $table){
             $table->increments('id');
             $table->string('name')->nullable();
-            $table->integer('price')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
