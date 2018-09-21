@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect('login');
+    return redirect('admin');
 });
 
 // Authentication Routes...
@@ -35,7 +35,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('checking',function(){
 	switch (Auth::user()->role_id) {
     case '1':
-        return redirect('/admin/schedule');
+        return redirect('/admin/schedule?login=true');
       break;
     case '2':
         return redirect('/operator/schedule');
