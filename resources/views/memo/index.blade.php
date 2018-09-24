@@ -81,16 +81,20 @@
 					<thead>
 						<tr>
 							<th>No.</th>
-							<th>Nama Pemesan</th>
+							<th>Tanggal</th>
+              <th>Nama Pemesan</th>
 							<th>Item Pesanan</th>
+              <th>Penanggung Jawab</th>
 						</tr>
 
             <tbody>
                 @foreach($items as $i => $item)
                 <tr>
                   <td>{{$i+1}}</td>
+                  <td>{{$item->date}}</td>
                   <td>{{$item->order->nama_pemesan}}</td>
                   <td>{{$item->item_list->name}}</td>
+                  <td>{{$item->person}}</td>
                 </tr>
                 @endforeach
             </tbody>

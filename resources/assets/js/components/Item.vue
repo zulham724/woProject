@@ -10,7 +10,7 @@
 				<div class="panel-body">
 					<div class="form-group" v-for="(item,a) in items">
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<div class="form-group">
 									<select class="form-control"   :name="'items['+a+'][item_list_id]'">
 										<option value="">--Pilih Barang--</option>
@@ -26,36 +26,29 @@
 								</div>
 
 								<div class="form-group">
+									<input type="date" :name="'items['+a+'][date]'" class="form-control" v-model="item.date" placeholder="tanggal">
+								</div>
+
+								<div class="form-group">
 									<input type="text" :name="'items['+a+'][person]'" class="form-control" v-model="item.person" placeholder="Penanggung Jawab">
 								</div>
-							</div>
-											
-							<div class="form-group">
-								<div class="row">
-									<div class="col-md-5">
-										<div class="form-group">
-											<h4><span class="label label-default" v-model="item.image">Gambar: </span></h4>
-											<input type="file" :name="'items['+a+'][image]'" id="upload">
-										</div>
 
-										<div class="form-group">
-											<textarea type="text" :name="'items['+a+'][description]'" v-model="item.description" class="form-control" placeholder="Keterangan"></textarea>
-										</div>								
-
-									</div>
-
-									<div class="form-group">
-
-										<div class="col-sm-2">
-											<button type="button" class="btn btn-danger pull-right" @click="remove(a)"><i class="fa fa-trash"></i>Hapus</button> 
-										</div>
-
-									</div>
-									
+								<div class="form-group">
+									<h4><span class="label label-default" v-model="item.image">Gambar: </span></h4>
+									<input type="file" :name="'items['+a+'][image]'" id="upload">
 								</div>
-								<hr>
+
+								<div class="form-group">
+									<textarea type="text" :name="'items['+a+'][description]'" v-model="item.description" class="form-control" placeholder="Keterangan"></textarea>
+								</div>	
+
+								<div class="form-group">
+									<!-- <button type="button" class="btn btn-danger" @click="remove(a)"><i class="fa fa-trash"></i>Hapus</button>  -->
+									<button type="button" class="btn btn-danger btn-block" @click="remove(a)">hapus</button>
+								</div>
+
 							</div>
-											
+
 						</div>
 					</div>
 

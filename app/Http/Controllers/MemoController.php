@@ -50,7 +50,23 @@ class MemoController extends Controller
      */
     public function show($id)
     {
-        //
+              
+    }
+
+    public function rias($order_id)
+    {
+        $data["items"] = Item::with('item_list','order')
+        ->where('order_id',$order_id)
+        ->where('item_list_id',2)->get();
+        return view('memo.rias',$data);
+    }
+
+    public function decoration($order_id)
+    {
+        $data["items"] = Item::with('item_list','order')
+        ->where('order_id',$order_id)
+        ->where('item_list_id',1)->get();
+        return view('memo.decoration',$data);
     }
 
     /**

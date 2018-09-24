@@ -43394,13 +43394,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -43476,7 +43469,7 @@ var render = function() {
           _vm._l(_vm.items, function(item, a) {
             return _c("div", { staticClass: "form-group" }, [
               _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "col-md-12" }, [
                   _c("div", { staticClass: "form-group" }, [
                     _c(
                       "select",
@@ -43540,6 +43533,34 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
+                          value: item.date,
+                          expression: "item.date"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "date",
+                        name: "items[" + a + "][date]",
+                        placeholder: "tanggal"
+                      },
+                      domProps: { value: item.date },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(item, "date", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
                           value: item.person,
                           expression: "item.person"
                         }
@@ -43560,91 +43581,78 @@ var render = function() {
                         }
                       }
                     })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-5" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("h4", [
-                          _c(
-                            "span",
-                            {
-                              staticClass: "label label-default",
-                              model: {
-                                value: item.image,
-                                callback: function($$v) {
-                                  _vm.$set(item, "image", $$v)
-                                },
-                                expression: "item.image"
-                              }
-                            },
-                            [_vm._v("Gambar: ")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          attrs: {
-                            type: "file",
-                            name: "items[" + a + "][image]",
-                            id: "upload"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("textarea", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: item.description,
-                              expression: "item.description"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            name: "items[" + a + "][description]",
-                            placeholder: "Keterangan"
-                          },
-                          domProps: { value: item.description },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(item, "description", $event.target.value)
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("div", { staticClass: "col-sm-2" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-danger pull-right",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                _vm.remove(a)
-                              }
-                            }
-                          },
-                          [
-                            _c("i", { staticClass: "fa fa-trash" }),
-                            _vm._v("Hapus")
-                          ]
-                        )
-                      ])
-                    ])
                   ]),
                   _vm._v(" "),
-                  _c("hr")
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("h4", [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "label label-default",
+                          model: {
+                            value: item.image,
+                            callback: function($$v) {
+                              _vm.$set(item, "image", $$v)
+                            },
+                            expression: "item.image"
+                          }
+                        },
+                        [_vm._v("Gambar: ")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: {
+                        type: "file",
+                        name: "items[" + a + "][image]",
+                        id: "upload"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: item.description,
+                          expression: "item.description"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        name: "items[" + a + "][description]",
+                        placeholder: "Keterangan"
+                      },
+                      domProps: { value: item.description },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(item, "description", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger btn-block",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.remove(a)
+                          }
+                        }
+                      },
+                      [_vm._v("hapus")]
+                    )
+                  ])
                 ])
               ])
             ])

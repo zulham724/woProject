@@ -4,7 +4,7 @@
 
 @endsection
 @section('content')
-<example></example>
+
 
 
 <div class="container">
@@ -86,17 +86,17 @@
 									</a>
 								</span>
 
-								<span data-toggle="modal" data-target="#modalPrint" onclick="print({{$ini->id}})">
-									<a class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Memo Rias">
+								
+									<a  href="{{ route('memo.rias',$ini->id) }}" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Memo Rias">
 									<i class="fa fa-pencil-square-o"></i>
 									</a>
-								</span>
+								
 
-								<span data-toggle="modal" data-target="#modalPrint" onclick="print({{$ini->id}})">
-									<a class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Memo Dekorasi">
+								
+									<a href="{{ route('memo.decoration',$ini->id) }}" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Memo Dekorasi">
 									<i class="fa fa-file-text-o"></i>
 									</a>
-								</span>
+								
 
 								<form id="delete{{$ini->id}}" method="POST" action="{{(Auth::user()->role_id == 1) ? url('admin/order/delete') : url('operator/order/delete')}}">
 									<input type="hidden" name="file" value="{{$ini->upload}}">

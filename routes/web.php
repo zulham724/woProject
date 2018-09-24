@@ -70,22 +70,19 @@ Route::group(['middleware'=>'web'],function(){
   		});
 
       Route::resources([
-        "courseslists"=>"CoursesListController"
+        "courseslists"=>"CoursesListController",
+        "courses"=>"CoursesController",
+        "memo"=>"MemoController",
+        "itemlist"=>"ItemListController",
       ]); 
 
-
-      Route::resources([
-        "courses"=>"CoursesController"
-      ]);
+      Route::get('memo/decoration/{id}','MemoController@decoration')->name('memo.decoration');
+      Route::get('memo/rias/{id}','MemoController@rias')->name('memo.rias');
 
       Route::group(['prefix'=>'kursus'],function(){
         Route::get('create','CoursesController@create');
       });
 
-
-      Route::resources([
-        "itemlist"=>"ItemListController"
-      ]);
       Route::get('order','OrderController@index');
 
       Route::group(['prefix'=>'order'],function(){
@@ -103,10 +100,6 @@ Route::group(['middleware'=>'web'],function(){
         Route::post('update','PembayaranController@update');
         Route::get('delete/{id}','PembayaranController@delete');
       });
-
-       Route::resources([
-        "memo"=>"MemoController"
-      ]); 
 
     });
     // end admin group

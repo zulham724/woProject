@@ -216,12 +216,12 @@
 			{{-- end row --}}
 
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-5">
 					
 					<item></item>
 							
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-7">
 					
 					<acara></acara>
 							

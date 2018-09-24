@@ -50,12 +50,7 @@
 									<td>{{$item_list->name}}</td>
 									<td>
 										<a type="button" href="{{ route('itemlist.edit',$item_list->id) }}" class="btn btn-warning" >Edit</a>
-										<button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete{{$item_list->id}}').submit();">Delete</button>
-										<form id="delete{{$item_list->id}}" action="{{ route('itemlist.destroy',$item_list->id) }}" method="post">
-											<input type="hidden" name="_method" value="delete">
-											<input type="hidden" name="id" value="{{$item_list->id}}">
-											<input type="hidden" name="_token" value="{{csrf_token()}}">
-										</form>
+										
 									</td>
 								</tr>
 								@endforeach
