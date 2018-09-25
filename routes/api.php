@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 	Route::apiResources([
 		"items"=>"ItemController",
-		"itemlists"=>"ItemListController"
+		"itemlists"=>"ItemListController",
+		'orders'=>"OrderController"
 	]);
 });

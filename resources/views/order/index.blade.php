@@ -9,7 +9,7 @@
 
 <div class="container">
 	<div class="container">
-	<a href="{{(Auth::user()->role_id == 1) ? url('admin/order/create') : url('operator/order/create')}}"><button type="button" class="btn btn-success">Insert new Order</button></a><hr>
+	<a href="{{(Auth::user()->role_id == 1) ? url('admin/order/create') : url('operator/order/create')}}"><button type="button" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Insert new Order</button></a><hr>
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -71,7 +71,7 @@
 									</a>
 								</span>
 								<span data-toggle="modal" data-target="#myModal">
-									<a class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Pesanan" onclick="event.preventDefault();document.getElementById('delete{{$ini->id}}').submit();">
+									<a class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Pesanan" onclick="destroy({{$ini->id}})">
 									<i class="fa fa-times"></i>
 									</a>
 								</span>
@@ -88,13 +88,13 @@
 
 								
 									<a  href="{{ route('memo.rias',$ini->id) }}" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Memo Rias">
-									<i class="fa fa-pencil-square-o"></i>
+									<i class="fa fa-tags"></i>
 									</a>
 								
 
 								
 									<a href="{{ route('memo.decoration',$ini->id) }}" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Memo Dekorasi">
-									<i class="fa fa-file-text-o"></i>
+									<i class="fa fa-ticket-alt "></i>
 									</a>
 								
 
@@ -506,17 +506,17 @@ function item(id){
 		return ini.order_id==id;
 	});
 	var harga=0;
-	console.log(item);
+	console.log("itemnya",item);
 	$("#title").text("Pesanan Barang");
 	$("#contentItem").html("");
 	$.each(item,function(key,i){
 		key+=1;
-		harga+=Number(this.cost);
+		harga+=Number(this.price);
 		$("#contentItem").append("\
 			<tr>\
 				<td>"+key+"</td>\
-				<td>"+this.item+"</td>\
-				<td class=costItem >"+this.cost+"</td>\
+				<td>"+this.item_list.name+"</td>\
+				<td class=costItem >"+this.price+"</td>\
 				<td>"+this.created_at+"</td>\
 			</tr>\
 			");
@@ -616,6 +616,39 @@ function print(id){
 }
 function print_now(){
 	$("#printThis").printThis();
+}
+
+function destroy(id){
+	swal({
+            type:"warning",
+            title:"Apakah anda yakin ?",
+            text:"",
+            showCancelButton:true,
+            cancelButtonColor:"#d33",
+            confirmButtonText:"Ya",
+            confirmButtonColor:"#3085d6"
+        }).then(result=>{
+            if(result.value){
+                let access = {
+                    id:id,
+                    _token:"{{ csrf_token() }}"
+                }
+
+                $.post("order/delete",access)
+                .done(res=>{
+                    swal({
+                        title:"Ok!",
+                        text:"Data berhasil dihaps!",
+                        type:"success"
+                    }).then(result=>{
+                        window.location.reload();
+                    });
+                })
+                .fail(err=>{
+                     console.log(err);
+                });
+            }
+        });
 }
 
 </script>

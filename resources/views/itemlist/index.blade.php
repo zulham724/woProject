@@ -27,7 +27,7 @@
 				            <input type="number" name="price" id="price" class="form-control" >
 				        </div> --}}
 
-				        <button type="submit" class="btn btn-success center-block btn-block">Submit</button>
+				        <button type="submit" class="btn btn-success center-block btn-block"><i class="fa fa-save"></i> Submit</button>
 
 			    	</form>
 		       
@@ -49,7 +49,7 @@
 									<td>{{$cl+1}}</td>
 									<td>{{$item_list->name}}</td>
 									<td>
-										<a type="button" href="{{ route('itemlist.edit',$item_list->id) }}" class="btn btn-warning" >Edit</a>
+										<a type="button" href="{{ route('itemlist.edit',$item_list->id) }}" class="btn btn-warning" ><i class="fa fa-edit"></i> Edit</a>
 										
 									</td>
 								</tr>

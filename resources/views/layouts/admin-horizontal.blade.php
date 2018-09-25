@@ -14,7 +14,7 @@
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
-    <link href="{{asset('css/font-awesome.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- CUSTOM STYLE  -->
     <link href="{{asset('css/horizontal-admin.css')}}" rel="stylesheet" />
     <!-- DATATABLE STYLE  -->
@@ -56,7 +56,7 @@
             </div>
 
             <div class="right-div">
-                <a href="#" class="btn btn-info pull-right" onclick="logout()">LOG ME OUT</a>
+                <a href="#" class="btn btn-info pull-right" onclick="logout()"><i class="fa fa-sign-out-alt"></i> LOG ME OUT</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
@@ -70,7 +70,7 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="{{url('admin/schedule')}}" @yield('schedule-active') ><i class="fa fa-calendar-o"></i> Schedule</a></li>
+                            <li><a href="{{url('admin/schedule')}}" @yield('schedule-active') ><i class="fa fa-calendar-check"></i> Schedule</a></li>
                              <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="fa fa-calendar"></i> Kursus <span class="badge" </span> <i class="fa fa-caret-down"></i>
@@ -78,13 +78,15 @@
                                 <ul class="dropdown-menu dropdown-messages" >
                                     <li>
                                         <a class='text-center' href="{{ route('courseslists.index') }}" data-toggle='modal' >
-                                            <strong>Input List Kursus</strong>
+                                            <i class="fa fa-list-alt "></i>
+                                            <strong> Input List Kursus</strong>
                                             <i class='fa fa-angle-right'></i>
                                         </a>
                                     </li>
                                      <li>
                                         <a class='text-center' href="{{url('admin/courses')}}" data-toggle='modal' >
-                                            <strong>Data Peserta Kursus</strong>
+                                            <i class="fa fa-user "></i>
+                                            <strong> Data Peserta Kursus</strong>
                                             <i class='fa fa-angle-right'></i>
                                         </a>
                                     </li>
@@ -98,13 +100,15 @@
                                 <ul class="dropdown-menu dropdown-messages" >
                                     <li>
                                         <a class='text-center' href="{{ route('itemlist.index') }}" data-toggle='modal' >
-                                            <strong>Input List Pesanan</strong>
+                                            <i class="fa fa-list-alt "></i>
+                                            <strong> Input List Pesanan</strong>
                                             <i class='fa fa-angle-right'></i>
                                         </a>
                                     </li>
                                      <li>
                                         <a class='text-center' href="{{url('admin/order')}}" data-toggle='modal' >
-                                            <strong>Data List Order</strong>
+                                            <i class="fa fa-shopping-cart  "></i>
+                                            <strong> Data List Order</strong>
                                             <i class='fa fa-angle-right'></i>
                                         </a>
                                     </li>
@@ -112,9 +116,9 @@
                                 <!-- /.dropdown-messages -->
                             </li>
 
-                            <li><a href="{{url('admin/staff')}}" @yield('staff-active') ><i class="fa fa-group"></i> Staff</a></li>
-                            <li><a href="{{url('admin/pembayaran')}}" @yield('pembayaran-active') ><i class="fa fa-dollar"></i> Pembayaran</a></li>
-                            <li><a href="{{ route('memo.index') }}" @yield('memo-active') ><i class="fa fa-pencil-square-o"></i> Request & Memo</a></li>
+                            <li><a href="{{url('admin/staff')}}" @yield('staff-active') ><i class="fa fa-user-friends "></i> Staff</a></li>
+                            <li><a href="{{url('admin/pembayaran')}}" @yield('pembayaran-active') ><i class="fa fa-money-bill-alt "></i> Pembayaran</a></li>
+                            <li><a href="{{ route('memo.index') }}" @yield('memo-active') ><i class="fa fa-clipboard"></i> Request & Memo</a></li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="fa fa-envelope fa-fw"></i> Notification <span class="badge" id="countNotif">{{$countNotif}}</span> <i class="fa fa-caret-down"></i>
@@ -126,6 +130,20 @@
                                             <i class='fa fa-angle-right'></i>
                                         </a>
                                     </li>
+                                    @foreach($notification as $n => $notif)
+                                    <li>
+                                        <a href='#'>
+                                            <div>
+                                                <img src="{{ asset('storage\uploads\avatars\default.png') }}" width="50"> <strong> {{$notif->title}}</strong>
+                                            </div>
+                                            <div>{{$notif->content}}</div>
+                                            <span class='text-muted'>
+                                                    <em>{{$notif->created_at}}</em>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class='divider'></li>
+                                    @endforeach
                                 </ul>
                                 <!-- /.dropdown-messages -->
                             </li>
@@ -215,7 +233,7 @@
     <script src="{{asset('js/dataTables/jquery.dataTables.js')}}"></script>
     <script src="{{asset('js/dataTables/dataTables.bootstrap.js')}}"></script>
       <!-- CUSTOM SCRIPTS  -->
-    <script src="{{asset('js/horizontal-admin.js')}}"></script>
+    {{-- <script src="{{asset('js/horizontal-admin.js')}}"></script> --}}
     <script src="{{asset('fullcalendar/lib/moment.min.js')}}"></script>
     <script src="{{asset('fullcalendar/fullcalendar.min.js')}}"></script>
     <script src="{{asset('fullcalendar/locale/id.js')}}"></script>
@@ -228,65 +246,65 @@
     <script type="text/javascript">
         $(document).ready(function(){
 
-            $("#table").DataTable();
+            // $("#table").DataTable();
 
-            $.each({!!$notification!!},function(key,i){
-                console.log(i);
-                $("#notification").append(
-                    "<li>\
-                        <a href='#' onclick=readNotif('"+this.id+"')>\
-                            <div>\
-                                <strong>"+this.title+"</strong>\
-                            </div>\
-                            <div>"+this.content+"</div>\
-                            <span class='pull-right text-muted'>\
-                                    <em>"+this.created_at+"</em>\
-                            </span>\
-                        </a>\
-                    </li>\
-                    <li class='divider'></li>"
-                    );
-            });
+            // $.each(,function(key,i){
+            //     console.log(i);
+            //     $("#notification").append(
+                    // "<li>\
+                    //     <a href='#' onclick=readNotif('"+this.id+"')>\
+                    //         <div>\
+                    //             <strong>"+this.title+"</strong>\
+                    //         </div>\
+                    //         <div>"+this.content+"</div>\
+                    //         <span class='pull-right text-muted'>\
+                    //                 <em>"+this.created_at+"</em>\
+                    //         </span>\
+                    //     </a>\
+                    // </li>\
+                    // <li class='divider'></li>"
+            //         );
+            // });
         });
 
-        function readNotif(id){
-            console.log(id);
-            var data = {id:id};
-            $.ajax({
-                url:"{{url('readNotif')}}",
-                method:"GET",
-                data:data,
-            }).done(function(data){
-                $("#notification").html(
-                  "\
-                    <li>\
-                        <a class='text-center' href='#' data-toggle='modal' data-target='#notifModal'>\
-                            <strong>Read All Notification</strong>\
-                            <i class='fa fa-angle-right'></i>\
-                        </a>\
-                    </li>");
-                $("#countNotif").text(data['countNotif']);
-                console.log(data['notification']);
-                $.each(data['notification'],function(key,i){
-                    console.log(i);
-                    $("#notification").append(
-                        "<li>\
-                            <a href='#' onclick=readNotif('"+this.id+"')>\
-                                <div>\
-                                    <strong>"+this.title+"</strong>\
-                                </div>\
-                                <div>"+this.content+"</div>\
-                                <span class='pull-right text-muted'>\
-                                        <em>"+this.created_at+"</em>\
-                                </span>\
-                            </a>\
-                        </li>\
-                        <li class='divider'></li>"
-                        );
-                });
-                // end each
-            });
-        }
+        // function readNotif(id){
+        //     console.log(id);
+        //     var data = {id:id};
+        //     $.ajax({
+        //         url:"",
+        //         method:"GET",
+        //         data:data,
+        //     }).done(function(data){
+        //         $("#notification").html(
+        //           "\
+        //             <li>\
+        //                 <a class='text-center' href='#' data-toggle='modal' data-target='#notifModal'>\
+        //                     <strong>Read All Notification</strong>\
+        //                     <i class='fa fa-angle-right'></i>\
+        //                 </a>\
+        //             </li>");
+        //         $("#countNotif").text(data['countNotif']);
+        //         console.log(data['notification']);
+        //         $.each(data['notification'],function(key,i){
+        //             console.log(i);
+        //             $("#notification").append(
+        //                 "<li>\
+        //                     <a href='#' onclick=readNotif('"+this.id+"')>\
+        //                         <div>\
+        //                             <strong>"+this.title+"</strong>\
+        //                         </div>\
+        //                         <div>"+this.content+"</div>\
+        //                         <span class='pull-right text-muted'>\
+        //                                 <em>"+this.created_at+"</em>\
+        //                         </span>\
+        //                     </a>\
+        //                 </li>\
+        //                 <li class='divider'></li>"
+        //                 );
+        //         });
+        //         // end each
+        //     });
+        // }
 
         const logout = ()=>{
         swal({

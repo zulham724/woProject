@@ -10,4 +10,7 @@ class Order extends Model
     public function items(){
     	return $this->hasMany('App\Item');
     }
+    public function acaras(){
+    	return $this->hasMany('App\Acara');
+    }
 }

@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 	<div class="container">
-	<a href="{{url('admin/staff/create')}}"><button type="button" class="btn btn-success">Insert new Staff</button></a><hr>
+	<a href="{{url('admin/staff/create')}}"><button type="button" class="btn btn-success"><i class="fa fa-pencil-alt "></i> Insert new Staff</button></a><hr>
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -32,8 +32,8 @@
 							<th>{{$ini->email}}</th>
 							<th>{{$ini->content}}</th>
 							<th>
-								<button type="button" class="btn btn-warning" onclick="event.preventDefault();document.getElementById('edit{{$ini->id}}').submit();">Edit</button>
-								<button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete{{$ini->id}}').submit();">Delete</button>
+								<button type="button" class="btn btn-warning" onclick="event.preventDefault();document.getElementById('edit{{$ini->id}}').submit();"><i class="fa fa-edit "></i> Edit</button>
+								<button type="button" class="btn btn-danger" onclick="destroy({{$ini->id}})"><i class="fa fa-trash "></i>  Delete</button>
 								<form id="edit{{$ini->id}}" action="{{url('admin/staff/edit')}}" method="post">
 									<input type="hidden" name="id" value="{{$ini->id}}">
 									{{csrf_field()}}
@@ -64,6 +64,39 @@ $(document).ready(function(){
 $("table").DataTable();
 
 });
+
+const destroy = (id)=>{
+        swal({
+            type:"warning",
+            title:"Apakah anda yakin ?",
+            text:"",
+            showCancelButton:true,
+            cancelButtonColor:"#d33",
+            confirmButtonText:"Ya",
+            confirmButtonColor:"#3085d6"
+        }).then(result=>{
+            if(result.value){
+                let access = {
+                    id:id,
+                    _token:"{{ csrf_token() }}"
+                }
+
+                $.post("staff/delete",access)
+                .done(res=>{
+                    swal({
+                        title:"Ok!",
+                        text:"Data berhasil dihaps!",
+                        type:"success"
+                    }).then(result=>{
+                        window.location.reload();
+                    });
+                })
+                .fail(err=>{
+                     console.log(err);
+                });
+            }
+        });
+    }
 // end ready
 </script>
 @endsection

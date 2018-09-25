@@ -4,7 +4,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					Pesanan
-					<button type="button" class="btn btn-info pull-right" @click="add()">Add Item</button>
+					<button type="button" class="btn btn-info pull-right" @click="add()"><i class="fa fa-plus"></i> Add Item</button>
 					<div id="removeItem" class="pull-right"></div>
 				</div>
 				<div class="panel-body">
@@ -21,16 +21,16 @@
 
 								<div class="form-group">
 
-									<input type="number" :name="'items['+a+'][price]'" class="form-control" v-model="item.price" placeholder="Harga">
+									<input type="number" :name="'items['+a+'][price]'" class="form-control" required v-model="item.price" placeholder="Harga">
 									
 								</div>
 
 								<div class="form-group">
-									<input type="date" :name="'items['+a+'][date]'" class="form-control" v-model="item.date" placeholder="tanggal">
+									<input type="date" :name="'items['+a+'][date]'" class="form-control" required v-model="item.date" placeholder="tanggal">
 								</div>
 
 								<div class="form-group">
-									<input type="text" :name="'items['+a+'][person]'" class="form-control" v-model="item.person" placeholder="Penanggung Jawab">
+									<input type="text" :name="'items['+a+'][person]'" class="form-control" required v-model="item.person" placeholder="Penanggung Jawab">
 								</div>
 
 								<div class="form-group">
@@ -39,12 +39,12 @@
 								</div>
 
 								<div class="form-group">
-									<textarea type="text" :name="'items['+a+'][description]'" v-model="item.description" class="form-control" placeholder="Keterangan"></textarea>
+									<textarea type="text" :name="'items['+a+'][description]'" required v-model="item.description" class="form-control" placeholder="Keterangan"></textarea>
 								</div>	
 
 								<div class="form-group">
 									<!-- <button type="button" class="btn btn-danger" @click="remove(a)"><i class="fa fa-trash"></i>Hapus</button>  -->
-									<button type="button" class="btn btn-danger btn-block" @click="remove(a)">hapus</button>
+									<button type="button" class="btn btn-danger btn-block" @click="remove(a)"><i class="fa fa-trash"></i> Hapus</button>
 								</div>
 
 							</div>
@@ -60,6 +60,7 @@
 
 <script>
     export default {
+    	props:['edit_items'],
     	data() {
 			return {
 				items:[{}],
@@ -68,6 +69,7 @@
 			}    		
     	},
     	created(){
+    		this.edit_items ? this.items = this.edit_items : null;
     		this.read();
     	},
         mounted() {

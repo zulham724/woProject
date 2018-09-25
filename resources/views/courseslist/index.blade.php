@@ -25,7 +25,7 @@
 		            <span class="label label-default">Harga </span>
 		            <input type="text" name="price" id="order_list" class="form-control" >
 		        </div>
-		        <button type="submit" class="btn btn-success center-block btn-block">Submit</button>
+		        <button type="submit" class="btn btn-success center-block btn-block"><i class="fa fa-save "></i>  Submit</button>
 	        </form>
         <hr>
         
@@ -47,8 +47,8 @@
 							<td>{{$courses_list->type}}</td>
 							<td>{{$courses_list->price}}</td>
 							<td>
-								<a type="button" href="{{ route('courseslists.edit',$courses_list->id) }}" class="btn btn-warning" >Edit</a>
-								<button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete{{$courses_list->id}}').submit();">Delete</button>
+								<a type="button" href="{{ route('courseslists.edit',$courses_list->id) }}" class="btn btn-warning" ><i class="fa fa-edit"></i> Edit</a>
+								<button type="button" class="btn btn-danger" onclick="destroy({{$courses_list->id}})"><i class="fa fa-trash"></i> Delete</button>
 
 								<form id="delete{{$courses_list->id}}" action="{{ route('courseslists.destroy',$courses_list->id) }}" method="post">
 									<input type="hidden" name="_method" value="delete">
@@ -76,6 +76,40 @@ $(document).ready(function(){
 $("table").DataTable();
 
 });
+
+const destroy = (id)=>{
+        swal({
+            type:"warning",
+            title:"Apakah anda yakin ?",
+            text:"",
+            showCancelButton:true,
+            cancelButtonColor:"#d33",
+            confirmButtonText:"Ya",
+            confirmButtonColor:"#3085d6"
+        }).then(result=>{
+            if(result.value){
+                let access = {
+                    id:id,
+                    _method:"delete",
+                    _token:"{{ csrf_token() }}"
+                }
+
+                $.post("courseslists/"+id,access)
+                .done(res=>{
+                    swal({
+                        title:"Ok!",
+                        text:"Data berhasil dihaps!",
+                        type:"success"
+                    }).then(result=>{
+                        window.location.reload();
+                    });
+                })
+                .fail(err=>{
+                     console.log(err);
+                });
+            }
+        });
+    }
 // end ready
 </script>
 @endsection

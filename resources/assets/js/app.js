@@ -8,6 +8,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+// import $ from 'jquery';
+// import 'datatables.net';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -18,6 +20,7 @@ window.Vue = require('vue');
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('item', require('./components/Item.vue'));
 Vue.component('acara', require('./components/Acara.vue'));
+Vue.component('order',require('./components/Order.vue'));
 
 
 const app = new Vue({

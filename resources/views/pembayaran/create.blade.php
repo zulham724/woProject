@@ -28,8 +28,8 @@
                       <td>{{$index+1}}</td>
                       <td>{{$ini->nama_pemesan}}</td>
                       <td>
-                        <button type="button" class="btn btn-warning" name="button" onclick="choose({{$ini->id}},'{{$ini->nama_pemesan}}')">Choose</button>
-                        <button type="button" class="btn btn-info" name="button" onclick="edit({{$ini->id}})">Edit</button>
+                        <button type="button" class="btn btn-warning" name="button" onclick="choose({{$ini->id}},'{{$ini->nama_pemesan}}')"><i class="fa fa-tag"></i> Choose</button>
+                        <button type="button" class="btn btn-info" name="button" onclick="edit({{$ini->id}})"><i class="fa fa-edit"></i> Edit</button>
                       </td>
                     </tr>
                   @endforeach

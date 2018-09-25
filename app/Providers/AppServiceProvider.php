@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(['layouts.admin-horizontal','layouts.operator-horizontal','layouts.staff-horizontal'],function($view){
             $data['allNotif'] = Notification::get();
             $data['countNotif'] = Notification::where('isRead',0)->count();
-            $data['notification'] = Notification::where('isRead',0)->get();
+            $data['notification'] = Notification::where('isRead',0)->orderBy('id','desc')->limit(5)->get();
             $view->with($data);
         });
     }

@@ -5,14 +5,14 @@
 @section('content')
 <div class="container">
 
-	<a href="{{url('admin/courses')}}"><button type="button" class="btn btn-success" name="button">Back</button></a><hr>
+	<a href="{{url('admin/courses')}}" type="button" class="btn btn-success" name="button"><i class="fa fa-arrow-left"></i> Back</a><hr>
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			Data Peserta Kursus
 		</div>
 		<div class="panel-body">
-			<form class="form" action="{{ route('courses.store') }}" enctype="multipart/form-data" method="post" files="true" id="orderForm">
+			<form class="form" id="add" action="{{ route('courses.store') }}" enctype="multipart/form-data" method="post" files="true" id="orderForm">
 			<div class="row">
 
 							<div class="panel-body">
@@ -42,7 +42,7 @@
 									<h4><span class="label label-default">Tempat Kursus: </span></h4>
 									<input type="text" name="place" class="form-control">
 								</div>
-								<button type="submit" class="btn btn-success center-block btn-block">Submit</button>
+								<button type="button" onclick="add()" class="btn btn-success center-block btn-block"><i class="fa fa-save"></i>  Submit</button>
 							</div>
 
 				{{-- end form --}}
@@ -162,5 +162,21 @@ function removeAcara(){
 	console.log($("#totalAcara").val());
 	console.log("Acara removed",a);
 }
+
+const add = (id)=>{
+        swal({
+            type:"warning",
+            title:"Apakah anda yakin ?",
+            text:"",
+            showCancelButton:true,
+            cancelButtonColor:"#d33",
+            confirmButtonText:"Ya",
+            confirmButtonColor:"#3085d6"
+        }).then(result=>{
+            if(result.value){
+                $("#add").submit();
+            }
+        });
+    }
 </script>
 @endsection
