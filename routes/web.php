@@ -38,10 +38,10 @@ Route::get('checking',function(){
         return redirect('/admin/schedule?login=true');
       break;
     case '2':
-        return redirect('/operator/schedule');
+        return redirect('/operator/schedule?login=true');
       break;
     case '3':
-        return redirect('/staff/schedule');
+        return redirect('/staff/schedule?login=true');
       break;
     default:
         return redirect('/home');
@@ -130,6 +130,16 @@ Route::group(['middleware'=>'web'],function(){
 
       });
       // end group order
+
+      Route::resources([
+        "courseslists"=>"CoursesListController",
+        "courses"=>"CoursesController",
+        "memo"=>"MemoController",
+        "itemlist"=>"ItemListController",
+      ]); 
+
+      Route::get('memo/decoration/{id}','MemoController@decoration')->name('memo.decoration');
+      Route::get('memo/rias/{id}','MemoController@rias')->name('memo.rias');
 
       Route::get('pembayaran','PembayaranController@create');
       Route::group(['prefix'=>'pembayaran'],function(){

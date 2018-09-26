@@ -116,7 +116,7 @@
                                 <!-- /.dropdown-messages -->
                             </li>
 
-                            <li><a href="{{url('admin/staff')}}" @yield('staff-active') ><i class="fa fa-user-friends "></i> Staff</a></li>
+                            <li><a href="{{url('admin/staff')}}" @yield('staff-active') ><i class="fa fa-users "></i> Staff</a></li>
                             <li><a href="{{url('admin/pembayaran')}}" @yield('pembayaran-active') ><i class="fa fa-money-bill-alt "></i> Pembayaran</a></li>
                             <li><a href="{{ route('memo.index') }}" @yield('memo-active') ><i class="fa fa-clipboard"></i> Request & Memo</a></li>
                             <li class="dropdown">

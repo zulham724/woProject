@@ -1,11 +1,11 @@
-@extends('layouts.admin-horizontal')
+@extends(Auth::user()->role_id == 1 ? 'layouts.admin-horizontal' : 'layouts.operator-horizontal')
 @section('memo-active','class=menu-top-active')
 @section('css')
 
 @endsection
 @section('content')
 	<div class="container">
-	<a href="{{url('admin/order')}}"><button type="button" class="btn btn-success">Back</button></a><hr>
+	<a href="{{(Auth::user()->role_id == 1) ? url('admin/order') : url('operator/order')}}"><button type="button" class="btn btn-success">Back</button></a><hr>
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			Request & Memo

@@ -10,21 +10,21 @@
         <![endif]-->
     <title>Operator</title>
     <!-- BOOTSTRAP CORE STYLE  -->
-    <link href="{{url('public/css/bootstrap.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
-    <link href="{{url('public/css/font-awesome.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- CUSTOM STYLE  -->
-    <link href="{{url('public/css/horizontal-admin.css')}}" rel="stylesheet" />
+     <link href="{{asset('css/horizontal-admin.css')}}" rel="stylesheet" />
     <!-- DATATABLE STYLE  -->
-    <link href="{{url('public/js/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet" />
+    <link href="{{asset('js/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
     {{-- full calendar --}}
-    <link rel='stylesheet' href='{{url('public/fullcalendar/fullcalendar.css')}}' />
+    <link rel='stylesheet' href='{{asset('fullcalendar/fullcalendar.css')}}' />
     {{-- datepicker css --}}
-    <link rel="stylesheet" href="{{url('public/css/bootstrap-datepicker.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.min.css')}}">
     <!-- Bootstrap datepicker -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
     <style type="text/css">
         html, body{
             width:100%;
@@ -47,13 +47,13 @@
                 </button>
                 <a class="navbar-brand" href="index.html">
 
-                    <img src="{{url('public/img/logo/logo.png')}}" />
+                    <img src="{{asset('img/logo/logo.png')}}" />
                 </a>
 
             </div>
 
             <div class="right-div">
-                <a href="#" class="btn btn-info pull-right" onclick="event.preventDefault();document.getElementById('logout-form').submit();">LOG ME OUT</a>
+                <a href="#" class="btn btn-info pull-right" onclick="logout()"><i class="fa fa-sign-out-alt"></i> LOG ME OUT</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
@@ -67,9 +67,9 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="{{url('operator/schedule')}}" @yield('schedule-active') ><i class="fa fa-calendar-o"></i> Schedule</a></li>
+                            <li><a href="{{url('operator/schedule')}}" @yield('schedule-active') ><i class="fa fa-calendar-check"></i> Schedule</a></li>
                             <li><a href="{{url('operator/order')}}" @yield('order-active') ><i class="fa fa-book"></i> Order</a></li>
-                            <li><a href="{{url('operator/pembayaran')}}" @yield('pembayaran-active') ><i class="fa fa-dollar"></i> Pembayaran</a></li>
+                            <li><a href="{{url('operator/pembayaran')}}" @yield('pembayaran-active') ><i class="fa fa-money-bill-alt"></i> Pembayaran</a></li>
                             {{-- <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="fa fa-envelope fa-fw"></i> Notification <span class="badge" id="countNotif">{{$countNotif}}</span> <i class="fa fa-caret-down"></i>
@@ -142,40 +142,43 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                   &copy; 2017 success wo |<a href="http://ardata.co.id" target="_blank"  > Ardata Indonesia</a>
+                   &copy; 2018 success wo |<a href="http://ardata.co.id" target="_blank"  > Ardata Indonesia</a>
                 </div>
 
             </div>
         </div>
     </section>
-      <!-- FOOTER SECTION END-->
+       <!-- FOOTER SECTION END-->
     <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-      <!-- CORE JQUERY  -->
-      <script src="{{url('public/js/jquery-1.10.2.js')}}"></script>
-      {{-- angular --}}
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
-      {{-- jquery currency --}}
-      <script src="{{url('public/js/jquery.formatCurrency-1.4.0.min.js')}}" charset="utf-8"></script>
-      <script src="{{url('public/js/jquery.formatCurrency.id-ID.js')}}" charset="utf-8"></script>
-      {{-- bootstrap and angular tags input --}}
-      <script src="{{url('public/js/bootstrap-tagsinput.js')}}"></script>
-      <script src="{{url('public/js/bootstrap-tagsinput-angular.js')}}"></script>
-      <!-- BOOTSTRAP SCRIPTS  -->
-      <script src="{{url('public/js/bootstrap.min.js')}}"></script>
-      <!-- DATATABLE SCRIPTS  -->
-      <script src="{{url('public/js/dataTables/jquery.dataTables.js')}}"></script>
-      <script src="{{url('public/js/dataTables/dataTables.bootstrap.js')}}"></script>
-        <!-- CUSTOM SCRIPTS  -->
-      <script src="{{url('public/js/horizontal-admin.js')}}"></script>
-      <script src="{{url('public/fullcalendar/lib/moment.min.js')}}"></script>
-      <script src="{{url('public/fullcalendar/fullcalendar.min.js')}}"></script>
-      <script src="{{url('public/fullcalendar/locale/id.js')}}"></script>
-      <script src="{{url('public/js/bootstrap-datepicker.js')}}" charset="utf-8"></script>
-      <script src="{{url('public/locales/bootstrap-datepicker.id.min.js')}}" charset="utf-8"></script>
-      <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-      <script src="{{url('public/js/printThis.js')}}" charset="utf-8"></script>
-    <script type="text/javascript">
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <!-- CORE JQUERY  -->
+    <script src="{{asset('js/jquery-1.10.2.js')}}"></script>
+    {{-- angular --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    {{-- jquery currency --}}
+    <script src="{{asset('js/jquery.formatCurrency-1.4.0.min.js')}}" charset="utf-8"></script>
+    <script src="{{asset('js/jquery.formatCurrency.id-ID.js')}}" charset="utf-8"></script>
+    {{-- bootstrap and angular tags input --}}
+    <script src="{{asset('js/bootstrap-tagsinput.js')}}"></script>
+    <script src="{{asset('js/bootstrap-tagsinput-angular.js')}}"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    {{-- <script src="{{asset('js/bootstrap.min.js')}}"></script> --}}
+    <!-- DATATABLE SCRIPTS  -->
+    <script src="{{asset('js/dataTables/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('js/dataTables/dataTables.bootstrap.js')}}"></script>
+      <!-- CUSTOM SCRIPTS  -->
+    {{-- <script src="{{asset('js/horizontal-admin.js')}}"></script> --}}
+    <script src="{{asset('fullcalendar/lib/moment.min.js')}}"></script>
+    <script src="{{asset('fullcalendar/fullcalendar.min.js')}}"></script>
+    <script src="{{asset('fullcalendar/locale/id.js')}}"></script>
+    <script src="{{asset('js/bootstrap-datepicker.js')}}" charset="utf-8"></script>
+    <script src="{{asset('locales/bootstrap-datepicker.id.min.js')}}" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script src="{{asset('js/printThis.js')}}" charset="utf-8"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.29/sweetalert2.all.js"></script>
+    <script type="text/javascript"> 
         $(document).ready(function(){
 
             $("table").DataTable();
@@ -235,6 +238,21 @@
                         );
                 });
                 // end each
+            });
+        }
+
+        const logout = ()=>{
+            swal({
+                type:"info",
+                title: "Logout from here?",
+                confirmButtonText: "<i class='fa fa-thumbs-up'></i> Yes, Log me out",
+                showCancelButton:true,
+                cancelButtonColor: '#d33',
+                cancelButtonText: "<i class='fa fa-close'></i> Cancel"
+            }).then(res=>{
+              if(res.value){
+                  $("#logout-form").submit();
+              }
             });
         }
     </script>

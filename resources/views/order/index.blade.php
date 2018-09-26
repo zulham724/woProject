@@ -345,7 +345,7 @@
       <div class="modal-body">
 				<div id="printThis">
 					<div class="text-center">
-						<img src="{{url('public/img/logo/logo.png')}}" />
+						<img src="{{asset('img/logo/logo.png')}}" />
 						<h4>Wedding & Event Organizer</h4>
 						<h5>Jl.Pandanaran 126.Ruko Masjid Baiturrahman,Simpang Lima ,Semarang. Telp (024) 8313313</h5>
 					</div><hr>
@@ -568,12 +568,12 @@ function print(id){
 	$("#printItem").html("");
 	$.each(item,function(key,i){
 		key+=1;
-		harga+=Number(this.cost);
+		harga+=Number(this.price);
 		$("#printItem").append("\
 			<tr>\
 				<td>"+key+"</td>\
-				<td>"+this.item+"</td>\
-				<td class=costItem >"+this.cost+"</td>\
+				<td>"+this.item_list.name+"</td>\
+				<td class=costItem >"+this.price+"</td>\
 				<td>"+this.created_at+"</td>\
 			</tr>\
 			");

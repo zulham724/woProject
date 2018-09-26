@@ -25,7 +25,7 @@
         			<td>No.</td>
         			<td>Acara</td>
         			<td>Tanggal</td>
-							<td>Jam</td>
+					<td>Jam</td>
         			<td>Tempat</td>
         		</tr>
         	</thead>
@@ -47,6 +47,9 @@
 	$(document).ready(function() {
 
     // page is now ready, initialize the calendar...
+    if({!!$login!!}){
+        swal("Hello :)","Anda telah Login","success");
+    }
     var data=[];
     $.each({!!$schedule!!},function(key,i){
     	data[key] = {title:this.nama_pemesan,start:this.tanggal,id:this.id};
