@@ -45,7 +45,6 @@
     	},
     	created(){
     		this.edit_acaras ? this.acaras = this.edit_acaras : null;
-    		this.read();
     	},
         mounted() {
             console.log('Acara mounted.',this.acaras)

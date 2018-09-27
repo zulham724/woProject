@@ -12,7 +12,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
-									<select class="form-control"   :name="'items['+a+'][item_list_id]'">
+									<select class="form-control" :name="'items['+a+'][item_list_id]'">
 										<option value="">--Pilih Barang--</option>
 			               				<option  v-for="(itemlist,i) in itemlists" :value="itemlist.id">{{ itemlist.name }}
 			               				</option>  

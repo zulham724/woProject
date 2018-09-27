@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 	<div class="container">
-	<a href="{{url('admin/staff/create')}}"><button type="button" class="btn btn-success"><i class="fa fa-pencil-alt "></i> Insert new Staff</button></a><hr>
+	<a href="{{route('users.create')}}"><button type="button" class="btn btn-success"><i class="fa fa-pencil-alt "></i> Insert new Staff</button></a><hr>
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -32,15 +32,11 @@
 							<th>{{$ini->email}}</th>
 							<th>{{$ini->content}}</th>
 							<th>
-								<button type="button" class="btn btn-warning" onclick="event.preventDefault();document.getElementById('edit{{$ini->id}}').submit();"><i class="fa fa-edit "></i> Edit</button>
+								<a href="{{ route('users.edit',$ini->id) }}" type="submit" class="btn btn-warning"><i class="fa fa-edit "></i> Edit</a>
 								<button type="button" class="btn btn-danger" onclick="destroy({{$ini->id}})"><i class="fa fa-trash "></i>  Delete</button>
-								<form id="edit{{$ini->id}}" action="{{url('admin/staff/edit')}}" method="post">
-									<input type="hidden" name="id" value="{{$ini->id}}">
-									{{csrf_field()}}
-								</form>
-								<form id="delete{{$ini->id}}" action="{{url('admin/staff/delete')}}" method="post">
-									<input type="hidden" name="id" value="{{$ini->id}}">
-									<input type="hidden" name="_token" value="{{csrf_token()}}">
+								<form action="{{route('users.edit',$ini->id)}}" method="post">
+									@method('put')
+									@csrf
 								</form>
 
 							</th>
@@ -77,11 +73,11 @@ const destroy = (id)=>{
         }).then(result=>{
             if(result.value){
                 let access = {
-                    id:id,
-                    _token:"{{ csrf_token() }}"
+                    _token:"{{ csrf_token() }}",
+                    _method:"DELETE"
                 }
 
-                $.post("staff/delete",access)
+                $.post("users/"+id,access)
                 .done(res=>{
                     swal({
                         title:"Ok!",

@@ -1,4 +1,4 @@
-@extends(Auth::user()->role_id==1 ? 'layouts.admin-horizontal' : 'layouts.operator-horizontal')
+@extends(Auth::user()->role_id == 1 ? 'layouts.admin-horizontal' : (Auth::user()->role_id == 2 ? 'layouts.operator-horizontal' : 'layouts.staff-horizontal'))
 @section('order-active','class=menu-top-active')
 @section('css')
 
@@ -6,14 +6,14 @@
 @section('content')
 <div class="container-fluid">
 
-	<a href="{{(Auth::user()->role_id == 1) ? url('admin/order') : url('operator/order')}}"><button type="button" class="btn btn-success" name="button"><i class="fa fa-arrow-left"></i> Back</button></a><hr>
+	<a href="{{ route('orders.index') }}"><button type="button" class="btn btn-success" name="button"><i class="fa fa-arrow-left"></i> Back</button></a><hr>
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			Form Pemesanan
 		</div>
 		<div class="panel-body">
-			<form class="form" action="{{(Auth::user()->role_id == 1) ? url('admin/order/store') : url('operator/order/store')}}" enctype="multipart/form-data" method="post" files="true" id="orderForm">
+			<form class="form" action="{{ route('orders.store') }}" enctype="multipart/form-data" method="post" files="true" id="orderForm">
 			<div class="row">
 					<div class="col-md-4">
 						<div class="panel panel-default">
@@ -71,7 +71,7 @@
 								</div>
 								<div class="form-group">
 									<h4><span class="label label-default">Upload: </span></h4>
-									<input type="file" required name="order[upload]" id="upload">
+									<input type="file" name="order[upload]" id="upload">
 								</div>
 							</div>
 						</div>

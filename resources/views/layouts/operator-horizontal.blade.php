@@ -9,6 +9,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
     <title>Operator</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -67,9 +69,9 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="{{url('operator/schedule')}}" @yield('schedule-active') ><i class="fa fa-calendar-check"></i> Schedule</a></li>
-                            <li><a href="{{url('operator/order')}}" @yield('order-active') ><i class="fa fa-book"></i> Order</a></li>
-                            <li><a href="{{url('operator/pembayaran')}}" @yield('pembayaran-active') ><i class="fa fa-money-bill-alt"></i> Pembayaran</a></li>
+                            <li><a href="{{url('schedule')}}" @yield('schedule-active') ><i class="fa fa-calendar-check"></i> Schedule</a></li>
+                            <li><a href="{{route('orders.index')}}" @yield('order-active') ><i class="fa fa-book"></i> Order</a></li>
+                            <li><a href="{{route('pembayaran.create')}}" @yield('pembayaran-active') ><i class="fa fa-money-bill-alt"></i> Pembayaran</a></li>
                             {{-- <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="fa fa-envelope fa-fw"></i> Notification <span class="badge" id="countNotif">{{$countNotif}}</span> <i class="fa fa-caret-down"></i>
@@ -93,7 +95,7 @@
         </div>
     </section>
      <!-- MENU SECTION END-->
-    <div class="content-wrapper">
+    <div class="content-wrapper" id="app">
     @yield('content')
     </div>
 
@@ -151,9 +153,9 @@
        <!-- FOOTER SECTION END-->
     <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
     <!-- CORE JQUERY  -->
     <script src="{{asset('js/jquery-1.10.2.js')}}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     {{-- angular --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     {{-- jquery currency --}}
@@ -161,12 +163,10 @@
     <script src="{{asset('js/jquery.formatCurrency.id-ID.js')}}" charset="utf-8"></script>
     {{-- bootstrap and angular tags input --}}
     <script src="{{asset('js/bootstrap-tagsinput.js')}}"></script>
-    <script src="{{asset('js/bootstrap-tagsinput-angular.js')}}"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
     {{-- <script src="{{asset('js/bootstrap.min.js')}}"></script> --}}
     <!-- DATATABLE SCRIPTS  -->
     <script src="{{asset('js/dataTables/jquery.dataTables.js')}}"></script>
-    <script src="{{asset('js/dataTables/dataTables.bootstrap.js')}}"></script>
       <!-- CUSTOM SCRIPTS  -->
     {{-- <script src="{{asset('js/horizontal-admin.js')}}"></script> --}}
     <script src="{{asset('fullcalendar/lib/moment.min.js')}}"></script>

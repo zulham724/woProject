@@ -27,7 +27,7 @@ class PembayaranController extends Controller
           "isRead"=>0,
           ]);
 
-      return redirect((Auth::user()->role_id == 1) ? 'admin/order' : 'operator/order' );
+       return redirect()->route('pembayaran.create');
     }
     public function update(Request $request){
       // dd($request);

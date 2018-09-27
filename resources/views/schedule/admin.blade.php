@@ -1,4 +1,4 @@
-@extends('layouts.admin-horizontal')
+@extends(Auth::user()->role_id == 1 ? 'layouts.admin-horizontal' : (Auth::user()->role_id == 2 ? 'layouts.operator-horizontal' : 'layouts.staff-horizontal'))
 @section('schedule-active','class=menu-top-active')
 @section('css')
 

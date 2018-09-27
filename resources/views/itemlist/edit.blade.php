@@ -7,11 +7,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-        	<a href="{{route('itemlist.index')}}"><button type="button" class="btn btn-success">Back</button></a><hr>
+        	<a href="{{route('itemlists.index')}}"><button type="button" class="btn btn-success">Back</button></a><hr>
             <div class="panel panel-default">
                 <div class="panel-heading">Edit</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('itemlist.update',$item_lists->id) }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('itemlists.update',$item_lists->id) }}">
                         @method('put')
                         @csrf
 

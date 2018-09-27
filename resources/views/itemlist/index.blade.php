@@ -14,7 +14,7 @@
 			
 				<div class="panel-body">
 
-					<form method="POST" action="{{ route('itemlist.store') }}" >
+					<form method="POST" action="{{ route('itemlists.store') }}" >
 						@csrf
 						<div class="form-group">
 				                <span class="label label-default">Nama Order List </span>
@@ -49,8 +49,10 @@
 									<td>{{$cl+1}}</td>
 									<td>{{$item_list->name}}</td>
 									<td>
-										<a type="button" href="{{ route('itemlist.edit',$item_list->id) }}" class="btn btn-warning" ><i class="fa fa-edit"></i> Edit</a>
-										
+										<a type="button" href="{{ route('itemlists.edit',$item_list->id) }}" class="btn btn-warning" ><i class="fa fa-edit"></i> Edit</a>
+										@if($item_list->id != 1 && $item_list->id != 2)
+										<button type="button" class="btn btn-danger" onclick="destroy({{$item_list->id}})"><i class="fa fa-trash"></i> Delete</button>
+										@endif
 									</td>
 								</tr>
 								@endforeach
@@ -74,5 +76,38 @@ $("table").DataTable();
 
 });
 // end ready
+const destroy = (id)=>{
+        swal({
+            type:"warning",
+            title:"Apakah anda yakin ?",
+            text:"",
+            showCancelButton:true,
+            cancelButtonColor:"#d33",
+            confirmButtonText:"Ya",
+            confirmButtonColor:"#3085d6"
+        }).then(result=>{
+            if(result.value){
+                let access = {
+                    id:id,
+                    _method:"delete",
+                    _token:"{{ csrf_token() }}"
+                }
+
+                $.post("itemlists/"+id,access)
+                .done(res=>{
+                    swal({
+                        title:"Ok!",
+                        text:"Data berhasil dihaps!",
+                        type:"success"
+                    }).then(result=>{
+                        window.location.reload();
+                    });
+                })
+                .fail(err=>{
+                     console.log(err);
+                });
+            }
+        });
+    }
 </script>
 @endsection

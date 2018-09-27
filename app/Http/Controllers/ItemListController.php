@@ -39,7 +39,7 @@ class ItemListController extends Controller
         $data['item_lists']= ItemList::create([
             "name"=>$request['name'],
         ]);
-        return redirect('admin/itemlist')-> with('alert-success', 'Data Berhasil Ditambahkan!');
+        return redirect()->route('itemlists.index');
     }
 
     /**
@@ -74,13 +74,13 @@ class ItemListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data["item_lists"]=ItemList::where('id',$request['id'])
+        $data["item_lists"]=ItemList::find($id)
         ->update([
             'name' => $request['name'],
                         
         ]);
         // dd($data['user']);
-       return redirect()->route('itemlist.index');
+       return redirect()->route('itemlists.index');
     }
 
     /**
@@ -91,7 +91,7 @@ class ItemListController extends Controller
      */
     public function destroy($id)
     {
-        ItemList::where('id',$id)->delete();
-        return redirect('admin/itemlist');
+        $item_list = ItemList::where('id',$id)->delete();
+        return response()->json($item_list);
     }
 }

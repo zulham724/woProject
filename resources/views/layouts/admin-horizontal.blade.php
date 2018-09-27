@@ -11,6 +11,7 @@
     <title>Admin</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -18,7 +19,7 @@
     <!-- CUSTOM STYLE  -->
     <link href="{{asset('css/horizontal-admin.css')}}" rel="stylesheet" />
     <!-- DATATABLE STYLE  -->
-    <link href="{{asset('js/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet" />
+    <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
     {{-- full calendar --}}
@@ -27,6 +28,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.min.css')}}">
     <!-- Bootstrap datepicker -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+    <!-- Scripts -->
     
     <style type="text/css">
         html, body{
@@ -70,21 +72,21 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="{{url('admin/schedule')}}" @yield('schedule-active') ><i class="fa fa-calendar-check"></i> Schedule</a></li>
+                            <li><a href="{{url('schedule')}}" @yield('schedule-active') ><i class="fa fa-calendar-check"></i> Schedule</a></li>
                              <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="fa fa-calendar"></i> Kursus <span class="badge" </span> <i class="fa fa-caret-down"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-messages" >
                                     <li>
-                                        <a class='text-center' href="{{ route('courseslists.index') }}" data-toggle='modal' >
+                                        <a class='text-center' href="{{url('courseslists')}}" data-toggle='modal' >
                                             <i class="fa fa-list-alt "></i>
                                             <strong> Input List Kursus</strong>
                                             <i class='fa fa-angle-right'></i>
                                         </a>
                                     </li>
                                      <li>
-                                        <a class='text-center' href="{{url('admin/courses')}}" data-toggle='modal' >
+                                        <a class='text-center' href="{{url('courses')}}" data-toggle='modal' >
                                             <i class="fa fa-user "></i>
                                             <strong> Data Peserta Kursus</strong>
                                             <i class='fa fa-angle-right'></i>
@@ -99,14 +101,14 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-messages" >
                                     <li>
-                                        <a class='text-center' href="{{ route('itemlist.index') }}" data-toggle='modal' >
+                                        <a class='text-center' href="{{route('itemlists.index')}}" data-toggle='modal' >
                                             <i class="fa fa-list-alt "></i>
                                             <strong> Input List Pesanan</strong>
                                             <i class='fa fa-angle-right'></i>
                                         </a>
                                     </li>
                                      <li>
-                                        <a class='text-center' href="{{url('admin/order')}}" data-toggle='modal' >
+                                        <a class='text-center' href="{{route('orders.index')}}" data-toggle='modal' >
                                             <i class="fa fa-shopping-cart  "></i>
                                             <strong> Data List Order</strong>
                                             <i class='fa fa-angle-right'></i>
@@ -116,9 +118,9 @@
                                 <!-- /.dropdown-messages -->
                             </li>
 
-                            <li><a href="{{url('admin/staff')}}" @yield('staff-active') ><i class="fa fa-users "></i> Staff</a></li>
-                            <li><a href="{{url('admin/pembayaran')}}" @yield('pembayaran-active') ><i class="fa fa-money-bill-alt "></i> Pembayaran</a></li>
-                            <li><a href="{{ route('memo.index') }}" @yield('memo-active') ><i class="fa fa-clipboard"></i> Request & Memo</a></li>
+                            <li><a href="{{route('users.index')}}" @yield('staff-active') ><i class="fa fa-users "></i> Staff</a></li>
+                            <li><a href="{{route('pembayaran.create')}}" @yield('pembayaran-active') ><i class="fa fa-money-bill-alt "></i> Pembayaran</a></li>
+                            <li><a href="{{route('memo.index')}}" @yield('memo-active') ><i class="fa fa-clipboard"></i> Request & Memo</a></li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="fa fa-envelope fa-fw"></i> Notification <span class="badge" id="countNotif">{{$countNotif}}</span> <i class="fa fa-caret-down"></i>
@@ -215,10 +217,9 @@
     </section>
       <!-- FOOTER SECTION END-->
     <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
     <!-- CORE JQUERY  -->
     <script src="{{asset('js/jquery-1.10.2.js')}}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     {{-- angular --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     {{-- jquery currency --}}
@@ -231,7 +232,6 @@
     {{-- <script src="{{asset('js/bootstrap.min.js')}}"></script> --}}
     <!-- DATATABLE SCRIPTS  -->
     <script src="{{asset('js/dataTables/jquery.dataTables.js')}}"></script>
-    <script src="{{asset('js/dataTables/dataTables.bootstrap.js')}}"></script>
       <!-- CUSTOM SCRIPTS  -->
     {{-- <script src="{{asset('js/horizontal-admin.js')}}"></script> --}}
     <script src="{{asset('fullcalendar/lib/moment.min.js')}}"></script>
@@ -243,10 +243,11 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <script src="{{asset('js/printThis.js')}}" charset="utf-8"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.29/sweetalert2.all.js"></script>
+    
     <script type="text/javascript">
         $(document).ready(function(){
 
-            // $("#table").DataTable();
+            $("#table").DataTable();
 
             // $.each(,function(key,i){
             //     console.log(i);

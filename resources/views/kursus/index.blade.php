@@ -18,12 +18,11 @@
 						<tr>
 							<th>
 								<select class="form-control" name="courses_list_id">
-										<option value="">-Keseluruhan-</option>
-										@foreach($courses_lists as $courses_list)
-										<option value="{{ $courses_list->id }}">{{ $courses_list->type }}</option>
-										@endforeach 
-									</select>
-		
+									<option value="">-Keseluruhan-</option>
+									@foreach($courses_lists as $courses_list)
+									<option value="{{ $courses_list->id }}">{{ $courses_list->type }}</option>
+									@endforeach 
+								</select>
              				</th>
 							<th>No.</th>
 							<th>Nama Pemesan</th>

@@ -1,18 +1,21 @@
-@extends(Auth::user()->role_id==1 ? 'layouts.admin-horizontal' : 'layouts.operator-horizontal')
+@extends(Auth::user()->role_id == 1 ? 'layouts.admin-horizontal' : (Auth::user()->role_id == 2 ? 'layouts.operator-horizontal' : 'layouts.staff-horizontal'));
 @section('css')
 
 @endsection
 @section('content')
 <div class="container">
 
-	<a href="{{(Auth::user()->role_id == 1) ? url('admin/order') : url('operator/order')}}"><button type="button" class="btn btn-success" name="button">Back</button></a><hr>
+	<a href="{{ route('orders.index')}}"><button type="button" class="btn btn-success" name="button">Back</button></a><hr>
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			Form Pemesanan
 		</div>
 		<div class="panel-body">
-			<form class="form" action="{{(Auth::user()->role_id == 1) ? url('admin/order/update') : url('operator/order/update')}}" enctype="multipart/form-data" method="post" files="true" id="orderForm">
+			<form class="form" action="{{ route('orders.update',$order->id) }}" enctype="multipart/form-data" method="post" files="true" id="orderForm">
+
+				@method('put')
+                {{ csrf_field() }}
 			<div class="row">
 					<div class="col-md-4">
 						<div class="panel panel-default">

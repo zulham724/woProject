@@ -9,21 +9,10 @@ use App\Order;
 
 class ScheduleController extends Controller
 {
-    public function admin(){
+    public function index(){
     	$data['schedule'] = Order::join('acara','orders.id','=','acara.order_id')->get();
       $data["login"] = request()->login ?? "false";
       // dd($data);
     	return view('schedule.admin',$data);
-    }
-    public function operator(){
-    	$data['schedule']=Order::join('acara','orders.id','=','acara.order_id')->get();
-      $data["login"] = request()->login ?? "false";
-    	// dd($data['schedule']);
-      return view('schedule.operator',$data);
-    }
-    public function staff(){
-    	$data['schedule']=Order::join('acara','orders.id','=','acara.order_id')->get();
-      $data["login"] = request()->login ?? "false";
-      return view('schedule.staff',$data);
     }
 }

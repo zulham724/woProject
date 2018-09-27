@@ -7,11 +7,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-        	<a href="{{url('admin/staff')}}" type="button" class="btn btn-success"><i class="fa fa-arrow-left"></i> Back to Staff</a><hr>
+        	<a href="{{route('users.index')}}" type="button" class="btn btn-success"><i class="fa fa-arrow-left"></i> Back to Staff</a><hr>
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{url('admin/staff/store')}}">
+                    <form class="form-horizontal" method="POST" action="{{route('users.store')}}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

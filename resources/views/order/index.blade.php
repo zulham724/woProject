@@ -1,4 +1,4 @@
-@extends(Auth::user()->id==1 ? 'layouts.admin-horizontal' : 'layouts.operator-horizontal')
+@extends(Auth::user()->role_id == 1 ? 'layouts.admin-horizontal' : (Auth::user()->role_id == 2 ? 'layouts.operator-horizontal' : 'layouts.staff-horizontal'))
 @section('order-active','class=menu-top-active')
 @section('css')
 
@@ -9,7 +9,7 @@
 
 <div class="container">
 	<div class="container">
-	<a href="{{(Auth::user()->role_id == 1) ? url('admin/order/create') : url('operator/order/create')}}"><button type="button" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Insert new Order</button></a><hr>
+	<a href="{{ route('orders.create') }}"><button type="button" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Insert new Order</button></a><hr>
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -66,15 +66,13 @@
 									</a>
 								</span>
 								<span data-toggle="modal" data-target="#myModal">
-									<a class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Edit Pesanan" onclick="event.preventDefault();document.getElementById('edit{{$ini->id}}').submit();">
+									<a href="{{ route('orders.edit',$ini->id) }}" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Edit Pesanan">
 									<i class="fa fa-edit"></i>
 									</a>
 								</span>
-								<span data-toggle="modal" data-target="#myModal">
-									<a class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Pesanan" onclick="destroy({{$ini->id}})">
+								<a class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Pesanan" onclick="destroy({{$ini->id}})">
 									<i class="fa fa-times"></i>
-									</a>
-								</span>
+								</a>
 		            @if($ini->file!=NULL)
 		            <a href="{{($ini->upload == null) ? "#" : url('storage/app/'.$ini->upload)}}" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Download">
 		            <i class="fa fa-cloud-download "></i>
@@ -96,18 +94,7 @@
 									<a href="{{ route('memo.decoration',$ini->id) }}" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Memo Dekorasi">
 									<i class="fa fa-ticket-alt "></i>
 									</a>
-								
 
-								<form id="delete{{$ini->id}}" method="POST" action="{{(Auth::user()->role_id == 1) ? url('admin/order/delete') : url('operator/order/delete')}}">
-									<input type="hidden" name="file" value="{{$ini->upload}}">
-									<input type="hidden" name="id" value="{{$ini->id}}">
-									{{csrf_field()}}
-								</form>
-								<form id="edit{{$ini->id}}" method="POST" action="{{(Auth::user()->role_id == 1) ? url('admin/order/edit') : url('operator/order/edit')}}">
-									{{-- <input type="hidden" name="file" value="{{$ini->upload}}"> --}}
-									<input type="hidden" name="id" value="{{$ini->id}}">
-									{{csrf_field()}}
-								</form>
 							</td>
 						</tr>
 						@endforeach
@@ -630,11 +617,11 @@ function destroy(id){
         }).then(result=>{
             if(result.value){
                 let access = {
-                    id:id,
-                    _token:"{{ csrf_token() }}"
+                    _token:"{{ csrf_token() }}",
+                    _method:"DELETE"
                 }
 
-                $.post("order/delete",access)
+                $.post("orders/"+id,access)
                 .done(res=>{
                     swal({
                         title:"Ok!",

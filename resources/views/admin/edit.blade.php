@@ -7,11 +7,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-        	<a href="{{url('staff')}}"><button type="button" class="btn btn-success"><i class="fa fa-arrow-left "></i> Back to Staff</button></a><hr>
+        	<a href="{{route('users.index')}}"><button type="button" class="btn btn-success"><i class="fa fa-arrow-left "></i> Back to Staff</button></a><hr>
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{url('admin/staff/update')}}">
+                    <form class="form-horizontal" method="POST" action="{{route('users.update',$user->id)}}">
+                        @method('put')
                         {{ csrf_field() }}
 
                         <div class="form-group">
@@ -57,8 +58,6 @@
                                 <input id="password-confirm" placeholder="confirm your new password here" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-
-												<input type="hidden" name="id" value="{{$user->id}}">
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

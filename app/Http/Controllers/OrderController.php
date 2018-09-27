@@ -29,18 +29,18 @@ class OrderController extends Controller
 
     	return view('order.create');
     }
-    public function edit(Request $request){
-      $data['order'] = Order::with('items','acaras')->find($request["id"]);
-      $data['acara'] = Acara::where('order_id',$request['id'])->get();
-      $data['biodata'] = Biodata::where('order_id',$request['id'])->first();
-      $data['item'] = Item::where('order_id',$request['id'])->get();
-      $data['totalItem'] = Item::where('order_id',$request['id'])->count();
-      $data['totalAcara'] = Acara::where('order_id',$request['id'])->count();
+    public function edit($id){
+      $data['order'] = Order::with('items','acaras')->find($id);
+      $data['acara'] = Acara::where('order_id',$id)->get();
+      $data['biodata'] = Biodata::where('order_id',$id)->first();
+      $data['item'] = Item::where('order_id',$id)->get();
+      $data['totalItem'] = Item::where('order_id',$id)->count();
+      $data['totalAcara'] = Acara::where('order_id',$id)->count();
       // dd($data);
     	return view('order.edit',$data);
     }
     // end edit
-    public function update(Request $request){
+    public function update(Request $request,$id){
       // dd($request);
       $order = Order::find($request["order"]["id"]);
       $order->fill($request["order"]);
@@ -87,7 +87,7 @@ class OrderController extends Controller
           "isRead"=>0,
           ]);
 
-      return redirect((Auth::user()->role_id == 1) ? 'admin/order' : 'operator/order' );
+      return redirect()->route('orders.index');
     }
     // end update
     public function store(Request $request){
@@ -134,19 +134,19 @@ class OrderController extends Controller
             "isRead"=>0,
             ]);
 
-    	return redirect('admin/order');
+    	return redirect()->route('orders.index');
     }
-    public function delete(Request $request){
+    public function destroy($id){
         // dd($request);
         $data['notification'] = Notification::create([
             "title"=>Auth::user()->name,
             "content"=>Auth::user()->name." telah mendelete pesanan",
             "isRead"=>0,
             ]);
-        $data['order']=Order::where('id',$request['id'])->delete();
+        $data['order']=Order::find($id)->delete();
         // $data['file']=Storage::delete(storage_path().'/app/'.$request['file']);
         // dd(storage_path()."/app/".$request['file']);
 
-        return redirect('admin/order');
+        return redirect()->route('orders.index');
     }
 }

@@ -1,4 +1,4 @@
-@extends(Auth::user()->role_id==1 ? 'layouts.admin-horizontal' : 'layouts.operator-horizontal');
+@extends(Auth::user()->role_id == 1 ? 'layouts.admin-horizontal' : (Auth::user()->role_id == 2 ? 'layouts.operator-horizontal' : 'layouts.staff-horizontal'));
 @section('pembayaran-active','class=menu-top-active')
 @section('css')
 
@@ -36,7 +36,7 @@
                 </tbody>
               </table>
             </div>
-            <form class="form" id="myForm" action="{{(Auth::user()->role_id == 1) ? url('admin/pembayaran/store') : url('operator/pembayaran/store')}}" method="post">
+            <form class="form" id="myForm" action="{{ route('pembayaran.store') }}" method="post">
               <div class="form-group">
                 <span class="label label-default">Pemesan: </span>
                 <input type="text" name="nama_pemesan" id="nama_pemesan" class="form-control" value="" readonly>
