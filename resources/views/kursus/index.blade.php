@@ -33,20 +33,24 @@
 					</thead>
 
 					<tbody>
-						@foreach($courses as $c => $courses)
+						@foreach($courses as $c => $course)
 						<tr>
-							<td>{{$courses->courses_list->type}}</td>
+							<td>{{$course->courses_list->type}}</td>
 							<td>{{$c+1}}</td>
-							<td>{{$courses->name}}</td>
-							<td>{{$courses->certificate_name}}</td>
-							<td>{{$courses->date}}</td>
+							<td>{{$course->name}}</td>
+							<td>{{$course->certificate_name}}</td>
+							<td>{{$course->date}}</td>
 							<td>
-								<a type="button" href="{{ route('courses.edit',$courses->id) }}" class="btn btn-warning"><i class="fa fa-edit"></i> Edit</a>
-								<a type="button" class="btn btn-danger " onclick="destroy({{$courses->id}})"><i class="fa fa-trash"></i> Delete</a>
+								<a type="button" href="{{ route('courses.edit',$course->id) }}" class="btn btn-warning"><i class="fa fa-edit"></i> Edit</a>
+								<a type="button" class="btn btn-danger " onclick="destroy({{$course->id}})"><i class="fa fa-trash"></i> Delete</a>
+								<span data-toggle="modal" data-target="#modalPrint{{$course->id}}" >
+									<a type="button" class="btn btn-danger " ><i class="fa fa-print"></i> Print</a>
+								</span>
 
-								<form id="delete{{$courses->id}}" action="{{ route('courses.destroy',$courses->id) }}" method="post">
+
+								<form id="delete{{$course->id}}" action="{{ route('courses.destroy',$course->id) }}" method="post">
 									<input type="hidden" name="_method" value="delete">
-									<input type="hidden" name="id" value="{{$courses->id}}">
+									<input type="hidden" name="id" value="{{$course->id}}">
 									<input type="hidden" name="_token" value="{{csrf_token()}}">
 								</form>
 						</tr>
@@ -61,6 +65,83 @@
 
 	</div>
 	{{-- end container --}}
+
+	<!-- Modal -->
+@foreach($courses as $index => $course)
+<div id="modalPrint{{$course->id}}" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Print Preview</h4>
+      </div>
+      <div class="modal-body">
+				<div id="printThis{{$course->id}}">
+					<div class="text-center">
+						<img src="{{asset('img/logo/logo.png')}}" />
+						<h4>Wedding & Event Organizer</h4>
+						<h5>Jl.Pandanaran 126.Ruko Masjid Baiturrahman,Simpang Lima ,Semarang. Telp (024) 8313313</h5>
+					</div><hr>
+					<div class="text-center">
+						<h1 style="font-family: Bookman Old Style"><b><u>SERTIFIKAT</u></b></h1><br>
+						<h4>Diberikan kepada :</h4>
+						@php
+						setlocale (LC_TIME, 'id');
+						$date = strftime( "%d %B %Y", strtotime($course->date));
+						$kalimat = $course->name;
+						$kalimat_new = ucwords($kalimat);
+						$tipe = $course->courses_list->type;
+						$tipe_new = ucwords($tipe)
+						@endphp
+						<font face="Comic Sans MS">
+							<h2><u>{{$kalimat_new}}</u></h2><br>
+						</font>
+						<h4>Telah menyelesaikan program kursus {{$tipe_new}}<br>
+							yang dilaksanakan pada tanggal {{$date}}<br>
+							dengan hasil Baik dan dinyatakan telah layak bekerja <br>
+							sesuai dengan program keahlian yang telah diikuti<br><br>
+						</h4>
+					</div>
+					
+	      	     	
+					
+					<div class="row" style="height:100px">
+						<div class="col-xs-12">
+							<div class="col-xs-9">
+							</div>
+							<div class="col-xs-3">
+								<h4><center>Ketua LPK</center></h4>
+							</div>
+							
+						</div>
+					</div>
+					<div class="row" style="height:10px">
+						<div class="col-xs-12">
+							<div class="col-xs-9">
+							</div>
+							<div class="col-xs-3">
+								<h4><center>Success</center> </h4>
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+				{{-- end printthis --}}
+				<button type="button" name="button" class="btn btn-info btn-block" onclick="print_now({{$course->id}})">Print Now</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+@endforeach
+{{-- test --}}
+
 @endsection
 @section('script')
 <script type="text/javascript">
@@ -104,6 +185,10 @@ const destroy = (id)=>{
             }
         });
     }
+
+    function print_now(id){
+	$("#printThis"+id).printThis();
+}
 // end ready
 </script>
 @endsection

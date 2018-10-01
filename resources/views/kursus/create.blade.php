@@ -20,7 +20,7 @@
                         			@csrf
                         			@method('post')
 									<h4><span class="label label-default">Nama Pemesan: </span></h4>
-									<input type="text" name="name" class="form-control">
+									<input type="text" name="name" class="form-control" >
 								</div>
 								<div class="form-group">
 									<h4><span class="label label-default">Nama Sertifikat: </span></h4>
