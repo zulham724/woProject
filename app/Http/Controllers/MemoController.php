@@ -102,4 +102,15 @@ class MemoController extends Controller
     {
         //
     }
+
+    public function search(Request $request){
+        // dd($request);
+        $data["item_lists"] = ItemList::get();
+        $data["items"] = Item::with('item_list','order')
+        ->whereMonth('date','>',$request['date_from'])
+        ->whereMonth('date','<',$request['date_to'])
+        ->where('item_list_id','like','%'.$request['item_list_id'].'%')
+        ->get();
+        return view('memo.index',$data);    
+    }
 }

@@ -14,65 +14,68 @@
 		<div class="panel-body">
 			<div class="form-group">
   			<div class="row">
-  				<div class="form-group">
-                       <label for="dari" class="col-md-1 control-label">Dari</label>
+          <form method='post' action="{{ route('memo.search') }}">
+            @csrf
+    				<div class="form-group">
+                <label for="dari" class="col-md-1 control-label">Dari</label>
 
-                          <div class="col-md-2">
-                              <select class="form-control" ng-model="#" ng-required="true" >
-                          			<option value="">-Semua Bulan-</option>
-                         				<option value="">Januari</option>
-                         				<option value="">Febuari</option>
-                         				<option value="">Maret</option>
-                         				<option value="">April</option>
-                         				<option value="">Mei</option> 
-                         				<option value="">Juni</option> 
-                         				<option value="">Juli</option> 
-                         				<option value="">Agustus</option> 
-                         				<option value="">September</option> 
-                         				<option value="">Oktober</option> 
-                         				<option value="">November</option> 
-                         				<option value="">Desember</option>      
-                       				</select>
+                  <div class="col-md-2">
+                      <select class="form-control" required name="date_from" >
+                  			<option value="">-Semua Bulan-</option>
+                 				<option value="1">Januari</option>
+                 				<option value="2">Febuari</option>
+                 				<option value="3">Maret</option>
+                 				<option value="4">April</option>
+                 				<option value="5">Mei</option> 
+                 				<option value="6">Juni</option> 
+                 				<option value="7">Juli</option> 
+                 				<option value="8">Agustus</option> 
+                 				<option value="9">September</option> 
+                 				<option value="10">Oktober</option> 
+                 				<option value="11">November</option> 
+                 				<option value="12">Desember</option>      
+                				</select>
 
-                          </div>
-                      
+                  </div>
+                        
 
-                     
-                       <label for="sampai" class="col-md-1 control-label">Sampai</label>
+                       
+                  <label for="sampai" class="col-md-1 control-label">Sampai</label>
 
-                          <div class="col-md-2">
-                              <select class="form-control" ng-model="#" ng-required="true" >
-                          			<option value="">-Semua Bulan-</option>
-                         				<option value="">Januari</option>
-                         				<option value="">Febuari</option>
-                         				<option value="">Maret</option>
-                         				<option value="">April</option>
-                         				<option value="">Mei</option> 
-                         				<option value="">Juni</option> 
-                         				<option value="">Juli</option> 
-                         				<option value="">Agustus</option> 
-                         				<option value="">September</option> 
-                         				<option value="">Oktober</option> 
-                         				<option value="">November</option> 
-                         				<option value="">Desember</option>      
-                       				</select>
+                    <div class="col-md-2">
+                        <select class="form-control" required name='date_to' >
+                    			<option value="">-Semua Bulan-</option>
+                   				<option value="1">Januari</option>
+                   				<option value="2">Febuari</option>
+                   				<option value="3">Maret</option>
+                   				<option value="4">April</option>
+                   				<option value="5">Mei</option> 
+                   				<option value="6">Juni</option> 
+                   				<option value="7">Juli</option> 
+                   				<option value="8">Agustus</option> 
+                   				<option value="9">September</option> 
+                   				<option value="10">Oktober</option> 
+                   				<option value="11">November</option> 
+                   				<option value="12">Desember</option>      
+                  			</select>
 
-                          </div>
+                    </div>
 
-                      <label for="item" class="col-md-1 control-label">Item</label>
+                    <label for="item" class="col-md-1 control-label">Item</label>
 
-                          <div class="col-md-2">
-                              <select class="form-control" name="courses_list_id">
-                                  <option value="">-Semua Item-</option>
-                                  @foreach($item_lists as $item_list)
-                                  <option value="{{ $item_list->id }}">{{ $item_list->name }}</option>
-                                  @endforeach 
-                              </select>
+                      <div class="col-md-2">
+                          <select class="form-control" name="courses_list_id">
+                              <option value="">-Semua Item-</option>
+                              @foreach($item_lists as $item_list)
+                              <option value="{{ $item_list->id }}">{{ $item_list->name }}</option>
+                              @endforeach 
+                          </select>
 
-                          </div>
-                    
-			
+                      </div>
+  			
             </div>
+            <button type="submit" class="btn btn-info">Search</button>
+          </form>
         </div>
 			</div>
 

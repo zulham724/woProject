@@ -49,6 +49,7 @@ Route::group(['middleware'=>'auth'],function(){
 
       Route::get('memo/decoration/{id}','MemoController@decoration')->name('memo.decoration');
       Route::get('memo/rias/{id}','MemoController@rias')->name('memo.rias');
+      Route::post('memo/search','MemoController@search')->name('memo.search');
 
 });
 // end middleware web

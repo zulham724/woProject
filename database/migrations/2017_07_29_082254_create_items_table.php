@@ -19,7 +19,7 @@ class CreateItemsTable extends Migration
             $table->integer('item_list_id')->unsigned();
             $table->integer('price')->nullable();
             $table->string('person')->nullable();
-            $table->string('date')->nullable()->default('-');
+            $table->date('date')->nullable();
             $table->string('image')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();

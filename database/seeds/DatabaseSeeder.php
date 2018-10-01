@@ -33,5 +33,10 @@ class DatabaseSeeder extends Seeder
               'role_id'=> 1
           ]);
 
+          $this->call(ItemlistsTableSeeder::class);
+          $this->call(OrdersTableSeeder::class);
+          $this->call(ItemsTableSeeder::class);
+          $this->call(AcaraTableSeeder::class);
+
     }
 }
