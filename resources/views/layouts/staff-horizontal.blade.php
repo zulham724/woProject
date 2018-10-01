@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
@@ -93,7 +95,7 @@
         </div>
     </section>
      <!-- MENU SECTION END-->
-    <div class="content-wrapper">
+    <div class="content-wrapper" id="app">
     @yield('content')
     </div>
 
@@ -148,34 +150,23 @@
             </div>
         </div>
     </section>
-      <!-- FOOTER SECTION END-->
-    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-      <!-- CORE JQUERY  -->
-      <script src="{{asset('js/jquery-1.10.2.js')}}"></script>
-    {{-- angular --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    {{-- <script src="{{asset('js/jquery-1.10.2.js')}}"></script> --}}
+    <script src="{{ asset('js/app.js') }}"></script>
     {{-- jquery currency --}}
     <script src="{{asset('js/jquery.formatCurrency-1.4.0.min.js')}}" charset="utf-8"></script>
     <script src="{{asset('js/jquery.formatCurrency.id-ID.js')}}" charset="utf-8"></script>
     {{-- bootstrap and angular tags input --}}
     <script src="{{asset('js/bootstrap-tagsinput.js')}}"></script>
-    <script src="{{asset('js/bootstrap-tagsinput-angular.js')}}"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
     {{-- <script src="{{asset('js/bootstrap.min.js')}}"></script> --}}
     <!-- DATATABLE SCRIPTS  -->
     <script src="{{asset('js/dataTables/jquery.dataTables.js')}}"></script>
-    <script src="{{asset('js/dataTables/dataTables.bootstrap.js')}}"></script>
-      <!-- CUSTOM SCRIPTS  -->
-    {{-- <script src="{{asset('js/horizontal-admin.js')}}"></script> --}}
     <script src="{{asset('fullcalendar/lib/moment.min.js')}}"></script>
     <script src="{{asset('fullcalendar/fullcalendar.min.js')}}"></script>
     <script src="{{asset('fullcalendar/locale/id.js')}}"></script>
-    <script src="{{asset('js/bootstrap-datepicker.js')}}" charset="utf-8"></script>
-    <script src="{{asset('locales/bootstrap-datepicker.id.min.js')}}" charset="utf-8"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <script src="{{asset('js/printThis.js')}}" charset="utf-8"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.29/sweetalert2.all.js"></script>    <script type="text/javascript">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.29/sweetalert2.all.js"></script>
+    <script type="text/javascript">
         $(document).ready(function(){
 
             $("table").DataTable();
