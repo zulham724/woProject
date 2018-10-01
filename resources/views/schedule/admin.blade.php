@@ -50,11 +50,33 @@
     if({!!$login!!}){
         swal("Hello :)","Anda telah Login","success");
     }
-    var data=[];
-    $.each({!!$schedule!!},function(key,i){
-    	data[key] = {title:this.nama_pemesan,start:this.tanggal,id:this.id};
+    const data=[];
+    const schedule = {!! $schedule !!};
+    const courses = {!! $courses !!};
+
+    $.each(schedule,function(key,i){
+    	data.push({
+            title:'Pesanan '+this.nama_pemesan,
+            start:this.tanggal,
+            id:this.id,
+            acara:this.nama_pemesan,
+            tanggal:this.tanggal,
+            jam:this.jam,
+            tempat:this.tempat
+        });
     });
-    console.log("datanya",data);
+    $.each(courses,(key,i)=>{
+        data.push({
+            title:'Kursus '+i.name,
+            start:i.date,
+            id:'a'+i.id,
+            acara:i.name,
+            tanggal:i.date,
+            jam:'tidak ditentukan',
+            tempat:i.place
+        });
+    });
+    console.log("datanya",courses,schedule,data);
     $('#calendar').fullCalendar({
         lang:'id',
         events : data,
@@ -63,11 +85,11 @@
         		$("#contentAcara").html("");
         		$("#myModal").modal();
         		$("#content").text(event.id);
-        		var acara = {!!$schedule!!}.filter(function(i){
+        		let selected = data.filter(function(i){
         			return i.id == event.id;
         		});
-        		console.log(acara);
-        		$.each(acara,function(key,i){
+        		console.log(selected);
+        		$.each(selected,function(key,i){
         			key+=1;
         			$("#contentAcara").append("\
         				<tr>\
