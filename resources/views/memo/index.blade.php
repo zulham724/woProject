@@ -16,12 +16,11 @@
   			<div class="row">
           <form method='post' action="{{ route('memo.search') }}">
             @csrf
-    				<div class="form-group">
-                <label for="dari" class="col-md-1 control-label">Dari</label>
+    				<div class="form-inline">
+                <label for="dari" class="control-label">Dari</label>
 
-                  <div class="col-md-2">
                       <select class="form-control" required name="date_from" >
-                  			<option value="">-Semua Bulan-</option>
+                  			<option value="">-Pilih Bulan-</option>
                  				<option value="1">Januari</option>
                  				<option value="2">Febuari</option>
                  				<option value="3">Maret</option>
@@ -36,15 +35,14 @@
                  				<option value="12">Desember</option>      
                 				</select>
 
-                  </div>
                         
 
                        
-                  <label for="sampai" class="col-md-1 control-label">Sampai</label>
+                  <label for="sampai" class="control-label">Sampai</label>
 
-                    <div class="col-md-2">
+              
                         <select class="form-control" required name='date_to' >
-                    			<option value="">-Semua Bulan-</option>
+                    			<option value="">-Pilih Bulan-</option>
                    				<option value="1">Januari</option>
                    				<option value="2">Febuari</option>
                    				<option value="3">Maret</option>
@@ -59,11 +57,14 @@
                    				<option value="12">Desember</option>      
                   			</select>
 
-                    </div>
+                  <label for="sampai" class="control-label">Tahun</label>
 
-                    <label for="item" class="col-md-1 control-label">Item</label>
+                    
+                        <input type="text" class="form-control" name="date_year" placeholder="Tahun" required>
 
-                      <div class="col-md-2">
+                    <label for="item" class="control-label">Item</label>
+
+                      
                           <select class="form-control" name="courses_list_id">
                               <option value="">-Semua Item-</option>
                               @foreach($item_lists as $item_list)
@@ -71,10 +72,10 @@
                               @endforeach 
                           </select>
 
-                      </div>
+                    
   			
-            </div>
             <button type="submit" class="btn btn-info">Search</button>
+            </div>
           </form>
         </div>
 			</div>

@@ -109,6 +109,7 @@ class MemoController extends Controller
         $data["items"] = Item::with('item_list','order')
         ->whereMonth('date','>',$request['date_from'])
         ->whereMonth('date','<',$request['date_to'])
+        ->whereYear('date','=',$request['date_year'])
         ->where('item_list_id','like','%'.$request['item_list_id'].'%')
         ->get();
         return view('memo.index',$data);    
