@@ -30,7 +30,7 @@ class OrderController extends Controller
     	return view('order.create');
     }
     public function edit($id){
-      $data['order'] = Order::with('items','acaras')->find($id);
+      $data['order'] = Order::with('items.item_list','acaras')->find($id);
       $data['acara'] = Acara::where('order_id',$id)->get();
       $data['biodata'] = Biodata::where('order_id',$id)->first();
       $data['item'] = Item::where('order_id',$id)->get();
@@ -130,7 +130,7 @@ class OrderController extends Controller
 
         $data['notification'] = Notification::create([
             "title"=>Auth::user()->name,
-            "content"=>Auth::user()->name." telah menerima pesanan",
+            "content"=>Auth::user()->name." telah menerima pesanan milik ".$order->nama_pemesan,
             "isRead"=>0,
             ]);
 
@@ -138,15 +138,16 @@ class OrderController extends Controller
     }
     public function destroy($id){
         // dd($request);
+        $order=Order::find($id);
         $data['notification'] = Notification::create([
             "title"=>Auth::user()->name,
-            "content"=>Auth::user()->name." telah mendelete pesanan",
+            "content"=>Auth::user()->name." telah mendelete pesanan milik ".$order->nama_pemesan,
             "isRead"=>0,
             ]);
-        $data['order']=Order::find($id)->delete();
+        $order->delete();
         // $data['file']=Storage::delete(storage_path().'/app/'.$request['file']);
         // dd(storage_path()."/app/".$request['file']);
 
-        return redirect()->route('orders.index');
+        return response()->json($order);
     }
 }

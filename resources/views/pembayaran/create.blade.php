@@ -132,7 +132,8 @@
       totalAngsuran+=1;
       $("#contentPembayaran").append(
         "<div class=form-group >\
-          <label> Angsuran "+key+":</label><a href={{url('admin/pembayaran/delete')}}/"+i['id']+"><button type='button' class='btn btn-danger' name='button' >Hapus</button></a>\
+          <label> Angsuran "+key+":</label>\
+          <button type='button' onclick=destroy("+i['id']+") class='btn btn-danger' name='button' >Hapus</button></a>\
           <input class='form-control' name='angsuran"+key+"' type='text' value='"+this.angsuran+"' >\
           <input type=hidden name='idAngsuran"+key+"' value='"+this.id+"'>\
         </div>"
@@ -141,5 +142,39 @@
       $("#totalAngsuran").val(totalAngsuran);
     });
   }
+
+  function destroy(id){
+  swal({
+            type:"warning",
+            title:"Apakah anda yakin ?",
+            text:"",
+            showCancelButton:true,
+            cancelButtonColor:"#d33",
+            confirmButtonText:"Ya",
+            confirmButtonColor:"#3085d6"
+        }).then(result=>{
+            if(result.value){
+                let access = {
+                    _token:"{{ csrf_token() }}",
+                    _method:"DELETE"
+                }
+
+                $.post("/pembayaran/"+id,access)
+                .done(res=>{
+                    swal({
+                        title:"Ok!",
+                        text:"Data berhasil dihaps!",
+                        type:"success"
+                    }).then(result=>{
+                        window.location.reload();
+                    });
+                })
+                .fail(err=>{
+                     console.log(err);
+                });
+            }
+        });
+}
+
 </script>
 @endsection

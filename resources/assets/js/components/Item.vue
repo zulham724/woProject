@@ -12,8 +12,8 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
-									<select class="form-control" :name="'items['+a+'][item_list_id]'">
-										<option value="">--Pilih Barang--</option>
+									<select class="form-control" v-model="item.item_list.id" :name="'items['+a+'][item_list_id]'">
+										<option value="0">--Pilih Barang--</option>
 			               				<option  v-for="(itemlist,i) in itemlists" :value="itemlist.id">{{ itemlist.name }}
 			               				</option>  
 		             				</select>
@@ -63,7 +63,11 @@
     	props:['edit_items'],
     	data() {
 			return {
-				items:[{}],
+				items:[{
+					item_list:{
+						id:0
+					}
+				}],
 				itemlists:[{}],
 				itemlist_selected:null
 			}    		
@@ -78,7 +82,11 @@
         methods:{
         	add(){
         		console.log('uye');
-        		this.items.push({});
+        		this.items.push({
+        			item_list:{
+        				id:0
+        			}
+        		});
         	},
         	remove(index){
         		console.log(this.items[index].item);

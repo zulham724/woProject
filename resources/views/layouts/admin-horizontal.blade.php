@@ -1,16 +1,11 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <!--[if IE]>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <![endif]-->
-    <title>Admin</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Admin</title>
 
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
@@ -20,24 +15,10 @@
     <link href="{{asset('css/horizontal-admin.css')}}" rel="stylesheet" />
     <!-- DATATABLE STYLE  -->
     <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <!-- GOOGLE FONT -->
-    <link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
     {{-- full calendar --}}
     <link rel='stylesheet' href='{{asset('fullcalendar/fullcalendar.css')}}' />
-    {{-- datepicker css --}}
-    <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.min.css')}}">
-    <!-- Bootstrap datepicker -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
     <!-- Scripts -->
-    
-    <style type="text/css">
-        html, body{
-            width:100%;
-            height:100%;
-            background-color:#fff;
-            font-family: 'Sansita', sans-serif;
-        }
-    </style>
+
     @yield('css')
 
 </head>
@@ -140,7 +121,7 @@
                                             </div>
                                             <div>{{$notif->content}}</div>
                                             <span class='text-muted'>
-                                                    <em>{{$notif->created_at}}</em>
+                                                    <em>pada tanggal {{$notif->created_at}}</em>
                                             </span>
                                         </a>
                                     </li>
@@ -215,97 +196,28 @@
             </div>
         </div>
     </section>
-      <!-- FOOTER SECTION END-->
-    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-    <!-- CORE JQUERY  -->
-    <script src="{{asset('js/jquery-1.10.2.js')}}"></script>
+
+    {{-- <script src="{{asset('js/jquery-1.10.2.js')}}"></script> --}}
     <script src="{{ asset('js/app.js') }}"></script>
-    {{-- angular --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     {{-- jquery currency --}}
     <script src="{{asset('js/jquery.formatCurrency-1.4.0.min.js')}}" charset="utf-8"></script>
     <script src="{{asset('js/jquery.formatCurrency.id-ID.js')}}" charset="utf-8"></script>
     {{-- bootstrap and angular tags input --}}
     <script src="{{asset('js/bootstrap-tagsinput.js')}}"></script>
-    <script src="{{asset('js/bootstrap-tagsinput-angular.js')}}"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
     {{-- <script src="{{asset('js/bootstrap.min.js')}}"></script> --}}
     <!-- DATATABLE SCRIPTS  -->
     <script src="{{asset('js/dataTables/jquery.dataTables.js')}}"></script>
-      <!-- CUSTOM SCRIPTS  -->
-    {{-- <script src="{{asset('js/horizontal-admin.js')}}"></script> --}}
     <script src="{{asset('fullcalendar/lib/moment.min.js')}}"></script>
     <script src="{{asset('fullcalendar/fullcalendar.min.js')}}"></script>
     <script src="{{asset('fullcalendar/locale/id.js')}}"></script>
-    <script src="{{asset('js/bootstrap-datepicker.js')}}" charset="utf-8"></script>
-    <script src="{{asset('locales/bootstrap-datepicker.id.min.js')}}" charset="utf-8"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <script src="{{asset('js/printThis.js')}}" charset="utf-8"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.29/sweetalert2.all.js"></script>
     
     <script type="text/javascript">
         $(document).ready(function(){
-
             $("#table").DataTable();
-
-            // $.each(,function(key,i){
-            //     console.log(i);
-            //     $("#notification").append(
-                    // "<li>\
-                    //     <a href='#' onclick=readNotif('"+this.id+"')>\
-                    //         <div>\
-                    //             <strong>"+this.title+"</strong>\
-                    //         </div>\
-                    //         <div>"+this.content+"</div>\
-                    //         <span class='pull-right text-muted'>\
-                    //                 <em>"+this.created_at+"</em>\
-                    //         </span>\
-                    //     </a>\
-                    // </li>\
-                    // <li class='divider'></li>"
-            //         );
-            // });
         });
-
-        // function readNotif(id){
-        //     console.log(id);
-        //     var data = {id:id};
-        //     $.ajax({
-        //         url:"",
-        //         method:"GET",
-        //         data:data,
-        //     }).done(function(data){
-        //         $("#notification").html(
-        //           "\
-        //             <li>\
-        //                 <a class='text-center' href='#' data-toggle='modal' data-target='#notifModal'>\
-        //                     <strong>Read All Notification</strong>\
-        //                     <i class='fa fa-angle-right'></i>\
-        //                 </a>\
-        //             </li>");
-        //         $("#countNotif").text(data['countNotif']);
-        //         console.log(data['notification']);
-        //         $.each(data['notification'],function(key,i){
-        //             console.log(i);
-        //             $("#notification").append(
-        //                 "<li>\
-        //                     <a href='#' onclick=readNotif('"+this.id+"')>\
-        //                         <div>\
-        //                             <strong>"+this.title+"</strong>\
-        //                         </div>\
-        //                         <div>"+this.content+"</div>\
-        //                         <span class='pull-right text-muted'>\
-        //                                 <em>"+this.created_at+"</em>\
-        //                         </span>\
-        //                     </a>\
-        //                 </li>\
-        //                 <li class='divider'></li>"
-        //                 );
-        //         });
-        //         // end each
-        //     });
-        // }
 
         const logout = ()=>{
         swal({

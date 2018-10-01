@@ -338,16 +338,16 @@
 					</div><hr>
 					<table border="0">
 						<tr>
-							<td>Pemesan </td> <td> : </td><td> <h4 id="printPemesan"></h4></td>
+							<td>Pemesan </td> <td> : </td><td id="printPemesan"></td>
 						</tr>
 						<tr>
-							<td>Alamat </td> <td> : </td><td> <h4 id="printAlamat"></h4></td>
+							<td>Alamat </td> <td> : </td><td id="printAlamat"></td>
 						</tr>
 						<tr>
-							<td>Kota </td> <td> : </td><td> <h4 id="printKota"></h4></td>
+							<td>Kota </td> <td> : </td><td id="printKota"></td>
 						</tr>
 						<tr>
-							<td>Telp </td> <td> : </td><td> <h4 id="printTelp"></h4></td>
+							<td>Telp </td> <td> : </td><td id="printTelp"></td>
 						</tr>
 						<tr>
 							<td>Tempat dan Tanggal Acara </td> <td> </td><td> <h4> </h4></td>
@@ -363,41 +363,33 @@
 	      				<td>No.</td>
 	      				<td>Deskripsi</td>
 	      				<td>Harga</td>
-	      				<td>tanggal pesan</td>
+	      				<td>Tanggal Pesan</td>
 	      			</tr>
 	      		</thead>
 	      		<tbody id="printItem">
 
 	      		</tbody>
 	      	</table>
-					<div class="row">
-						<div class="col-xs-12">
-							<div class="col-xs-offset-6">
-							    <div id="printTotalHarga"></div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-12">
-							<div class="col-xs-offset-6">
-							    <div id="printDp"></div></td></tr>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-12">
-							<div class="col-xs-offset-6"><div id="printPembayaran"></div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-12">
-							<div class="col-xs-offset-6">
-							    <div id="printSisaPembayaran"></div>
-							</div>
-						</div>
-					</div>
-					<div class="row" style="height:100px">
+	      	<hr>
+
+	      	<div class="form-group">
+	      		<div class="row">
+	      			<div class="col-sm-4">
+	      				<div id="printTotalHarga"></div>
+	      			</div>
+	      			<div class="col-sm-4">
+	      				<div id="printDp"></div>
+	      			</div>
+	      			<div class="col-sm-4">
+	      				<div id="printPembayaran"></div>
+	      			</div>
+	      			<div class="col-sm-4">
+	      				<div id="printSisaPembayaran"></div>
+	      			</div>
+	      		</div>
+	      	</div>      	
+					
+					<div class="row" style="height:80px">
 						<div class="col-xs-12">
 							<div class="col-xs-6">
 								<h4>Hormat Kami</h4>
@@ -407,7 +399,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row" style="height:10px">
+					<div class="row" style="height:5px">
 						<div class="col-xs-12">
 							<div class="col-xs-6">
 								<h4>Success</h4>
@@ -419,13 +411,13 @@
 					</div>
 					<div class="row">
 						<div class="col-xs-12">
-							<p>Syarat dan Ketentuan Berlaku: <br>
+							<h6>Syarat dan Ketentuan Berlaku: <br>
 							1.Tanda jadi Rp.5.000.000,-<br>
 							2.Mengikat Harga 30 % dari Nilai Kontrak<br>
 							3.Pemesanan ini mengikat,pembatalan per item atau keseluruhan di kenakan Charge 50% dari nilai kontrak <br>							
 							4.Pelunasan H- 14 Hari <br>
 							5.Apabila point 4 tidak terpenuhi,pemesanan di anggap Batal dan Pembayaran yg sudah masuk Hangus <br>
-							6.Pembayaran dapat di lakukan secara tunai atau transfer ke rek.mandiri A/n Ratna Hidayati 1390004731299</p>
+							6.Pembayaran dapat di lakukan secara tunai atau transfer ke rek.mandiri A/n Ratna Hidayati 1390004731299</h6>
 						</div>
 					</div>
 					<hr>
@@ -566,17 +558,17 @@ function print(id){
 			");
 	});
 
-	$("#printTotalHarga").html("<h4>Total Harga :</h4><h4 class='totalHarga form-control'>"+harga+"</h4> ");
+	$("#printTotalHarga").html("<h5>Total Harga :</h5><h5 class='totalHarga form-control'>"+harga+"</h5> ");
 	$("#printPemesan").text((order[0].nama_pemesan != null ) ? " "+order[0].nama_pemesan : " ");
 	$("#printAlamat").text((order[0].alamat_pemesan != null ) ? " "+order[0].alamat_pemesan : " ");
 	$("#printKota").text((order[0].kota_pemesan != null ) ? " "+order[0].kota_pemesan : " ");
 	$("#printTelp").text((order[0].cp_pemesan != null ) ? " "+order[0].cp_pemesan : " ");
 	$("#printHari").html("");
 	$.each(acara,function(key,i){
-		$("#printHari").append("<h4>"+this.acara+" : "+this.tanggal+"</h4>");
+		$("#printHari").append("<h5>"+this.acara+" : "+this.tanggal+"</h5>");
 	});
 	$("#printPemesan2").text(order[0].nama_pemesan);
-	$("#printDp").html("<h4>DP :</h4><h4 class='dp form-control'>"+Number(order[0].dp)+"</h4> ");
+	$("#printDp").html("<h5>DP :</h5><h5 class='dp form-control'>"+Number(order[0].dp)+"</h5> ");
 
 	$("#printPembayaran").html("");
 
@@ -586,12 +578,12 @@ function print(id){
 		console.log(totalAngsuran);
 		key+=1;
 		var date = new Date(this.created_at);
-		$("#printPembayaran").append("<h4> Angsuran "+key+": "+date.getDate() + '-' + (date.getMonth() + 1) + '-' +  date.getFullYear()+"</h4><h4 class='angsuran form-control'>"+this.angsuran+"</h4>");
+		$("#printPembayaran").append("<h5> Angsuran "+key+": "+date.getDate() + '-' + (date.getMonth() + 1) + '-' +  date.getFullYear()+"</h5><h5 class='angsuran form-control'>"+this.angsuran+"</h5>");
 	});
 
 	var sisaPembayaran = harga - (Number(order[0].dp) + Number(totalAngsuran));
 
-	$("#printSisaPembayaran").html("<h4>Sisa Pembayaran</h4><h4 class='sisaPembayaran form-control'>"+Number(sisaPembayaran)+"</h4> ");
+	$("#printSisaPembayaran").html("<h5>Sisa Pembayaran</h5><h5 class='sisaPembayaran form-control'>"+Number(sisaPembayaran)+"</h5> ");
 
 	console.log(harga,Number(order[0].dp),"total angsuran nya adalah : "+Number(totalAngsuran),sisaPembayaran);
 

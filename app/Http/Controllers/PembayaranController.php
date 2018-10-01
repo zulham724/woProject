@@ -38,17 +38,17 @@ class PembayaranController extends Controller
       }
       return redirect((Auth::user()->role_id == 1) ? 'admin/pembayaran' : 'operator/pembayaran');
     }
-    public function delete($id){
+    public function destroy($id){
         // dd($id);
         $data['notification'] = Notification::create([
             "title"=>Auth::user()->name,
             "content"=>Auth::user()->name." telah menghapus pembayaran",
             "isRead"=>0,
             ]);
-        $data['pembayaran']=Pembayaran::where('id',$id)->delete();
+        $pembayaran=Pembayaran::find($id)->delete();
         // $data['file']=Storage::delete(storage_path().'/app/'.$request['file']);
         // dd(storage_path()."/app/".$request['file']);
 
-        return redirect('admin/pembayaran');
+        return response()->json($pembayaran);
     }
 }

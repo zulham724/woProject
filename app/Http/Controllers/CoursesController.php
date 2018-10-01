@@ -28,7 +28,7 @@ class CoursesController extends Controller
         $courses->fill($request->all());
         $courses->user_id = Auth::user()->id;
         $courses->save();
-        return redirect('admin/courses')-> with('alert-success', 'Data Berhasil Ditambahkan!');
+        return redirect()-> route('courses.index');
     }
 
     public function edit($id)
@@ -53,7 +53,7 @@ class CoursesController extends Controller
     public function destroy($id)
     {
         Courses::where('id',$id)->delete();
-        return redirect('admin/courses');
+        return redirect()->route('courses.index');
     }
 
 }

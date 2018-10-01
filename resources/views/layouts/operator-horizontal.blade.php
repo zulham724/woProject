@@ -18,7 +18,7 @@
     <!-- CUSTOM STYLE  -->
      <link href="{{asset('css/horizontal-admin.css')}}" rel="stylesheet" />
     <!-- DATATABLE STYLE  -->
-    <link href="{{asset('js/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet" />
+   <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
     {{-- full calendar --}}

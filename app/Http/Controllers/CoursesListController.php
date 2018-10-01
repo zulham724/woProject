@@ -40,7 +40,7 @@ class CoursesListController extends Controller
             "type"=>$request['type'],
             "price"=>$request['price'],
         ]);
-        return redirect('admin/courseslists')-> with('alert-success', 'Data Berhasil Ditambahkan!');
+        return redirect()-> route('courseslists.index');
     }
 
     /**
@@ -95,6 +95,6 @@ class CoursesListController extends Controller
     public function destroy($id)
     {
         CoursesList::where('id',$id)->delete();
-        return redirect('admin/courseslists');
+        return redirect()-> route('courseslists.index');
     }
 }

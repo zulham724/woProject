@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
 
-	<a href="{{url('admin/courses')}}"><button type="button" class="btn btn-success" name="button">Back</button></a><hr>
+	<a href="{{route('courses.index')}}"><button type="button" class="btn btn-success" name="button">Back</button></a><hr>
 
 	<div class="panel panel-default">
 		<div class="panel-heading">

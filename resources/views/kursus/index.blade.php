@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 	<div class="container">
-	<a href="{{url('admin/kursus/create')}}" type="button" class="btn btn-success"><i class="fa fa-pencil-alt "></i> Input Peserta Kursus</a><hr>
+	<a href="{{route('courses.create')}}" type="button" class="btn btn-success"><i class="fa fa-pencil-alt "></i> Input Peserta Kursus</a><hr>
 
 	<div class="panel panel-default">
 		<div class="panel-heading">

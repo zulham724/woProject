@@ -89,7 +89,7 @@ const destroy = (id)=>{
         }).then(result=>{
             if(result.value){
                 let access = {
-                    id:id,
+                 
                     _method:"delete",
                     _token:"{{ csrf_token() }}"
                 }

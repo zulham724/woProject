@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer(['layouts.admin-horizontal','layouts.operator-horizontal','layouts.staff-horizontal'],function($view){
-            $data['allNotif'] = Notification::get();
+            $data['allNotif'] = Notification::orderBy('id','desc')->get();
             $data['countNotif'] = Notification::where('isRead',0)->count();
             $data['notification'] = Notification::where('isRead',0)->orderBy('id','desc')->limit(5)->get();
             $view->with($data);
