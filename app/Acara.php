@@ -10,4 +10,8 @@ class Acara extends Model
     protected $fillable = [
     'order_id','acara','tanggal','tempat','jam',
     ];
+
+    public function order(){
+    	return $this->belongsTo('App\Order');
+    }
 }

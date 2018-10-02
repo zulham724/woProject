@@ -51,32 +51,48 @@
         swal("Hello :)","Anda telah Login","success");
     }
     const data=[];
-    const schedule = {!! $schedule !!};
     const courses = {!! $courses !!};
+    const acaras = {!! $acaras !!};
+    const items = {!! $items !!};
 
-    $.each(schedule,function(key,i){
-    	data.push({
-            title:'Pesanan '+this.nama_pemesan,
-            start:this.tanggal,
-            id:this.id,
-            acara:this.nama_pemesan,
-            tanggal:this.tanggal,
-            jam:this.jam,
-            tempat:this.tempat
-        });
-    });
+    console.log(courses,acaras,items);
+
     $.each(courses,(key,i)=>{
         data.push({
             title:'Kursus '+i.name,
             start:i.date,
-            id:'a'+i.id,
+            id:'c'+i.id,
             acara:i.name,
             tanggal:i.date,
             jam:i.time,
             tempat:i.place
         });
     });
-    console.log("datanya",courses,schedule,data);
+
+    $.each(acaras,(index,a)=>{
+        data.push({
+            title:'Acara '+a.order.nama_pemesan,
+            start:a.tanggal,
+            id:'a'+a.id,
+            acara:a.acara,
+            tanggal:a.tanggal,
+            jam:a.jam,
+            tempat:a.tempat
+        });
+    });
+
+    $.each(items,(index,i)=>{
+        data.push({
+            title:'Pesanan '+i.order.nama_pemesan,
+            start:i.date,
+            id:'i'+i.id,
+            acara:i.person+' mengerjakan '+i.item_list.name,
+            tanggal:i.date,
+            jam:'tidak ditentukan',
+            tempat:'tidak ditentukan'
+        });
+    });
+
     $('#calendar').fullCalendar({
         lang:'id',
         events : data,

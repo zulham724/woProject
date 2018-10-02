@@ -76,8 +76,8 @@
 								<div class="form-group">
 								    
 									<span class="label label-default">Upload: </span> 
-									@if($order->file!=NULL)
-									<img src="{{asset('storage/'$order->upload)}}" style="width:30px; height:30px;">
+									@if($order->upload!=NULL)
+									<img src="{{asset('storage/'.$order->upload)}}" style="width:30px; height:30px;">
 									@endif
 									<input type="file" name="order[upload]" id="upload">
 								</div>

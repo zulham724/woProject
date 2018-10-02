@@ -26,7 +26,6 @@ class CreateOrdersTable extends Migration
             $table->string('total_tamu')->nullable()->default('-');
             $table->string('jenis_jamuan')->nullable()->default('-');
             $table->string('dp')->nullable();
-            $table->string('file')->nullable();
             $table->string('upload')->nullable();
             $table->timestamps();
             $table->softDeletes();
