@@ -20,6 +20,7 @@ class CreateCoursesTable extends Migration
             $table->string('name')->nullable();
             $table->string('certificate_name')->nullable();
             $table->date('date')->nullable();
+            $table->string('time')->nullable();
             $table->string('place')->nullable();
             $table->timestamps();
             $table->softDeletes();

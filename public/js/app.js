@@ -43400,6 +43400,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['edit_items'],
@@ -43543,6 +43545,34 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: item.description,
+                          expression: "item.description"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        name: "items[" + a + "][description]",
+                        placeholder: "Keterangan"
+                      },
+                      domProps: { value: item.description },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(item, "description", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
                     _c("input", {
                       directives: [
                         {
@@ -43614,7 +43644,6 @@ var render = function() {
                       attrs: {
                         type: "text",
                         name: "items[" + a + "][person]",
-                        required: "",
                         placeholder: "Penanggung Jawab"
                       },
                       domProps: { value: item.person },
@@ -43652,35 +43681,6 @@ var render = function() {
                         type: "file",
                         name: "items[" + a + "][image]",
                         id: "upload"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: item.description,
-                          expression: "item.description"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "items[" + a + "][description]",
-                        required: "",
-                        placeholder: "Keterangan"
-                      },
-                      domProps: { value: item.description },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(item, "description", $event.target.value)
-                        }
                       }
                     })
                   ]),

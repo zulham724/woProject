@@ -19,7 +19,7 @@
 								<div class="form-group">
                         			@csrf
                         			@method('post')
-									<h4><span class="label label-default">Nama Pemesan: </span></h4>
+									<h4><span class="label label-default">Nama Peserta: </span></h4>
 									<input type="text" name="name" class="form-control" >
 								</div>
 								<div class="form-group">
@@ -37,6 +37,10 @@
 								<div class="form-group">
 									<h4><span class="label label-default">Hari Tanggal: </span></h4>
 									<input type="date" name="date" class="form-control">
+								</div>
+								<div class="form-group">
+									<h4><span class="label label-default">Jam: </span></h4>
+									<input type="text" name="time" class="form-control">
 								</div>
 								<div class="form-group">
 									<h4><span class="label label-default">Tempat Kursus: </span></h4>

@@ -28,6 +28,8 @@
 							<th>Nama Pemesan</th>
 							<th>Nama Sertifikat</th>
 							<th>Waktu Kursus</th>
+							<th>Jam Kursus</th>
+							<th>Tempat Kursus</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -40,11 +42,13 @@
 							<td>{{$course->name}}</td>
 							<td>{{$course->certificate_name}}</td>
 							<td>{{$course->date}}</td>
+							<td>{{$course->time}}</td>
+							<td>{{$course->place}}</td>
 							<td>
 								<a type="button" href="{{ route('courses.edit',$course->id) }}" class="btn btn-warning"><i class="fa fa-edit"></i> Edit</a>
 								<a type="button" class="btn btn-danger " onclick="destroy({{$course->id}})"><i class="fa fa-trash"></i> Delete</a>
 								<span data-toggle="modal" data-target="#modalPrint{{$course->id}}" >
-									<a type="button" class="btn btn-danger " ><i class="fa fa-print"></i> Print</a>
+									<a type="button" class="btn btn-success " ><i class="fa fa-print"></i> Print</a>
 								</span>
 
 

@@ -20,6 +20,10 @@
 								</div>
 
 								<div class="form-group">
+									<textarea type="text" :name="'items['+a+'][description]'" v-model="item.description" class="form-control" placeholder="Keterangan"></textarea>
+								</div>	
+
+								<div class="form-group">
 
 									<input type="number" :name="'items['+a+'][price]'" class="form-control" required v-model="item.price" placeholder="Harga">
 									
@@ -30,7 +34,7 @@
 								</div>
 
 								<div class="form-group">
-									<input type="text" :name="'items['+a+'][person]'" class="form-control" required v-model="item.person" placeholder="Penanggung Jawab">
+									<input type="text" :name="'items['+a+'][person]'" class="form-control" v-model="item.person" placeholder="Penanggung Jawab">
 								</div>
 
 								<div class="form-group">
@@ -38,9 +42,7 @@
 									<input type="file" :name="'items['+a+'][image]'" id="upload">
 								</div>
 
-								<div class="form-group">
-									<textarea type="text" :name="'items['+a+'][description]'" required v-model="item.description" class="form-control" placeholder="Keterangan"></textarea>
-								</div>	
+								
 
 								<div class="form-group">
 									<!-- <button type="button" class="btn btn-danger" @click="remove(a)"><i class="fa fa-trash"></i>Hapus</button>  -->

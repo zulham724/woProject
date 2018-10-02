@@ -72,7 +72,7 @@
             id:'a'+i.id,
             acara:i.name,
             tanggal:i.date,
-            jam:'tidak ditentukan',
+            jam:i.time,
             tempat:i.place
         });
     });
