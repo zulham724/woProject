@@ -1135,7 +1135,7 @@ try {
 window.axios = __webpack_require__(17);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-window.axios.defaults.baseURL = 'http://localhost/woProject/public/api';
+window.axios.defaults.baseURL = 'http://v2.datasuccesswo.com/api';
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
