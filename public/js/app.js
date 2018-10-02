@@ -1135,7 +1135,7 @@ try {
 window.axios = __webpack_require__(17);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-window.axios.defaults.baseURL = 'http://v2.datasuccesswo.com/api';
+window.axios.defaults.baseURL = 'http://localhost/woProject/public/api';
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -43809,9 +43809,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['edit_acaras'],
@@ -43873,143 +43870,139 @@ var render = function() {
           "div",
           { staticClass: "panel-body" },
           _vm._l(_vm.acaras, function(acara, a) {
-            return _c("div", { staticClass: "form-group" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-sm-3" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: acara.acara,
-                        expression: "acara.acara"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      name: "acaras[" + a + "][acara]",
-                      required: "",
-                      placeholder: "Acara Pelaksanaan"
-                    },
-                    domProps: { value: acara.acara },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(acara, "acara", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-2" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: acara.tanggal,
-                        expression: "acara.tanggal"
-                      }
-                    ],
-                    staticClass: "datepicker form-control",
-                    attrs: {
-                      type: "date",
-                      name: "acaras[" + a + "][tanggal]",
-                      required: "",
-                      placeholder: "Tanggal",
-                      id: "tanggal"
-                    },
-                    domProps: { value: acara.tanggal },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(acara, "tanggal", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-2" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: acara.jam,
-                        expression: "acara.jam"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      name: "acaras[" + a + "][jam]",
-                      required: "",
-                      placeholder: "Jam"
-                    },
-                    domProps: { value: acara.jam },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(acara, "jam", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-3" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: acara.tempat,
-                        expression: "acara.tempat"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      name: "acaras[" + a + "][tempat]",
-                      required: "",
-                      placeholder: "Tempat"
-                    },
-                    domProps: { value: acara.tempat },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(acara, "tempat", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-2" }, [
-                  _c(
-                    "button",
+            return _c("div", [
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
                     {
-                      staticClass: "btn btn-danger",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.remove(a)
-                        }
+                      name: "model",
+                      rawName: "v-model",
+                      value: acara.acara,
+                      expression: "acara.acara"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "acaras[" + a + "][acara]",
+                    required: "",
+                    placeholder: "Acara Pelaksanaan"
+                  },
+                  domProps: { value: acara.acara },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
                       }
-                    },
-                    [_c("i", { staticClass: "fa fa-trash" }), _vm._v(" Hapus")]
-                  )
-                ])
+                      _vm.$set(acara, "acara", $event.target.value)
+                    }
+                  }
+                })
               ]),
               _vm._v(" "),
-              _c("hr")
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: acara.tanggal,
+                      expression: "acara.tanggal"
+                    }
+                  ],
+                  staticClass: "datepicker form-control",
+                  attrs: {
+                    type: "date",
+                    name: "acaras[" + a + "][tanggal]",
+                    required: "",
+                    placeholder: "Tanggal",
+                    id: "tanggal"
+                  },
+                  domProps: { value: acara.tanggal },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(acara, "tanggal", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: acara.jam,
+                      expression: "acara.jam"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "acaras[" + a + "][jam]",
+                    required: "",
+                    placeholder: "Jam"
+                  },
+                  domProps: { value: acara.jam },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(acara, "jam", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: acara.tempat,
+                      expression: "acara.tempat"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "acaras[" + a + "][tempat]",
+                    required: "",
+                    placeholder: "Tempat"
+                  },
+                  domProps: { value: acara.tempat },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(acara, "tempat", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger btn-block",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.remove(a)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-trash" }), _vm._v(" Hapus")]
+                )
+              ])
             ])
           })
         )

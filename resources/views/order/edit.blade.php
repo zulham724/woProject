@@ -25,23 +25,23 @@
 							<div class="panel-body">
 								<div class="form-group">
 									<span class="label label-default">Nama Pemesan: </span>
-									<input type="text" name="order[nama_pemesan]" class="form-control" value="{{$order->nama_pemesan}}">
+									<input type="text" name="order[nama_pemesan]" class="form-control" value="{{$order->nama_pemesan}}" placeholder="nama pemesan">
 								</div>
 								<div class="form-group">
 									<h4><span class="label label-default">Email : </span></h4>
-									<input type="text" name="order[email_pemesan]" value="{{$order->email_pemesan}}" class="form-control">
+									<input type="text" name="order[email_pemesan]" value="{{$order->email_pemesan}}" class="form-control" placeholder="email">
 								</div>
 								<div class="form-group">
 									<span class="label label-default">Alamat: </span>
-									<input type="text" name="order[alamat_pemesan]" class="form-control" value="{{$order->alamat_pemesan}}">
+									<input type="text" name="order[alamat_pemesan]" class="form-control" value="{{$order->alamat_pemesan}}" placeholder="alamat">
 								</div>
 								<div class="form-group">
 									<span class="label label-default">Kota: </span>
-									<input type="text" name="order[kota_pemesan]" class="form-control" value="{{$order->kota_pemesan}}">
+									<input type="text" name="order[kota_pemesan]" class="form-control" value="{{$order->kota_pemesan}}" placeholder="kota">
 								</div>
 								<div class="form-group">
 									<span class="label label-default">CP: </span>
-									<input type="text" name="order[cp_pemesan]" class="form-control" value="{{$order->cp_pemesan}}">
+									<input type="text" name="order[cp_pemesan]" class="form-control" value="{{$order->cp_pemesan}}" placeholder="contact person">
 								</div>
 								<div class="form-group">
 									<span class="label label-default">Tempat: </span>
@@ -63,21 +63,21 @@
 								</div>
 								<div class="form-group">
 									<span class="label label-default">Jumlah Tamu Undangan: </span>
-									<input type="text" name="order[total_tamu]" class="form-control" value="{{$order->total_tamu}}">
+									<input type="text" name="order[total_tamu]" class="form-control" value="{{$order->total_tamu}}" placeholder="nominal tamu undangan">
 								</div>
 								<div class="form-group">
 									<span class="label label-default">Jenis Jamuan: </span>
-									<input type="text" name="order[jenis_jamuan]" class="form-control" value="{{$order->jenis_jamuan}}">
+									<input type="text" name="order[jenis_jamuan]" class="form-control" value="{{$order->jenis_jamuan}}" placeholder="jenis jamuan">
 								</div>
 								<div class="form-group">
 									<span class="label label-default">DP: </span>
-									<input type="text" name="order[dp]" value="{{$order->dp}}" class="form-control">
+									<input type="text" name="order[dp]" value="{{$order->dp}}" placeholder="dp" class="form-control">
 								</div>
 								<div class="form-group">
 								    
 									<span class="label label-default">Upload: </span> 
 									@if($order->file!=NULL)
-									<img src="{{url('storage/app/uploads/pdf.png')}}" style="width:30px; height:30px;">
+									<img src="{{asset('storage/'$order->upload)}}" style="width:30px; height:30px;">
 									@endif
 									<input type="file" name="order[upload]" id="upload">
 								</div>
@@ -96,59 +96,59 @@
 
 										<div class="form-group">
 											<span class="label label-default">Nama Lengkap Pria: </span>
-											<input type="text" name="biodata[nama_lengkap_pria]" class="form-control" value="{{$biodata->nama_lengkap_pria}}">
+											<input type="text" name="biodata[nama_lengkap_pria]" class="form-control" value="{{$biodata->nama_lengkap_pria}}" placeholder="nama">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Alamat Pria: </span>
-											<input type="text" name="biodata[alamat_pria]" class="form-control" value="{{$biodata->alamat_pria}}">
+											<input type="text" name="biodata[alamat_pria]" class="form-control" value="{{$biodata->alamat_pria}}" placeholder="alamat">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">CP Pria:</span>
-											<input type="text" name="biodata[cp_pria]" class="form-control" value="{{$biodata->cp_pria}}">
+											<input type="text" name="biodata[cp_pria]" class="form-control" value="{{$biodata->cp_pria}}" placeholder="contact person">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Tempat Tanggal Lahir:</span>
-											<input type="text" name="biodata[ttl_pria]" class="form-control" value="{{$biodata->ttl_pria}}">
+											<input type="text" name="biodata[ttl_pria]" class="form-control" value="{{$biodata->ttl_pria}}" placeholder="tempat tanggal lahir">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Agama Pria:</span>
-											<input type="text" name="biodata[agama_pria]" class="form-control" value="{{$biodata->agama_pria}}">
+											<input type="text" name="biodata[agama_pria]" class="form-control" value="{{$biodata->agama_pria}}" placeholder="agama">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Pendidikan Pria</span>
-											<input type="text" name="biodata[pendidikan_pria]" class="form-control" value="{{$biodata->pendidikan_pria}}">
+											<input type="text" name="biodata[pendidikan_pria]" class="form-control" value="{{$biodata->pendidikan_pria}}" placeholder="pendidikan">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Tinggi Badan Pria:</span>
-											<input type="text" name="biodata[tinggi_badan_pria]" class="form-control" value="{{$biodata->tinggi_badan_pria}}">
+											<input type="text" name="biodata[tinggi_badan_pria]" class="form-control" value="{{$biodata->tinggi_badan_pria}}" placeholder="tinggi badan">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Berat Badan Pria:</span>
-											<input type="text" name="biodata[berat_badan_pria]" class="form-control" value="{{$biodata->berat_badan_pria}}">
+											<input type="text" name="biodata[berat_badan_pria]" class="form-control" value="{{$biodata->berat_badan_pria}}" placeholder="berat badan">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Ayah:</span>
-											<input type="text" name="biodata[ayah_pria]" class="form-control" value="{{$biodata->ayah_pria}}">
+											<input type="text" name="biodata[ayah_pria]" class="form-control" value="{{$biodata->ayah_pria}}" placeholder="nama">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">CP Ayah:</span>
-											<input type="text" name="biodata[cp_ayah_pria]" class="form-control" value="{{$biodata->cp_ayah_pria}}">
+											<input type="text" name="biodata[cp_ayah_pria]" class="form-control" value="{{$biodata->cp_ayah_pria}}" placeholder="contact person">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Ibu:</span>
-											<input type="text" name="biodata[ibu_pria]" class="form-control" value="{{$biodata->ibu_pria}}">
+											<input type="text" name="biodata[ibu_pria]" class="form-control" value="{{$biodata->ibu_pria}}" placeholder="nama">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">CP Ibu:</span>
-											<input type="text" name="biodata[cp_ibu_pria]" class="form-control" value="{{$biodata->cp_ibu_pria}}">
+											<input type="text" name="biodata[cp_ibu_pria]" class="form-control" value="{{$biodata->cp_ibu_pria}}" placeholder="contact person">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Nama Kakak:</span>
-											<input type="text" name="biodata[nama_kakak_pria]" class="form-control" id="tokenfield" data-role="tagsinput" value="{{$biodata->kakak_pria}}">
+											<input type="text" name="biodata[nama_kakak_pria]" class="form-control" id="tokenfield" data-role="tagsinput" value="{{$biodata->kakak_pria}}" placeholder="nama">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Nama Adik:</span>
-											<input type="text" name="biodata[nama_adik_pria]" class="form-control" id="tokenfield" data-role="tagsinput" value="{{$biodata->adik_pria}}">
+											<input type="text" name="biodata[nama_adik_pria]" class="form-control" id="tokenfield" data-role="tagsinput" value="{{$biodata->adik_pria}}" placeholder="nama">
 										</div>
 
 									</div>
@@ -156,59 +156,59 @@
 
 										<div class="form-group">
 											<span class="label label-default">Nama Lengkap wanita: </span>
-											<input type="text" name="biodata[nama_lengkap_wanita]" class="form-control" value="{{$biodata->nama_lengkap_wanita}}">
+											<input type="text" name="biodata[nama_lengkap_wanita]" class="form-control" value="{{$biodata->nama_lengkap_wanita}}" placeholder="nama">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Alamat wanita: </span>
-											<input type="text" name="biodata[alamat_wanita]" class="form-control" value="{{$biodata->alamat_wanita}}">
+											<input type="text" name="biodata[alamat_wanita]" class="form-control" value="{{$biodata->alamat_wanita}}" placeholder="alamat">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">CP wanita:</span>
-											<input type="text" name="biodata[cp_wanita]" class="form-control" value="{{$biodata->cp_wanita}}">
+											<input type="text" name="biodata[cp_wanita]" class="form-control" value="{{$biodata->cp_wanita}}" placeholder="contact person">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Tempat Tanggal Lahir:</span>
-											<input type="text" name="biodata[ttl_wanita]" class="form-control" value="{{$biodata->ttl_wanita}}">
+											<input type="text" name="biodata[ttl_wanita]" class="form-control" value="{{$biodata->ttl_wanita}}" placeholder="tempat tanggal lahir">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Agama wanita:</span>
-											<input type="text" name="biodata[agama_wanita]" class="form-control" value="{{$biodata->agama_wanita}}">
+											<input type="text" name="biodata[agama_wanita]" class="form-control" value="{{$biodata->agama_wanita}}" placeholder="agama">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Pendidikan wanita</span>
-											<input type="text" name="biodata[pendidikan_wanita]" class="form-control" value="{{$biodata->pendidikan_wanita}}">
+											<input type="text" name="biodata[pendidikan_wanita]" class="form-control" value="{{$biodata->pendidikan_wanita}}" placeholder="pendidikan">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Tinggi Badan wanita:</span>
-											<input type="text" name="biodata[tinggi_badan_wanita]" class="form-control" value="{{$biodata->tinggi_badan_wanita}}">
+											<input type="text" name="biodata[tinggi_badan_wanita]" class="form-control" value="{{$biodata->tinggi_badan_wanita}}" placeholder="tinggi badan">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Berat Badan wanita:</span>
-											<input type="text" name="biodata[berat_badan_wanita]" class="form-control" value="{{$biodata->berat_badan_wanita}}">
+											<input type="text" name="biodata[berat_badan_wanita]" class="form-control" value="{{$biodata->berat_badan_wanita}}" placeholder="berat badan">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Ayah:</span>
-											<input type="text" name="biodata[ayah_wanita]" class="form-control" value="{{$biodata->ayah_wanita}}">
+											<input type="text" name="biodata[ayah_wanita]" class="form-control" value="{{$biodata->ayah_wanita}}" placeholder="nama">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">CP Ayah:</span>
-											<input type="text" name="biodata[cp_ayah_wanita]" class="form-control" value="{{$biodata->cp_ayah_wanita}}">
+											<input type="text" name="biodata[cp_ayah_wanita]" class="form-control" value="{{$biodata->cp_ayah_wanita}}" placeholder="contact person">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Ibu:</span>
-											<input type="text" name="biodata[ibu_wanita]" class="form-control" value="{{$biodata->jenis_jamuan}}">
+											<input type="text" name="biodata[ibu_wanita]" class="form-control" value="{{$biodata->jenis_jamuan}}" placeholder="nama">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">CP Ibu:</span>
-											<input type="text" name="biodata[cp_ibu_wanita]" class="form-control" value="{{$biodata->cp_ibu_wanita}}">
+											<input type="text" name="biodata[cp_ibu_wanita]" class="form-control" value="{{$biodata->cp_ibu_wanita}}" placeholder="contact person">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Nama Kakak:</span>
-											<input type="text" name="biodata[nama_kakak_wanita]" class="form-control" id="tokenfield" data-role="tagsinput" value="{{$biodata->kakak_wanita}}">
+											<input type="text" name="biodata[nama_kakak_wanita]" class="form-control" id="tokenfield" data-role="tagsinput" value="{{$biodata->kakak_wanita}}" placeholder="nama">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Nama Adik:</span>
-											<input type="text" name="biodata[nama_adik_wanita]" class="form-control" id="tokenfield" data-role="tagsinput" value="{{$biodata->adik_wanita}}">
+											<input type="text" name="biodata[nama_adik_wanita]" class="form-control" id="tokenfield" data-role="tagsinput" placeholder="nama" value="{{$biodata->adik_wanita}}">
 										</div>
 
 
