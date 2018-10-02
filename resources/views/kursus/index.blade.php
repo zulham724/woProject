@@ -89,7 +89,7 @@
 						<p style="font-size:50px; font-family: Bookman Old Style"><b><u>SERTIFIKAT</u></b></p><br>
 						<h4>Diberikan kepada :</h4>
 						@php
-						setlocale (LC_TIME, 'id');
+						setlocale (LC_TIME, 'id_ID');
 						$date = strftime( "%d %B %Y", strtotime($course->date));
 						$date1 = strftime( " %d %B %Y", time());
 						$kalimat = $course->name;
