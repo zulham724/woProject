@@ -59,8 +59,12 @@
 
                   <label for="sampai" class="control-label">Tahun</label>
 
-                    
-                        <input type="text" class="form-control" name="date_year" placeholder="Tahun" required>
+                        <select class="form-control" name="date_year" required>
+                          <option value="">--Pilih Tahun--</option>
+                          @for($i=2015; $i<=2025; $i++)
+                          <option value="{{ $i }}">{{ $i }}</option>
+                          @endfor
+                        </select>
 
                     <label for="item" class="control-label">Item</label>
 
