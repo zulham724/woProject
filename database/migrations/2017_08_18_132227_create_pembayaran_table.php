@@ -14,6 +14,7 @@ class CreatePembayaranTable extends Migration
     public function up()
     {
         Schema::create('pembayaran',function(Blueprint $table){
+            $table->engine = "InnoDB";
             $table->increments('id');
             $table->integer('order_id')->unsigned();
             $table->bigInteger('angsuran')->nullable();

@@ -14,6 +14,7 @@ class CreateCoursesTable extends Migration
     public function up()
     {
          Schema::create('courses',function(Blueprint $table){
+            $table->engine = "InnoDB";
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('courses_list_id')->unsigned();

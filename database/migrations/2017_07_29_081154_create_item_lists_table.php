@@ -14,6 +14,7 @@ class CreateItemListsTable extends Migration
     public function up()
     {
         Schema::create('item_lists',function(Blueprint $table){
+            $table->engine = "InnoDB";
             $table->increments('id');
             $table->string('name')->nullable();
             $table->timestamps();

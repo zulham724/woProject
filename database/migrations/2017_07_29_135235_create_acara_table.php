@@ -14,6 +14,7 @@ class CreateAcaraTable extends Migration
     public function up()
     {
         Schema::create('acara',function(Blueprint $table){
+          $table->engine = "InnoDB";
           $table->increments('id');
           $table->integer('order_id')->unsigned();
           $table->string('acara')->nullable()->default('-');

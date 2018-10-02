@@ -14,6 +14,7 @@ class CreateCoursesListsTable extends Migration
     public function up()
     {
         Schema::create('courses_lists',function(Blueprint $table){
+            $table->engine = "InnoDB";
             $table->increments('id');
             $table->string('type')->nullable();
             $table->integer('price')->unsigned();
