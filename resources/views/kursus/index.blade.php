@@ -36,12 +36,16 @@
 
 					<tbody>
 						@foreach($courses as $c => $course)
+						@php
+						setlocale (LC_TIME, 'id_ID');
+						$date = strftime( "%d %B %Y", strtotime($course->date));
+						@endphp
 						<tr>
 							<td>{{$course->courses_list->type}}</td>
 							<td>{{$c+1}}</td>
 							<td>{{$course->name}}</td>
 							<td>{{$course->certificate_name}}</td>
-							<td>{{$course->date}}</td>
+							<td>{{$date}}</td>
 							<td>{{$course->time}}</td>
 							<td>{{$course->place}}</td>
 							<td>

@@ -20,6 +20,8 @@ class CreateItemsTable extends Migration
             $table->integer('price')->nullable();
             $table->string('person')->nullable();
             $table->date('date')->nullable();
+            $table->string('time')->nullable();
+            $table->string('place')->nullable();
             $table->string('image')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();

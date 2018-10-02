@@ -39,6 +39,10 @@
 									<input type="date" name="date" class="form-control" value="{{$courses->date}}">
 								</div>
 								<div class="form-group">
+									<h4><span class="label label-default">Jam: </span></h4>
+									<input type="text" name="time" class="form-control" value="{{$courses->time}}">
+								</div>
+								<div class="form-group">
 									<h4><span class="label label-default">Tempat Kursus: </span></h4>
 									<input type="text" name="place" class="form-control" value="{{$courses->place}}">
 								</div>

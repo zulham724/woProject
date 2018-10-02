@@ -37,6 +37,11 @@
 					</thead>
 					<tbody>
 						@foreach($orders as $index => $ini)
+						@php
+						setlocale (LC_TIME, 'id_ID');
+						$date = strftime( "%d %B %Y", strtotime($ini->created_at));
+						@endphp
+
 						<tr>
 							<td>{{$index+1}}</td>
 							<td>{{$ini->nama_pemesan}}</td>
@@ -48,7 +53,7 @@
 							<td>{{$ini->penyelenggara}}</td>
 							<td>{{$ini->total_tamu}}</td>
 							<td>{{$ini->jenis_jamuan}}</td>
-							<td>{{date('d-m-Y', strtotime($ini->created_at))}}</td>
+							<td>{{$date}}</td>
 							<td>
 								<span data-toggle="modal" data-target="#modalBiodata" onclick="biodata({{$ini->id}})">
 									<a class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="Lihat Biodata">

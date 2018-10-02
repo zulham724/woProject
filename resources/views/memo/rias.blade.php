@@ -28,12 +28,16 @@
 
 			            <tbody>
 			                @foreach($items as $i => $item)
+			                @php
+							setlocale (LC_TIME, 'ID');
+							$date = strftime( "%d %B %Y", strtotime($item->date));
+							@endphp
 			                <tr>
 			                  <td>{{$i+1}}</td>
 			                  <td>
 						           	<img src="{{asset('storage/'.$item->image)}}" width="100">
 						      </td>
-			                  <td>{{$item->date}}</td>
+			                  <td>{{$date}}</td>
 			                  <td>{{$item->order->nama_pemesan}}</td>
 			                  <td>{{$item->item_list->name}}</td>
 			                  <td>{{$item->person}}</td>

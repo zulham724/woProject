@@ -88,8 +88,8 @@
             id:'i'+i.id,
             acara:i.person+' mengerjakan '+i.item_list.name,
             tanggal:i.date,
-            jam:'tidak ditentukan',
-            tempat:'tidak ditentukan'
+            jam:i.time,
+            tempat:i.place
         });
     });
 

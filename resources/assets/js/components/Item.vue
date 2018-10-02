@@ -34,6 +34,14 @@
 								</div>
 
 								<div class="form-group">
+									<input type="text" :name="'items['+a+'][time]'" class="form-control" required v-model="item.time" placeholder="Jam">
+								</div>
+
+								<div class="form-group">
+									<input type="text" :name="'items['+a+'][place]'" class="form-control" required v-model="item.place" placeholder="Tempat">
+								</div>
+
+								<div class="form-group">
 									<input type="text" :name="'items['+a+'][person]'" class="form-control" v-model="item.person" placeholder="Penanggung Jawab">
 								</div>
 
