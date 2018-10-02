@@ -5,10 +5,7 @@
 @endsection
 @section('content')
 
-
-
-<div class="container">
-	<div class="container">
+<div class="container-fluid">
 	<a href="{{ route('orders.create') }}"><button type="button" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Insert new Order</button></a><hr>
 
 	<div class="panel panel-default">
@@ -17,7 +14,8 @@
 		</div>
 		{{-- end heading --}}
 		<div class="panel-body">
-			<div class="table-responsive">
+			<div class="container">
+				<div class="row table-responsive">
 				<table class="table table-bordered" id="table">
 					<thead>
 						<tr>
@@ -39,7 +37,7 @@
 						@foreach($orders as $index => $ini)
 						@php
 						setlocale (LC_TIME, 'id_ID');
-						$date = strftime( "%d %B %Y", strtotime($ini->created_at));
+						$date = strftime("%A, %d %B %Y", strtotime($ini->created_at));
 						@endphp
 
 						<tr>
@@ -106,12 +104,11 @@
 					</tbody>
 				</table>
 			</div>
+			</div>
 		</div>
 		{{-- end body --}}
 	</div>
 
-	</div>
-	{{-- end container --}}
 </div>
 
 {{-- every modal placed here --}}

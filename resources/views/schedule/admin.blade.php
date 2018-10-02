@@ -111,7 +111,7 @@
         				<tr>\
 							<td>"+key+"</td>\
 							<td>"+this.acara+"</td>\
-							<td>"+this.tanggal+"</td>\
+							<td>"+new Date(this.tanggal).toLocaleString('id-ID',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })+"</td>\
 							<td>"+this.jam+"</td>\
 							<td>"+this.tempat+"</td>\
 						</tr>\

@@ -45,7 +45,7 @@
 						<tr>
 							<td>{{$cl+1}}</td>
 							<td>{{$courses_list->type}}</td>
-							<td>{{$courses_list->price}}</td>
+							<td>Rp. {{ number_format($courses_list->price,0,",",".") }}</td>
 							<td>
 								<a type="button" href="{{ route('courseslists.edit',$courses_list->id) }}" class="btn btn-warning" ><i class="fa fa-edit"></i> Edit</a>
 								<button type="button" class="btn btn-danger" onclick="destroy({{$courses_list->id}})"><i class="fa fa-trash"></i> Delete</button>

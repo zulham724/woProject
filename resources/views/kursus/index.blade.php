@@ -38,7 +38,7 @@
 						@foreach($courses as $c => $course)
 						@php
 						setlocale (LC_TIME, 'id_ID');
-						$date = strftime( "%d %B %Y", strtotime($course->date));
+						$date = strftime( "%A, %d %B %Y", strtotime($course->date));
 						@endphp
 						<tr>
 							<td>{{$course->courses_list->type}}</td>
