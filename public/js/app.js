@@ -1135,7 +1135,6 @@ try {
 window.axios = __webpack_require__(17);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-window.axios.defaults.baseURL = 'http://v2.datasuccesswo.com/api';
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -43449,7 +43448,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       // console.log('read');
-      axios.get('/itemlists/').then(function (result) {
+      axios.get('/api/itemlists/').then(function (result) {
         console.log(result);
         _this.itemlists = result.data;
       }, function (err) {
@@ -44184,7 +44183,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log('Component mounted.');
     },
     created: function created() {
-        axios.get('/orders').then(function (result) {
+        axios.get('/api/orders').then(function (result) {
             console.log(result);
             $("#datatable").DataTable({
                 process: true,

@@ -104,7 +104,7 @@
         	},
         	read(){
         		// console.log('read');
-        		axios.get('/itemlists/').then(result=>{
+        		axios.get('/api/itemlists/').then(result=>{
         			console.log(result);
         			this.itemlists = result.data;
         		},err=>{

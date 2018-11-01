@@ -43,7 +43,7 @@
             console.log('Component mounted.')
         },
         created(){
-            axios.get('/orders').then(result=>{
+            axios.get('/api/orders').then(result=>{
                 console.log(result);
                 $("#datatable").DataTable({
                     process:true,

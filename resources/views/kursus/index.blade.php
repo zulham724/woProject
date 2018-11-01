@@ -1,6 +1,12 @@
 @extends('layouts.admin-horizontal')
 @section('css')
-
+<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+<style type="text/css">
+	.certificate * {
+		font-family: 'Great Vibes', cursive;
+		color:brown;
+	}
+</style>
 @endsection
 @section('content')
 	<div class="container">
@@ -54,7 +60,9 @@
 								<span data-toggle="modal" data-target="#modalPrint{{$course->id}}" >
 									<a type="button" class="btn btn-success " ><i class="fa fa-print"></i> Print</a>
 								</span>
-
+								<span data-toggle="modal" data-target="#modalNote{{$course->id}}" >
+									<a type="button" class="btn btn-info" ><i class="fa fa-print"></i> Print Nota</a>
+								</span>
 
 								<form id="delete{{$course->id}}" action="{{ route('courses.destroy',$course->id) }}" method="post">
 									<input type="hidden" name="_method" value="delete">
@@ -92,52 +100,56 @@
 						<h4>Wedding & Event Organizer</h4>
 						<h5>Jl.Pandanaran 126.Ruko Masjid Baiturrahman,Simpang Lima ,Semarang. Telp (024) 8313313</h5>
 					</div><hr style="height: 3px;border:none;color: #333;background-color: #333">
-					<div class="text-center">
+					
+					<div class="certificate">
 						
-						<p style="font-size:50px; font-family: Bookman Old Style"><b><u>SERTIFIKAT</u></b></p><br>
-						<h4>Diberikan kepada :</h4>
-						@php
-						setlocale (LC_TIME, 'id_ID');
-						$date = strftime( "%d %B %Y", strtotime($course->date));
-						$date1 = strftime( " %d %B %Y", time());
-						$kalimat = $course->name;
-						$kalimat_new = ucwords($kalimat);
-						$tipe = $course->courses_list->type;
-						$tipe_new = ucwords($tipe)
-						@endphp
-						<font face="Comic Sans MS">
-							<h1><u>{{$kalimat_new}}</u></h1><br>
-						</font>
-						<h4>Telah menyelesaikan program kursus {{$tipe_new}}<br>
-							yang dilaksanakan pada tanggal {{$date}}<br>
-							dengan hasil Baik dan dinyatakan telah layak bekerja <br>
-							sesuai dengan program keahlian yang telah diikuti<br><br>
-						</h4>
-					</div>
-					
-	      	     	
-					
-					<div class="row" style="height:150px">
-						<div class="col-xs-12">
-							<div class="col-xs-8">
-							</div>
-							<div class="col-xs-4">
-								<h4>
-									<center>Semarang, {{$date1}} <br>
-									Ketua LPK</center></h4>
-							</div>
-							
+						<div class="text-center">
+						
+							<p style="font-size:50px; font-family: Bookman Old Style"><b>SERTIFIKAT</b></p><br>
+							<h4>Diberikan kepada :</h4>
+							@php
+							setlocale (LC_TIME, 'id_ID');
+							$date = strftime( "%d %B %Y", strtotime($course->date));
+							$date1 = strftime( " %d %B %Y", time());
+							$kalimat = $course->certificate_name;
+							$kalimat_new = ucwords($kalimat);
+							$tipe = $course->courses_list->type;
+							$tipe_new = ucwords($tipe)
+							@endphp
+							<font face="Comic Sans MS">
+								<h1>{{$kalimat_new}}</h1><br>
+							</font>
+							<h4>For having participate in</h4>
+							<h3><b>{{$tipe_new}}</b></h3>
+							<h4>{{ $date }} at. Success Wedding Gallery</h4>
 						</div>
-					</div>
-					<div class="row" style="height:10px">
-						<div class="col-xs-12">
-							<div class="col-xs-8">
+						
+		      	     	
+						
+						<div class="row" style="height:150px">
+							<div class="col-xs-12">
+								<div class="col-xs-8">
+								</div>
+								<div class="col-xs-4">
+									<h4>
+										<center style="font-family: Arial, Helvetica, sans-serif">Semarang, {{$date1}} <br>
+										Ketua LPK</center>
+									</h4>
+								</div>
+								
 							</div>
-							<div class="col-xs-4">
-								<h4><center>Success</center> </h4>
-							</div>
-							
 						</div>
+						<div class="row" style="height:10px">
+							<div class="col-xs-12">
+								<div class="col-xs-8">
+								</div>
+								<div class="col-xs-4">
+									<h4><center style="font-family: Arial, Helvetica, sans-serif">Success</center> </h4>
+								</div>
+								
+							</div>
+						</div>
+
 					</div>
 					
 				</div>
@@ -154,13 +166,88 @@
 @endforeach
 {{-- test --}}
 
+@foreach ($courses as $c => $course)
+	<div id="modalNote{{$course->id}}" class="modal fade" role="dialog">
+	  <div class="modal-dialog modal-lg">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Print Preview</h4>
+	      </div>
+	      <div class="modal-body">
+				<div id="printNote{{$course->id}}">
+					
+					<div class="text-center">
+						<img src="{{asset('img/logo/logo.png')}}" />
+						<h4>Wedding & Event Organizer</h4>
+						<h5>Jl.Pandanaran 126.Ruko Masjid Baiturrahman,Simpang Lima ,Semarang. Telp (024) 8313313</h5>
+					</div><hr>
+					@php
+						setlocale (LC_TIME, 'id_ID');
+						$date = strftime( "%d %B %Y", strtotime($course->date));
+					@endphp
+					<table border="0">
+						<tr>
+							<td>Pemesan </td> <td> : </td><td>{{ $course->name }}</td>
+						</tr>
+						<tr>
+							<td>Waktu </td> <td> : </td><td>{{ $date }}</td>
+						</tr>
+						<tr>
+							<td>Jam </td> <td> : </td><td>{{ $course->time }}</td>
+						</tr>
+						<tr>
+							<td>Tempat </td> <td> : </td><td> {{ $course->place }}</td>
+						</tr>
+						<tr>
+							<td>Harga</td> <td> : </td><td>Rp. {{ number_format($course->courses_list->price,0,".",".") }}</td>
+						</tr>
+					</table>
+					<hr>
+					<div class="row" style="height:80px">
+						<div class="col-xs-12">
+							<div class="col-xs-6">
+								<h4>Hormat Kami</h4>
+							</div>
+							<div class="col-xs-6">
+								<h4>Pemesan</h4>
+							</div>
+						</div>
+					</div>
+					<div class="row" style="height:5px">
+						<div class="col-xs-12">
+							<div class="col-xs-6">
+								<h4>Success</h4>
+							</div>
+							<div class="col-xs-6">
+								<h4>{{ $course->name }}</h4>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				{{-- end printthis --}}
+				<button type="button" name="button" class="btn btn-info btn-block" onclick="print_note({{$course->id}})">Print Now</button>
+	       </div>
+
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+@endforeach
+
 @endsection
 @section('script')
 <script type="text/javascript">
 
 $(document).ready(function(){
 
-$("table").DataTable();
+	$("table").DataTable();
 
 });
 
@@ -199,8 +286,12 @@ const destroy = (id)=>{
     }
 
     function print_now(id){
-	$("#printThis"+id).printThis();
-}
+		$("#printThis"+id).printThis();
+	}
+
+	function print_note(id){
+		$("#printNote"+id).printThis();
+	}
 // end ready
 </script>
 @endsection
