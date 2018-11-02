@@ -81,17 +81,17 @@
         });
     });
 
-    $.each(items,(index,i)=>{
-        data.push({
-            title:'Pesanan '+i.order.nama_pemesan,
-            start:i.date,
-            id:'i'+i.id,
-            acara:i.person+' mengerjakan '+i.item_list.name,
-            tanggal:i.date,
-            jam:i.time,
-            tempat:i.place
-        });
-    });
+    // $.each(items,(index,i)=>{
+    //     data.push({
+    //         title:'Pesanan '+i.order.nama_pemesan,
+    //         start:i.date,
+    //         id:'i'+i.id,
+    //         acara:i.person+' mengerjakan '+i.item_list.name,
+    //         tanggal:i.date,
+    //         jam:i.time,
+    //         tempat:i.place
+    //     });
+    // });
 
     $('#calendar').fullCalendar({
         lang:'id',

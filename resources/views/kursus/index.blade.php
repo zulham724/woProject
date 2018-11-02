@@ -1,10 +1,19 @@
 @extends('layouts.admin-horizontal')
 @section('css')
-<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet" media="all">
 <style type="text/css">
+	@media print{
+		.certificate * {
+			-webkit-print-color-adjust: exact;
+			font-family: 'Charmonman', cursive !important;
+			color:brown !important;
+		}
+	}
+
 	.certificate * {
-		font-family: 'Great Vibes', cursive;
-		color:brown;
+		-webkit-print-color-adjust: exact;
+		font-family: 'Charmonman', cursive !important;
+		color:brown !important;
 	}
 </style>
 @endsection
@@ -94,19 +103,20 @@
         <h4 class="modal-title">Print Preview</h4>
       </div>
       <div class="modal-body">
-				<div id="printThis{{$course->id}}">
+				<div id="printThis{{$course->id}}" style="border-style: double;padding-bottom: 30px;border-color:brown;">
 					<div class="text-center">
 						<img src="{{asset('img/logo/logo.png')}}" />
 						<h4>Wedding & Event Organizer</h4>
 						<h5>Jl.Pandanaran 126.Ruko Masjid Baiturrahman,Simpang Lima ,Semarang. Telp (024) 8313313</h5>
-					</div><hr style="height: 3px;border:none;color: #333;background-color: #333">
+					</div>
+					<hr>
 					
 					<div class="certificate">
 						
 						<div class="text-center">
 						
-							<p style="font-size:50px; font-family: Bookman Old Style"><b>SERTIFIKAT</b></p><br>
-							<h4>Diberikan kepada :</h4>
+							<p style="font-size:50px;"><b>SERTIFIKAT</b></p><br>
+							<h4 style="color:brown;">Diberikan kepada :</h4>
 							@php
 							setlocale (LC_TIME, 'id_ID');
 							$date = strftime( "%d %B %Y", strtotime($course->date));
@@ -116,24 +126,22 @@
 							$tipe = $course->courses_list->type;
 							$tipe_new = ucwords($tipe)
 							@endphp
-							<font face="Comic Sans MS">
 								<h1>{{$kalimat_new}}</h1><br>
-							</font>
 							<h4>For having participate in</h4>
 							<h3><b>{{$tipe_new}}</b></h3>
-							<h4>{{ $date }} at. Success Wedding Gallery</h4>
+							<h4>{{ $date }} at. {{ $course->place }}</h4>
 						</div>
 						
 		      	     	
 						
-						<div class="row" style="height:150px">
+						<div class="row" style="height:100px">
 							<div class="col-xs-12">
 								<div class="col-xs-8">
 								</div>
 								<div class="col-xs-4">
 									<h4>
-										<center style="font-family: Arial, Helvetica, sans-serif">Semarang, {{$date1}} <br>
-										Ketua LPK</center>
+										<center style="font-family: Arial, Helvetica, sans-serif">
+										LKP ROSELLA SUCCESS</center>
 									</h4>
 								</div>
 								
@@ -144,7 +152,7 @@
 								<div class="col-xs-8">
 								</div>
 								<div class="col-xs-4">
-									<h4><center style="font-family: Arial, Helvetica, sans-serif">Success</center> </h4>
+									<h4><center>Hj. Ratna Hidayati</center> </h4>
 								</div>
 								
 							</div>
@@ -286,11 +294,17 @@ const destroy = (id)=>{
     }
 
     function print_now(id){
-		$("#printThis"+id).printThis();
+		$("#printThis"+id).printThis({
+			importCSS: true,
+            importStyle: true
+		});
 	}
 
 	function print_note(id){
-		$("#printNote"+id).printThis();
+		$("#printNote"+id).printThis({
+			importCSS: true,
+            importStyle: true
+		});
 	}
 // end ready
 </script>
