@@ -226,7 +226,7 @@
 							<td>Status</td> <td> : </td><td>{{ ($course->price+$course->sum_course_items_price) - ($course->dp+$course->sum_course_payments_price) <= 0 ? 'Lunas' : 'Belum Lunas' }}</td>
 						</tr>
 					</table>
-					</center>
+					
 					<hr>
 					<div class="row" style="height:80px">
 						<div class="col-xs-12">
@@ -248,7 +248,7 @@
 							</div>
 						</div>
 					</div>
-					
+					</center>
 				</div>
 				{{-- end printthis --}}
 				<button type="button" name="button" class="btn btn-info btn-block" onclick="print_note({{$course->id}})">Print Now</button>
