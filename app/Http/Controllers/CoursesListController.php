@@ -36,10 +36,10 @@ class CoursesListController extends Controller
      */
     public function store(Request $request)
     {
-        $data['courses_lists']= CoursesList::create([
-            "type"=>$request['type'],
-            "price"=>$request['price'],
-        ]);
+        $courseslist = new CoursesList;
+        $courseslist->fill($request->all());
+        $courseslist->save();
+
         return redirect()-> route('courseslists.index');
     }
 
@@ -76,12 +76,9 @@ class CoursesListController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request);
-        $data["courses_lists"]=CoursesList::where('id',$request['id'])
-        ->update([
-            'type' => $request['type'],
-            'price' => $request['price'],
-            
-        ]);
+        $courseslist = CoursesList::find($id);
+        $courseslist->fill($request->all());
+        $courseslist->update();
         // dd($data['user']);
        return redirect()->route('courseslists.index');
     }
