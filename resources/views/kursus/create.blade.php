@@ -31,7 +31,7 @@
 							<h4><span class="label label-default">Jenis Kursus: </span></h4>
 							<select class="form-control" name="courses_list_id" required>
 								@foreach($courses_lists as $courses_list)
-								<option value="{{ $courses_list->id }}">{{ $courses_list->type }} / {{$courses_list->price}}</option>
+								<option value="{{ $courses_list->id }}">{{ $courses_list->type }}</option>
 								@endforeach 
 							</select>
 						</div>
