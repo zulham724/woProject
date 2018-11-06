@@ -351,9 +351,6 @@
 						<tr>
 							<td>Telp </td> <td> : </td><td id="printTelp"></td>
 						</tr>
-						<tr>
-							<td>Tempat dan Tanggal Acara </td> <td> </td><td> <h4> </h4></td>
-						</tr>
 					</table>
 						<div id="printHari" style="padding-left:100px">
 
@@ -596,7 +593,10 @@ function print(id){
 	$(".costItem").formatCurrency({ colorize:true, region: 'id-ID' });
 }
 function print_now(){
-	$("#printThis").printThis();
+	$("#printThis").printThis({
+			importCSS: true,
+            importStyle: true
+		});
 }
 
 function destroy(id){
