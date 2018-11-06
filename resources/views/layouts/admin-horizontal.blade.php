@@ -73,6 +73,13 @@
                                             <i class='fa fa-angle-right'></i>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a class='text-center' href="{{url('coursepayments')}}" data-toggle='modal' >
+                                            <i class="fa fa-money-bill"></i>
+                                            <strong> Angsuran Pembayaran</strong>
+                                            <i class='fa fa-angle-right'></i>
+                                        </a>
+                                    </li>
                                 </ul>
                                 <!-- /.dropdown-messages -->
                             </li>

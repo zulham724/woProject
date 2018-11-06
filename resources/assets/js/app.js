@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.swal = require('sweetalert2');
 // import $ from 'jquery';
 // import 'datatables.net';
 
@@ -21,6 +22,7 @@ Vue.component('example', require('./components/Example.vue'));
 Vue.component('item', require('./components/Item.vue'));
 Vue.component('acara', require('./components/Acara.vue'));
 Vue.component('order',require('./components/Order.vue'));
+Vue.component('course-item',require('./components/CourseItem.vue'));
 
 
 const app = new Vue({

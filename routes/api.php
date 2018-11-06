@@ -21,6 +21,7 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 	Route::apiResources([
 		"items"=>"ItemController",
 		"itemlists"=>"ItemListController",
-		'orders'=>"OrderController"
+		"orders"=>"OrderController",
+		"coursepayments"=>"CoursePaymentController"
 	]);
 });

@@ -82,7 +82,7 @@
                 </div>
                 <input type="hidden" name="totalAngsuran" id="totalAngsuran" value="0">
                 {{csrf_field()}}
-                <button type="submit" class="btn btn-success btn-block" name="button">Submit</button>
+                {{-- <button type="submit" class="btn btn-success btn-block" name="button">Submit</button> --}}
               </form>
             </div>
           </div>
@@ -134,7 +134,7 @@
         "<div class=form-group >\
           <label> Angsuran "+key+":</label>\
           <button type='button' onclick=destroy("+i['id']+") class='btn btn-danger' name='button' >Hapus</button></a>\
-          <input class='form-control' name='angsuran"+key+"' type='text' value='"+this.angsuran+"' >\
+          <input class='form-control' disabled name='angsuran"+key+"' type='text' value='"+this.angsuran+"' >\
           <input type=hidden name='idAngsuran"+key+"' value='"+this.id+"'>\
         </div>"
       );
@@ -163,7 +163,7 @@
                 .done(res=>{
                     swal({
                         title:"Ok!",
-                        text:"Data berhasil dihaps!",
+                        text:"Data berhasil dihapus!",
                         type:"success"
                     }).then(result=>{
                         window.location.reload();

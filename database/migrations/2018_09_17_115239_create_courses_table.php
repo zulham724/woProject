@@ -23,6 +23,8 @@ class CreateCoursesTable extends Migration
             $table->date('date')->nullable();
             $table->string('time')->nullable();
             $table->string('place')->nullable();
+            $table->bigInteger('price')->default(0);
+            $table->bigInteger('dp')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

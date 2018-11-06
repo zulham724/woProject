@@ -15,10 +15,11 @@
 		font-family: 'Charmonman', cursive !important;
 		color:brown !important;
 	}
+
 </style>
 @endsection
 @section('content')
-	<div class="container">
+	<div class="container-fluid">
 	<a href="{{route('courses.create')}}" type="button" class="btn btn-success"><i class="fa fa-pencil-alt "></i> Input Peserta Kursus</a><hr>
 
 	<div class="panel panel-default">
@@ -28,23 +29,17 @@
 		{{-- end heading --}}
 		<div class="panel-body">
 			<div class="table-responsive">
-				<table class="table table-bordered">
+				<table class="table table-bordered" id="table">
 					<thead>
 						<tr>
-							<th>
-								<select class="form-control" name="courses_list_id">
-									<option value="">-Keseluruhan-</option>
-									@foreach($courses_lists as $courses_list)
-									<option value="{{ $courses_list->id }}">{{ $courses_list->type }}</option>
-									@endforeach 
-								</select>
-             				</th>
 							<th>No.</th>
+							<th>Jenis Kursus</th>
 							<th>Nama Pemesan</th>
 							<th>Nama Sertifikat</th>
 							<th>Waktu Kursus</th>
 							<th>Jam Kursus</th>
 							<th>Tempat Kursus</th>
+							<th>Status</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -56,15 +51,17 @@
 						$date = strftime( "%A, %d %B %Y", strtotime($course->date));
 						@endphp
 						<tr>
-							<td>{{$course->courses_list->type}}</td>
 							<td>{{$c+1}}</td>
+							<td>{{$course->courses_list->type}}</td>
 							<td>{{$course->name}}</td>
 							<td>{{$course->certificate_name}}</td>
 							<td>{{$date}}</td>
 							<td>{{$course->time}}</td>
 							<td>{{$course->place}}</td>
+							<td>{!! ($course->price+$course->sum_course_items_price) - ($course->dp+$course->sum_course_payments_price) <= 0 ? 
+								"<img src='".asset('images/lunas.png')."' height=30>" : "<img src='".asset('images/belum_lunas.png')."' height=30>" !!}</td>
 							<td>
-								<a type="button" href="{{ route('courses.edit',$course->id) }}" class="btn btn-warning"><i class="fa fa-edit"></i> Edit</a>
+								<a type="button" href="{{ route('courses.edit',$course->id) }}" class="btn btn-warning"><i class="fa fa-edit"></i> Lihat/Edit</a>
 								<a type="button" class="btn btn-danger " onclick="destroy({{$course->id}})"><i class="fa fa-trash"></i> Delete</a>
 								<span data-toggle="modal" data-target="#modalPrint{{$course->id}}" >
 									<a type="button" class="btn btn-success " ><i class="fa fa-print"></i> Print</a>
@@ -175,7 +172,7 @@
 {{-- test --}}
 
 @foreach ($courses as $c => $course)
-	<div id="modalNote{{$course->id}}" class="modal fade" role="dialog">
+	<div id="modalNote{{$course->id}}" class="modal fade customtable" role="dialog">
 	  <div class="modal-dialog modal-lg">
 
 	    <!-- Modal content-->
@@ -196,7 +193,11 @@
 						setlocale (LC_TIME, 'id_ID');
 						$date = strftime( "%d %B %Y", strtotime($course->date));
 					@endphp
-					<table border="0">
+					<center>
+					<table border="0" width="50%">
+						<tr>
+							<td>Kursus</td><td> : </td><td>{{ $course->courses_list->type }}</td>
+						</tr>
 						<tr>
 							<td>Pemesan </td> <td> : </td><td>{{ $course->name }}</td>
 						</tr>
@@ -210,9 +211,22 @@
 							<td>Tempat </td> <td> : </td><td> {{ $course->place }}</td>
 						</tr>
 						<tr>
-							<td>Harga</td> <td> : </td><td>Rp. {{ number_format($course->courses_list->price,0,".",".") }}</td>
+							<td>Harga Kursus</td> <td> : </td><td>Rp. {{ number_format($course->price,0,".",".") }}</td>
+						</tr>
+						<tr>
+							<td>Harga Tambahan</td> <td> : </td><td>Rp. {{ number_format($course->sum_course_items_price,0,".",".") }}</td>
+						</tr>
+						<tr>
+							<td>DP</td> <td> : </td><td>Rp. {{ number_format($course->dp,0,".",".") }}</td>
+						</tr>
+						<tr>
+							<td>Angsuran</td> <td> : </td><td>Rp. {{ number_format($course->sum_course_payments_price,0,".",".") }}</td>
+						</tr>
+						<tr>
+							<td>Status</td> <td> : </td><td>{{ ($course->price+$course->sum_course_items_price) - ($course->dp+$course->sum_course_payments_price) <= 0 ? 'Lunas' : 'Belum Lunas' }}</td>
 						</tr>
 					</table>
+					</center>
 					<hr>
 					<div class="row" style="height:80px">
 						<div class="col-xs-12">
@@ -255,7 +269,7 @@
 
 $(document).ready(function(){
 
-	$("table").DataTable();
+	$("#table").DataTable();
 
 });
 

@@ -40,6 +40,7 @@ Route::group(['middleware'=>'auth'],function(){
       Route::resources([
         "courseslists"=>"CoursesListController",
         "courses"=>"CoursesController",
+        "coursepayments"=>"CoursePaymentController",
         "memo"=>"MemoController",
         "itemlists"=>"ItemListController",
         "users"=>"UserController",

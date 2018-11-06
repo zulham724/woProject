@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCoursesListsTable extends Migration
+class CreateCoursePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateCoursesListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('courses_lists',function(Blueprint $table){
+        Schema::create('course_payments', function(Blueprint $table){
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->string('type')->nullable();
-            $table->integer('price');
+            $table->integer('course_id')->unsigned();
+            $table->bigInteger('price')->default(0);
             $table->timestamps();
             $table->softDeletes();
 
-          
-        });  
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
+        });
     }
 
     /**
@@ -32,6 +32,6 @@ class CreateCoursesListsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('courses_lists');
+        Schema::dropIfExists('course_payments');
     }
 }
