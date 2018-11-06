@@ -24,14 +24,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="price" class="col-md-4 control-label">Harga</label>
-
-                            <div class="col-md-6">
-                                <input id="price" type="number" class="form-control" name="price" value="{{ $courses_list->price }}" required>
-                            </div>
-                        </div>
-
 						<input type="hidden" name="id" value="{{$courses_list->id}}">
 
                         <div class="form-group">

@@ -21,10 +21,6 @@
 					            <span class="label label-default">Nama Jenis Kursus </span>
 		            <input type="text" name="type" id="order_list" class="form-control" >
 		        </div>
-		        <div class="form-group">
-		            <span class="label label-default">Harga </span>
-		            <input type="text" name="price" id="order_list" class="form-control" >
-		        </div>
 		        <button type="submit" class="btn btn-success center-block btn-block"><i class="fa fa-save "></i>  Submit</button>
 	        </form>
         <hr>
@@ -36,7 +32,6 @@
 						<tr>
 							<th>No.</th>
 							<th>Nama Jenis Kursus</th>
-							<th>Harga</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -45,7 +40,6 @@
 						<tr>
 							<td>{{$cl+1}}</td>
 							<td>{{$courses_list->type}}</td>
-							<td>Rp. {{ number_format($courses_list->price,0,",",".") }}</td>
 							<td>
 								<a type="button" href="{{ route('courseslists.edit',$courses_list->id) }}" class="btn btn-warning" ><i class="fa fa-edit"></i> Edit</a>
 								<button type="button" class="btn btn-danger" onclick="destroy({{$courses_list->id}})"><i class="fa fa-trash"></i> Delete</button>

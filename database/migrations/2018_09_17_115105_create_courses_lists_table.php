@@ -17,7 +17,6 @@ class CreateCoursesListsTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->string('type')->nullable();
-            $table->integer('price');
             $table->timestamps();
             $table->softDeletes();
 
