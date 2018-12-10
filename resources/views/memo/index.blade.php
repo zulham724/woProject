@@ -69,7 +69,7 @@
                     <label for="item" class="control-label">Item</label>
 
                       
-                          <select class="form-control" name="courses_list_id">
+                          <select class="form-control" name="item_list_id">
                               <option value="">-Semua Item-</option>
                               @foreach($item_lists as $item_list)
                               <option value="{{ $item_list->id }}">{{ $item_list->name }}</option>
