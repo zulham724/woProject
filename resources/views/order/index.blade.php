@@ -360,6 +360,7 @@
 	      		<thead>
 	      			<tr>
 	      				<td>No.</td>
+	      				<td>Pesanan</td>
 	      				<td>Deskripsi</td>
 	      				<td>Harga</td>
 	      				<td>Tanggal Pesan</td>
@@ -551,6 +552,7 @@ function print(id){
 			<tr>\
 				<td>"+key+"</td>\
 				<td>"+this.item_list.name+"</td>\
+				<td>"+this.description+"</td>\
 				<td class=costItem >"+this.price+"</td>\
 				<td>"+this.created_at+"</td>\
 			</tr>\

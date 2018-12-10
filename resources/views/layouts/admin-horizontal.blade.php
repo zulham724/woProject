@@ -58,7 +58,7 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="fa fa-calendar"></i> Kursus <span class="badge" </span> <i class="fa fa-caret-down"></i>
                                 </a>
-                                <ul class="dropdown-menu dropdown-messages" >
+                                <ul class="dropdown-menu dropdown-messages">
                                     <li>
                                         <a class='text-center' href="{{url('courseslists')}}" data-toggle='modal' >
                                             <i class="fa fa-list-alt "></i>
@@ -76,7 +76,7 @@
                                     <li>
                                         <a class='text-center' href="{{url('coursepayments')}}" data-toggle='modal' >
                                             <i class="fa fa-money-bill"></i>
-                                            <strong> Angsuran Pembayaran</strong>
+                                            <strong> Angsuran Kursus</strong>
                                             <i class='fa fa-angle-right'></i>
                                         </a>
                                     </li>

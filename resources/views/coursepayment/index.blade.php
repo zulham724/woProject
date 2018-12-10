@@ -1,5 +1,5 @@
 @extends(Auth::user()->role_id == 1 ? 'layouts.admin-horizontal' : (Auth::user()->role_id == 2 ? 'layouts.operator-horizontal' : 'layouts.staff-horizontal'));
-@section('pembayaran-active','class=menu-top-active')
+{{-- @section('course-active','class=menu-top-active') --}}
 @section('css')
 
 @endsection
@@ -30,7 +30,7 @@
                       <td>{{ $course->name }}</td>
                       <td>{{ $course->certificate_name }}</td>
                       <td>
-                        <button type="button" class="btn btn-warning" name="button" onclick="store({{$course->id}})"><i class="fa fa-tag"></i> Choose</button>
+                        <button type="button" class="btn btn-warning" name="button" onclick="store({{$course->id}})"><i class="fa fa-tag"></i> Tambah Angsuran</button>
                         <button type="button" class="btn btn-info" name="button" onclick="edit({{$course->id}})"><i class="fa fa-edit"></i> Edit</button>
                       </td>
                     </tr>
