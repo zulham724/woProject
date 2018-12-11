@@ -196,50 +196,54 @@
 					
 					<div class="row">
 						<div class="col-xs-offset-2 col-xs-4">
-							<table border="0" width="100%">
-								<tr>
-									<td>Kursus</td><td> : </td><td>{{ $course->courses_list->type }}</td>
-								</tr>
-								<tr>
-									<td>Pemesan </td> <td> : </td><td>{{ $course->name }}</td>
-								</tr>
-								<tr>
-									<td>Waktu </td> <td> : </td><td>{{ $date }}</td>
-								</tr>
-								<tr>
-									<td>Jam </td> <td> : </td><td>{{ $course->time }}</td>
-								</tr>
-								<tr>
-									<td>Tempat </td> <td> : </td><td> {{ $course->place }}</td>
-								</tr>
-								<tr>
-									<td>Harga Kursus</td> <td> : </td><td>Rp. {{ number_format($course->price,0,".",".") }}</td>
-								</tr>
-								<tr>
-									<td>Total Harga Tambahan</td> <td> : </td><td>Rp. {{ number_format($course->sum_course_items_price,0,".",".") }}</td>
-								</tr>
-								<tr>
-									<td>DP</td> <td> : </td><td>Rp. {{ number_format($course->dp,0,".",".") }}</td>
-								</tr>
-								<tr>
-									<td>Angsuran</td> <td> : </td><td>Rp. {{ number_format($course->sum_course_payments_price,0,".",".") }}</td>
-								</tr>
-								<tr>
-									<td>Status</td> <td> : </td><td>{{ ($course->price+$course->sum_course_items_price) - ($course->dp+$course->sum_course_payments_price) <= 0 ? 'Lunas' : 'Belum Lunas' }}</td>
-								</tr>
-							</table>
+							<div class="table-responsive">
+								<table border="0">
+									<tr>
+										<td>Kursus</td><td> : </td><td>{{ $course->courses_list->type }}</td>
+									</tr>
+									<tr>
+										<td>Pemesan </td> <td> : </td><td>{{ $course->name }}</td>
+									</tr>
+									<tr>
+										<td>Waktu </td> <td> : </td><td>{{ $date }}</td>
+									</tr>
+									<tr>
+										<td>Jam </td> <td> : </td><td>{{ $course->time }}</td>
+									</tr>
+									<tr>
+										<td>Tempat </td> <td> : </td><td> {{ $course->place }}</td>
+									</tr>
+									<tr>
+										<td>Harga Kursus</td> <td> : </td><td>Rp. {{ number_format($course->price,0,".",".") }}</td>
+									</tr>
+									<tr>
+										<td>Total Harga Tambahan</td> <td> : </td><td>Rp. {{ number_format($course->sum_course_items_price,0,".",".") }}</td>
+									</tr>
+									<tr>
+										<td>DP</td> <td> : </td><td>Rp. {{ number_format($course->dp,0,".",".") }}</td>
+									</tr>
+									<tr>
+										<td>Angsuran</td> <td> : </td><td>Rp. {{ number_format($course->sum_course_payments_price,0,".",".") }}</td>
+									</tr>
+									<tr>
+										<td>Status</td> <td> : </td><td>{{ ($course->price+$course->sum_course_items_price) - ($course->dp+$course->sum_course_payments_price) <= 0 ? 'Lunas' : 'Belum Lunas' }}</td>
+									</tr>
+								</table>
+							</div>
 						</div>
 						<div class="col-xs-6">
-							<table border="0" width="50%">
-								<tr>
-									<td>Rincian tambahan: </td>
-								</tr>
-								@foreach ($course['course_items'] as $ci => $course_item)
+							<div class="table-responsive">
+								<table border="0">
 									<tr>
-										<td> - {{ $course_item->name }}</td><td> : </td><td>Rp. {{ number_format($course_item->price,"0",".",".") }}</td>
+										<td>Rincian tambahan: </td>
 									</tr>
-								@endforeach
-							</table>
+									@foreach ($course['course_items'] as $ci => $course_item)
+										<tr>
+											<td> - {{ $course_item->name }}</td><td> : </td><td>Rp. {{ number_format($course_item->price,"0",".",".") }}</td>
+										</tr>
+									@endforeach
+								</table>
+							</div>
 						</div>
 					</div>
 					
