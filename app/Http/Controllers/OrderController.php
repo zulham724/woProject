@@ -60,25 +60,29 @@ class OrderController extends Controller
 
       $acara = Acara::where('order_id',$order->id)->delete();
 
-      foreach ($request["acaras"] as $a => $acara) {
-        $new = new Acara;
-        $new->fill($acara);
-        $new->order_id = $order->id;
-        $new->save();
+      if($request->has('acaras')){
+        foreach ($request["acaras"] as $a => $acara) {
+          $new = new Acara;
+          $new->fill($acara);
+          $new->order_id = $order->id;
+          $new->save();
+        }
       }
 
       $item = Item::where('order_id',$order->id)->delete();
 
-      foreach ($request["items"] as $i => $item) {
-        $new = new Item;
-        $new->fill($item);
-        $new->order_id = $order->id;
-        if(isset($item["image"])){
-          $path = $item['image']->store('order');
-          // dd($path);
-          $new->image = $path;
+      if($request->has('items')){
+        foreach ($request["items"] as $i => $item) {
+          $new = new Item;
+          $new->fill($item);
+          $new->order_id = $order->id;
+          if(isset($item["image"])){
+            $path = $item['image']->store('order');
+            // dd($path);
+            $new->image = $path;
+          }
+          $new->save();
         }
-        $new->save();
       }
 
       $data['notification'] = Notification::create([
@@ -109,23 +113,27 @@ class OrderController extends Controller
       $biodata->order_id = $order->id;
       $biodata->save();
 
-      foreach ($request["acaras"] as $a => $acara) {
-        $new = new Acara;
-        $new->fill($acara);
-        $new->order_id = $order->id;
-        $new->save();
+      if(isset($request['acaras'])){
+        foreach ($request["acaras"] as $a => $acara) {
+          $new = new Acara;
+          $new->fill($acara);
+          $new->order_id = $order->id;
+          $new->save();
+        }
       }
 
-      foreach ($request["items"] as $i => $item) {
-        $new = new Item;
-        $new->fill($item);
-        $new->order_id = $order->id;
-        if(isset($item["image"])){
-          $path = $item['image']->store('order');
-          // dd($path);
-          $new->image = $path;
+      if($request->has('items')){
+        foreach ($request["items"] as $i => $item) {
+          $new = new Item;
+          $new->fill($item);
+          $new->order_id = $order->id;
+          if(isset($item["image"])){
+            $path = $item['image']->store('order');
+            // dd($path);
+            $new->image = $path;
+          }
+          $new->save();
         }
-        $new->save();
       }
 
         $data['notification'] = Notification::create([

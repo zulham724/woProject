@@ -144,11 +144,11 @@
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Nama Kakak:</span>
-											<input type="text" name="biodata[nama_kakak_pria]" class="form-control" id="tokenfield" data-role="tagsinput" value="{{$biodata->kakak_pria}}" placeholder="nama">
+											<input type="text" name="biodata[kakak_pria]" class="form-control" id="tokenfield" data-role="tagsinput" value="{{$biodata->kakak_pria}}" placeholder="nama">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Nama Adik:</span>
-											<input type="text" name="biodata[nama_adik_pria]" class="form-control" id="tokenfield" data-role="tagsinput" value="{{$biodata->adik_pria}}" placeholder="nama">
+											<input type="text" name="biodata[adik_pria]" class="form-control" id="tokenfield" data-role="tagsinput" value="{{$biodata->adik_pria}}" placeholder="nama">
 										</div>
 
 									</div>
@@ -196,7 +196,7 @@
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Ibu:</span>
-											<input type="text" name="biodata[ibu_wanita]" class="form-control" value="{{$biodata->jenis_jamuan}}" placeholder="nama">
+											<input type="text" name="biodata[ibu_wanita]" class="form-control" value="{{$biodata->ibu_wanita}}" placeholder="nama">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">CP Ibu:</span>
@@ -204,11 +204,11 @@
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Nama Kakak:</span>
-											<input type="text" name="biodata[nama_kakak_wanita]" class="form-control" id="tokenfield" data-role="tagsinput" value="{{$biodata->kakak_wanita}}" placeholder="nama">
+											<input type="text" name="biodata[kakak_wanita]" class="form-control" id="tokenfield" data-role="tagsinput" value="{{$biodata->kakak_wanita}}" placeholder="nama">
 										</div>
 										<div class="form-group">
 											<span class="label label-default">Nama Adik:</span>
-											<input type="text" name="biodata[nama_adik_wanita]" class="form-control" id="tokenfield" data-role="tagsinput" placeholder="nama" value="{{$biodata->adik_wanita}}">
+											<input type="text" name="biodata[adik_wanita]" class="form-control" id="tokenfield" data-role="tagsinput" placeholder="nama" value="{{$biodata->adik_wanita}}">
 										</div>
 
 

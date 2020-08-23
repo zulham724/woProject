@@ -136,11 +136,11 @@
 										</div>
 										<div class="form-group">
 											<h4><span class="label label-default">Nama Kakak:</span></h4>
-											<input type="text" name="biodata[nama_kakak_pria]" class="form-control" id="tokenfield" data-role="tagsinput" placeholder="nama">
+											<input type="text" name="biodata[kakak_pria]" class="form-control" id="tokenfield" data-role="tagsinput" placeholder="nama">
 										</div>
 										<div class="form-group">
 											<h4><span class="label label-default">Nama Adik:</span></h4>
-											<input type="text" name="biodata[nama_adik_pria]" class="form-control" id="tokenfield" data-role="tagsinput" placeholder="nama">
+											<input type="text" name="biodata[adik_pria]" class="form-control" id="tokenfield" data-role="tagsinput" placeholder="nama">
 										</div>
 
 									</div>
@@ -196,11 +196,11 @@
 										</div>
 										<div class="form-group">
 											<h4><span class="label label-default">Nama Kakak:</span></h4>
-											<input type="text" name="biodata[nama_kakak_wanita]" class="form-control" id="tokenfield" data-role="tagsinput" placeholder="nama">
+											<input type="text" name="biodata[kakak_wanita]" class="form-control" id="tokenfield" data-role="tagsinput" placeholder="nama">
 										</div>
 										<div class="form-group">
 											<h4><span class="label label-default">Nama Adik:</span></h4>
-											<input type="text" name="biodata[nama_adik_wanita]" class="form-control" id="tokenfield" data-role="tagsinput" placeholder="nama">
+											<input type="text" name="biodata[adik_wanita]" class="form-control" id="tokenfield" data-role="tagsinput" placeholder="nama">
 										</div>
 
 
