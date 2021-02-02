@@ -71,7 +71,7 @@
 
     $.each(acaras,(index,a)=>{
         data.push({
-            title:'Acara '+a.order.nama_pemesan,
+            title:a.order.nama_pemesan,
             start:a.tanggal,
             id:'a'+a.id,
             acara:a.acara,
